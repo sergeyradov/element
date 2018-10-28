@@ -2,15 +2,23 @@ import { Compiler } from 'remark-stringify'
 import * as u from 'unist-builder'
 import { Markdown } from '../../../documented/markdown'
 import * as yaml from 'js-yaml'
-import { BlockContentBuilder } from './Builder'
+import { BlockContentBuilder } from './BlockContentBuilder'
 import { DefinitionBuilder } from './DefinitionBuilder'
 import { attachFrontmatterCompiler } from './frontmatter'
 export class Document {
 	private compiler: Compiler
 	private tree: Markdown.Root
 
+	private middlewares: ((root: Markdown.Root) => Markdown.Root)[]
+
 	constructor() {
+		this.middlewares = []
 		this.tree = u('root', [])
+	}
+
+	public use(plugin): this {
+		this.middlewares.push(plugin)
+		return this
 	}
 
 	public block(builder: (builder: BlockContentBuilder) => void) {
