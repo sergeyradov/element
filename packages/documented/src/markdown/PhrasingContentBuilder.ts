@@ -59,7 +59,7 @@ export class PhrasingContentBuilder {
 	}
 
 	private literalContent(type: string, value: string) {
-		this.tree.children.push(u(type, {}, [u('text', value)]))
+		this.tree.children.push(u(type, { value }))
 	}
 
 	public get children() {
