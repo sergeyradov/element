@@ -49,4 +49,34 @@ describe('Document builder', () => {
 
 		expect(doc.toMarkdown()).to.equal(`Until contains a wealth of useful [^Condition]\'s\n`)
 	})
+
+	it('list', async () => {
+		doc.block(b => {
+			b.list(
+				list => {
+					list.item('Item 1', { checked: true })
+					list.item('Item 2', { checked: true })
+					list.item('Item 3', { checked: false })
+				},
+				{ ordered: true },
+			)
+		})
+
+		expect(doc.toMarkdown()).to.equal(`1.  [x] Item 1\n2.  [x] Item 2\n3.  [ ] Item 3\n`)
+	})
+
+	it('list with block content', async () => {
+		doc.block(b => {
+			b.list(list => {
+				list.item(b => {
+					b.blockquote('Quoted Item')
+				})
+				list.item(b => {
+					b.h1('Heading item')
+				})
+			})
+		})
+
+		expect(doc.toMarkdown()).to.equal(`-   > Quoted Item\n-   # Heading item\n`)
+	})
 })
