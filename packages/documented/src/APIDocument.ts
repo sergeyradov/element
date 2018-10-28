@@ -23,7 +23,7 @@ export class APIDocument extends Document {
 					list.item(b => {
 						b.p(c => {
 							c.p(`${name} `)
-							c.ref(formattedType)
+							c.footRef(formattedType)
 							c.p(' ')
 							if (desc) c.p(desc)
 						})
@@ -32,7 +32,7 @@ export class APIDocument extends Document {
 					list.item(b => {
 						b.p(c => {
 							c.p(`${name} `)
-							c.ref(formattedType)
+							c.footRef(formattedType)
 							c.p(' ')
 							if (defaultValue !== undefined) {
 								c.p('(Optional, default: ')

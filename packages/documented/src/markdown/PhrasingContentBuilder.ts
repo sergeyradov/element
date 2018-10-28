@@ -41,10 +41,26 @@ export class PhrasingContentBuilder {
 	/**
 	 * Generates a reference to a footnote
 	 */
-	public ref(identifier: string, label?: string) {
+	public footRef(identifier: string, label?: string) {
 		if (!label) label = identifier
 		let ref = u('footnoteReference', { identifier, label })
 		this.tree.children.push(ref)
+	}
+
+	public linkRef(label: string, value?: string | ContentBuilderFn) {
+		let identifier = label
+		let tree = u('linkReference', { label, identifier }, [])
+
+		let builder = new PhrasingContentBuilder(tree)
+		if (typeof value === 'string') {
+			builder.p(value)
+		} else if (typeof value === 'function') {
+			value(builder)
+		} else {
+			builder.p(label)
+		}
+
+		this.tree.children.push(tree)
 	}
 
 	private phrasingContent(type: string, value: string | ContentBuilderFn) {

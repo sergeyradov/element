@@ -34,7 +34,7 @@ export class BlockContentBuilder extends Builder {
 		this.heading(value, 6)
 	}
 
-	public heading(value: string, depth: number = 1) {
+	private heading(value: string, depth: number = 1) {
 		this.tree.children.push(u('heading', { depth }, [u('text', value)]))
 	}
 

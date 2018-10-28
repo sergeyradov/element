@@ -56,9 +56,9 @@ export class Document {
 			lastRoot = fn(lastRoot)
 		})
 
-		this.compiler = new Compiler(lastRoot)
+		this.compiler = new Compiler(lastRoot, { entities: false, gfm: true })
 		attachFrontmatterCompiler(this.compiler)
 
-		return this.compiler.compile({ entities: false, gfm: false })
+		return this.compiler.compile()
 	}
 }

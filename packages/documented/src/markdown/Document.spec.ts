@@ -42,7 +42,7 @@ describe('Document builder', () => {
 		doc.block(b => {
 			b.p(c => {
 				c.p('Until contains a wealth of useful ')
-				c.ref('Condition')
+				c.footRef('Condition')
 				c.p(`'s`)
 			})
 		})
@@ -100,5 +100,27 @@ describe('Document builder', () => {
 		let string = '```typescript\nCode block\n```\n'
 		doc.raw(string)
 		expect(doc.toMarkdown()).to.equal(string)
+	})
+
+	it('supports link refs', async () => {
+		doc.definition(def => {
+			def.definition('Browser', './Browser.md', 'Title')
+		})
+
+		doc.block(b => {
+			b.p(c => {
+				c.p('This is a link ')
+				c.linkRef('Browser', b => {
+					b.p('Link Content')
+				})
+
+				c.p(' Link without content ')
+				c.linkRef('Browser')
+			})
+		})
+
+		expect(doc.toMarkdown()).to.equal(
+			'[Browser]: ./Browser.md "Title"\n\nThis is a link [Link Content][Browser] Link without content [Browser][Browser]\n',
+		)
 	})
 })
