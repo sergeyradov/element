@@ -1,0 +1,9 @@
+{
+	"extends": "../element/tsconfig.json",
+	"compilerOptions": {
+		"noImplicitAny": false,
+		"noUnusedLocals": false,
+		"allowUnreachableCode": false
+	},
+	"files": ["./index.ts", "./Markdown.d.ts"]
+}
