@@ -1,4 +1,5 @@
 import { join, relative, resolve, isAbsolute } from 'path'
+import { major, minor } from 'semver'
 import * as camelcase from 'lodash.camelcase'
 // import * as upperFirst from 'lodash.upperfirst'
 import * as glob from 'glob'
@@ -16,7 +17,12 @@ const debug = debugFactory('element:docs')
 
 const repoRoot = join(__dirname, '../../../..')
 const root = join(__dirname, '../..')
-const bookDir = join(root, 'docs')
+
+const getDocVersion = async (): Promise<string> => {
+	let pkg = require('../../package.json')
+	let { version } = pkg
+	return [major(version).toString(), minor(version).toString()].join('.')
+}
 
 const { indexMap, indexExports } = preParseIndex(join(root, 'index.ts'))
 
@@ -86,14 +92,17 @@ class parseCtx {
 }
 
 class DocsParser {
-	title: string
+	public title: string
 
-	references: Map<string, { target: string; title?: string }> = new Map()
-	summaryParts: string[] = []
-	enumerations: MarkdownDocument[] = []
+	public references: Map<string, { target: string; title?: string }> = new Map()
+	public summaryParts: string[] = []
+	public enumerations: MarkdownDocument[] = []
 
 	public docs: Map<string, MarkdownDocument> = new Map()
 	public catchallDoc = MarkdownDocument.nullDoc()
+
+	public bookDir: string
+
 	getDoc(pageName: string): MarkdownDocument {
 		if (!this.docs.has(pageName)) {
 			this.docs.set(pageName, new MarkdownDocument(pageName))
@@ -105,11 +114,17 @@ class DocsParser {
 
 	public puppeteerTypes: any
 
-	constructor(public docsJSON: any, public puppeteerJSON: any) {
-		mkdirpSync(bookDir)
+	constructor(public docsJSON: any, public puppeteerJSON: any) {}
 
-		debug('README', join(repoRoot, 'README.md'), join(bookDir, 'README.md'))
-		copySync(join(repoRoot, 'README.md'), join(bookDir, 'README.md'))
+	private async init() {
+		let version = await getDocVersion()
+		console.log(`Preparing docs, version: ${version}`)
+		this.bookDir = join(root, 'docs/api/', `${version}`)
+
+		mkdirpSync(this.bookDir)
+
+		debug('README', join(repoRoot, 'README.md'), join(this.bookDir, 'README.md'))
+		copySync(join(repoRoot, 'README.md'), join(this.bookDir, 'README.md'))
 
 		for (const [key, target] of Object.entries(externalRefs)) {
 			this.addReference(key, target)
@@ -133,15 +148,17 @@ class DocsParser {
 	 *
 	 * @memberof DocsParser
 	 */
-	process() {
+	async process() {
+		await this.init()
+
 		console.log('processing')
 		this.docsJSON.children.forEach(child => this.processTopLevelNode(child))
 
 		const ctx = new parseCtx('puppeteer', this)
 		this.puppeteerJSON.forEach(child => this.processNode(ctx, child)) //, this.puppeteerJSON)
 
-		console.log('creating summary')
-		this.createSummary()
+		// console.log('creating summary')
+		// this.createSummary()
 
 		console.log('writing')
 		this.writeDocsToFiles()
@@ -277,14 +294,12 @@ class DocsParser {
 		this.docs.forEach((doc, path) => {
 			if (!doc.shouldWrite) return
 
-			// docs.forEach(doc => {
 			doc.applyReferences(this.references)
-			let absPath = join(bookDir, path)
+			let absPath = join(this.bookDir, path)
 			if (!contents.has(absPath)) contents.set(absPath, [])
 
 			const content = contents.get(absPath)
 			if (content) content.push(doc.toString())
-			// })
 		})
 		contents.forEach((content, absPath) => {
 			createFileSync(absPath)
@@ -320,7 +335,7 @@ class DocsParser {
 			let content = readFileSync(file).toString('utf8')
 			let { title } = frontMatter<FrontMatter>(content).attributes
 			if (title) {
-				let relativePath = relative(bookDir, file)
+				let relativePath = relative(this.bookDir, file)
 				doc.writeBullet(`[${title}](${relativePath})`)
 			}
 		})
@@ -528,6 +543,21 @@ class DocsParser {
 
 		if (isNodeOpaque(node)) return
 
+		let meta: any = {}
+
+		if (node.comment && node.comment.tags) {
+			node.comment.tags.forEach(tag => {
+				meta[tag.tag] = tag.text.trim()
+
+				if (tag.tag === 'class') {
+					// Automatically name file after class name
+					meta.title = tag.text.trim()
+				}
+			})
+
+			doc.addMeta(meta)
+		}
+
 		if (!children) children = []
 
 		const methods = children.filter(node => node.kindString === 'Method')
@@ -589,7 +619,7 @@ class DocsParser {
 	}
 
 	private rewriteReadmePaths() {
-		const readmeFile = join(bookDir, 'README.md')
+		const readmeFile = join(this.bookDir, 'README.md')
 		let readme = readFileSync(readmeFile, 'utf8')
 
 		const linkRe = /\[([^\]]+)?\]\(([^)]+)\)/g
@@ -599,7 +629,7 @@ class DocsParser {
 			(text: string | null, url: string): string | undefined => {
 				if (!url.startsWith('http') && !url.startsWith('#') && !isAbsolute(url)) {
 					const full = resolve(repoRoot, url)
-					url = relative(bookDir, full)
+					url = relative(this.bookDir, full)
 					return `[${text}](./${url})`
 				}
 				return
