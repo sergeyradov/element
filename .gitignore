@@ -64,3 +64,4 @@ old-packages
 
 packages/*/package-lock.json
 packages/*/yarn.lock
+/packages/element/puppeteer-1.6-docs.json
