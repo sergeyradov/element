@@ -27,8 +27,8 @@ function findReferences(text: string): string[] {
 	return allRefs
 }
 
-export interface FrontMatter {
-	title: string
+export type FrontMatter = {
+	[key: string]: string
 }
 
 export interface Comment {
@@ -45,7 +45,7 @@ export class MarkdownDocument {
 		public lines: string[] = [],
 		public referencesNeeded: string[] = [],
 		public enableReferences = true,
-		public frontMatter: FrontMatter = { title: '' },
+		public frontMatter: FrontMatter = {},
 	) {}
 
 	static nullDoc(): MarkdownDocument {
@@ -131,6 +131,10 @@ export class MarkdownDocument {
 		}
 	}
 
+	public addMeta(obj: object) {
+		this.frontMatter = { ...this.frontMatter, ...obj }
+	}
+
 	public writeComment(comment: Comment) {
 		let { shortText, text } = comment || { shortText: null, text: null }
 		if (shortText) {
@@ -203,10 +207,20 @@ export class MarkdownDocument {
 		this.lines.push(text)
 	}
 
+	// private metaExport() {
+	// 	return {
+	// 		version: '1.0',
+	// 		title: 'Browser',
+	// 		articleGroup: 'API',
+	// 		position: 1,
+	// 		slug: 'docs/1.0/api/Browser',
+	// 	}
+	// }
+
 	toString() {
 		let { frontMatter, lines } = this
 		if (Object.keys(frontMatter).length) {
-			let matter = `---\n${yaml.safeDump(frontMatter)}---`
+			let matter = `---\n${yaml.safeDump(frontMatter)}---\n`
 			lines = [matter, ...lines]
 		}
 		return lines.join(`\n`)
