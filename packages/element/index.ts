@@ -1,10 +1,10 @@
 /**
- * @docPage Until
+ * @docPage Waiters
  */
 export { Until } from './src/page/Until'
 
 /**
- * @docPage Until
+ * @docPage Waiters
  */
 export { Condition } from './src/page/Condition'
 
@@ -14,12 +14,12 @@ export { Condition } from './src/page/Condition'
 export { Device, Key, MouseButtons } from './src/page/Enums'
 
 /**
- * @docPage By
+ * @docPage Locators
  */
 export { By } from './src/page/By'
 
 /**
- * @docPage By
+ * @docPage Locators
  */
 export { Locator } from './src/page/types'
 
@@ -88,7 +88,7 @@ export const ENV: FloodProcessEnv = nullFloodProcessEnv
 export { Browser, Browser as Driver, Locatable, NullableLocatable } from './src/runtime/types'
 
 /**
- * @docPage Browser
+ * @docPage Puppeteer
  */
 export {
 	ClickOptions,
