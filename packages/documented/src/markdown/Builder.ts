@@ -1,15 +1,13 @@
 import * as u from 'unist-builder'
 import { Parent } from 'unist'
-import { PhasingContentBuilder, ContentBuilderFn } from './PhasingContentBuilder'
+import { PhrasingContentBuilder, ContentBuilderFn } from './PhrasingContentBuilder'
 
 export class BlockContentBuilder {
 	constructor(private tree: Parent) {}
 
 	public p(value: string | ContentBuilderFn) {
-		let contentBuilder = new PhasingContentBuilder(this.tree)
-		console.log(value)
+		let contentBuilder = new PhrasingContentBuilder(this.tree)
 		contentBuilder.p(value)
-		// this.tree.children.push(u('paragraph', {}, [u('text', value)]))
 	}
 
 	public h1(value: string) {
