@@ -116,11 +116,15 @@ describe('Document builder', () => {
 
 				c.p(' Link with inline code ')
 				c.linkRef('Browser', b => b.inlineCode('Browser'))
+				c.linkRef('Orphaned', b => b.inlineCode('Orphaned'))
 			})
 		})
 
+		expect(doc.definitions[0].url).to.equal('./Browser.md')
+		expect(doc.orphanedReferences[0].identifier).to.equal('Orphaned')
+
 		expect(doc.toMarkdown()).to.equal(
-			'[Browser]: ./Browser.md "Title"\n\nThis is a link [Link Content][Browser] Link with inline code [`Browser`][Browser]\n',
+			'[Browser]: ./Browser.md "Title"\n\nThis is a link [Link Content][Browser] Link with inline code [`Browser`][Browser][`Orphaned`][Orphaned]\n',
 		)
 	})
 })

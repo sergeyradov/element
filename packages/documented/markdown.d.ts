@@ -61,15 +61,31 @@ declare namespace Markdown {
 		children: StaticPhrasingContent[]
 	}
 
-	type LinkReference = Parent & {
-		type: 'linkReference'
-		children: StaticPhrasingContent[]
+	type LinkReference = Parent &
+		Reference &
+		Association & {
+			type: 'linkReference'
+			children: StaticPhrasingContent[]
+		}
+
+	type Resource = {
+		url: string
+		title?: string
 	}
 
 	interface Association {
 		identifier: string
 		label?: string
 	}
+
+	type Reference = {
+		referenceType: 'fille' | 'collapsed' | 'shortcut'
+	}
+
+	type Definition = Association &
+		Resource & {
+			type: 'definition'
+		}
 
 	type StaticPhrasingContent =
 		| Text

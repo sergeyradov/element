@@ -8,6 +8,7 @@ import { attachFrontmatterCompiler } from './frontmatter'
 const unified = require('unified')
 const parse = require('remark-parse')
 const frontmatter = require('remark-frontmatter')
+const visit = require('unist-util-visit-parents')
 
 export class Document {
 	private compiler: Compiler
@@ -48,6 +49,25 @@ export class Document {
 			.parse(text)
 
 		this.tree.children.push(...tree.children)
+	}
+
+	public get definitions(): Markdown.Definition[] {
+		let refs: Map<string, Markdown.Definition> = new Map()
+		visit(this.tree, 'definition', (node: Markdown.Definition) => refs.set(node.identifier, node))
+		return [...refs.values()]
+	}
+
+	public get references(): Markdown.LinkReference[] {
+		let refs: Map<string, Markdown.LinkReference> = new Map()
+		visit(this.tree, 'linkReference', (node: Markdown.LinkReference) =>
+			refs.set(node.identifier, node),
+		)
+		return [...refs.values()]
+	}
+
+	public get orphanedReferences() {
+		let defs = this.definitions.map(def => def.identifier)
+		return this.references.filter(ref => !defs.includes(ref.identifier))
 	}
 
 	public toMarkdown() {
