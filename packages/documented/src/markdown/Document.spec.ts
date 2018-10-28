@@ -114,13 +114,13 @@ describe('Document builder', () => {
 					b.p('Link Content')
 				})
 
-				c.p(' Link without content ')
-				c.linkRef('Browser')
+				c.p(' Link with inline code ')
+				c.linkRef('Browser', b => b.inlineCode('Browser'))
 			})
 		})
 
 		expect(doc.toMarkdown()).to.equal(
-			'[Browser]: ./Browser.md "Title"\n\nThis is a link [Link Content][Browser] Link without content [Browser][Browser]\n',
+			'[Browser]: ./Browser.md "Title"\n\nThis is a link [Link Content][Browser] Link with inline code [`Browser`][Browser]\n',
 		)
 	})
 })
