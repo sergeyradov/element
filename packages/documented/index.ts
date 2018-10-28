@@ -1,8 +1,4 @@
-const unified = require('unified')
-const parse = require('remark-parse')
-const frontmatter = require('remark-frontmatter')
 const chalk = require('chalk')
-import * as abbr from 'remark-abbr'
 import { APIDocument } from './src/APIDocument'
 
 async function main() {

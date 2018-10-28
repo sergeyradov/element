@@ -5,6 +5,10 @@ import * as yaml from 'js-yaml'
 import { BlockContentBuilder } from './BlockContentBuilder'
 import { DefinitionBuilder } from './DefinitionBuilder'
 import { attachFrontmatterCompiler } from './frontmatter'
+const unified = require('unified')
+const parse = require('remark-parse')
+const frontmatter = require('remark-frontmatter')
+
 export class Document {
 	private compiler: Compiler
 	private tree: Markdown.Root
@@ -38,6 +42,14 @@ export class Document {
 		this.tree.children = [u('yaml', yaml.safeDump(data)), ...this.tree.children]
 	}
 
+	public raw(text: string) {
+		let tree = unified()
+			.use(parse)
+			.parse(text)
+
+		this.tree.children.push(...tree.children)
+	}
+
 	public toMarkdown() {
 		let lastRoot = this.tree
 		this.middlewares.forEach(fn => {
@@ -47,6 +59,6 @@ export class Document {
 		this.compiler = new Compiler(lastRoot)
 		attachFrontmatterCompiler(this.compiler)
 
-		return this.compiler.compile()
+		return this.compiler.compile({ entities: false, gfm: false })
 	}
 }

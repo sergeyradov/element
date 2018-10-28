@@ -52,7 +52,7 @@ export class APIDocument extends Document {
 
 	comment(...parts: string[]) {
 		this.block(b => {
-			parts.forEach(text => b.p(text))
+			parts.forEach(text => this.raw(text))
 		})
 	}
 }

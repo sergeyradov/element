@@ -79,4 +79,26 @@ describe('Document builder', () => {
 
 		expect(doc.toMarkdown()).to.equal(`-   > Quoted Item\n-   # Heading item\n`)
 	})
+
+	it('list with nested list', async () => {
+		doc.block(b => {
+			b.list(list => {
+				list.item(b => {
+					b.p('Para 1')
+					b.list(l => {
+						l.item('Nested 1')
+						l.item('Nested 2')
+					})
+				})
+			})
+		})
+
+		expect(doc.toMarkdown()).to.equal(`-   Para 1\n\n    -   Nested 1\n    -   Nested 2\n`)
+	})
+
+	it('supports code blocks inline', async () => {
+		let string = '```typescript\nCode block\n```\n'
+		doc.raw(string)
+		expect(doc.toMarkdown()).to.equal(string)
+	})
 })
