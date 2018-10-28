@@ -8,10 +8,12 @@ export class DefinitionBuilder {
 	constructor(private tree: Parent) {}
 
 	public definition(label: string, url: string, title?: string) {
-		this.tree.children.push(u('definition', { label, url, title }))
+		let identifier = label
+		this.tree.children.push(u('definition', { identifier, label, url, title }))
 	}
 
-	public footnote(identifier: string, label: string, content: (b: BlockContentBuilder) => void) {
+	public footnote(label: string, content: (b: BlockContentBuilder) => void) {
+		let identifier = label
 		let tree = u('footnoteDefinition', { identifier, label }, [])
 		let builder = new BlockContentBuilder(tree)
 		content(builder)

@@ -29,7 +29,7 @@ describe('Document builder', () => {
 
 	it('footnote definition', async () => {
 		doc.definition(b => {
-			b.footnote('note1', 'First note', c => {
+			b.footnote('First note', c => {
 				c.h1('Test')
 				c.p('text value')
 			})
