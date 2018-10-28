@@ -85,4 +85,11 @@ declare namespace Markdown {
 		| FootnoteReference
 
 	type PhrasingContent = StaticPhrasingContent | Link | LinkReference
+
+	type ListItem = Parent & {
+		type: 'listItem'
+		checked?: boolean
+		spread?: boolean
+		// children: BlockContent[]
+	}
 }

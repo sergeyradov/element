@@ -3,7 +3,7 @@ const parse = require('remark-parse')
 const frontmatter = require('remark-frontmatter')
 const chalk = require('chalk')
 
-import { Document } from './src/markdown/Document'
+import { APIDocument } from './src/APIDocument'
 
 async function main() {
 	console.log(chalk.grey('Starting documentation generator'))
@@ -17,28 +17,21 @@ async function main() {
 	// # test
 	// `)
 
-	let doc = new Document()
-	// doc.frontmatter({ title: 'Test' })
+	let doc = new APIDocument()
+	// // doc.frontmatter({ title: 'Test' })
+	doc.section('Browser')
+	doc.comment('This is the first line', 'THis is the second line')
+	doc.parameter('name', { type: 'array', elementType: { type: 'stringLiteral', value: 'test' } })
 
-	doc.block(b => {
-		b.h1('API Documentation')
-		b.p(c => {
-			c.p('Normal')
-			c.strong('Strong content')
-			c.break()
-			c.image('myimage.png', 'Test')
-			c.p()
-		})
-		b.blockquote(b => {
-			b.h1('Warning')
-			b.p('This is a blockquote with a heading')
-			b.p(c => {
-				c.delete('An old value')
-			})
+	doc.definition(b => {
+		b.footnote('note1', 'First note', c => {
+			c.h1('Test')
+			c.p('text value')
 		})
 	})
 
-	console.log(doc.toMarkdown())
+	debugger
+	process.stdout.write(Buffer.from(doc.toMarkdown()))
 }
 
 main()
