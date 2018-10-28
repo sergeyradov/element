@@ -568,7 +568,7 @@ export class Browser<T> implements BrowserInterface {
 
 	@rewriteError()
 	public async extractText(locatable: NullableLocatable): Promise<string> {
-		console.warn(`DEPRECATED: Driver.extractText() is deprecated, please use ElementHandle.text()`)
+		console.warn(`DEPRECATED: browser.extractText() is deprecated, please use ElementHandle.text()`)
 		let locator = locatableToLocator(locatable, 'browser.extractText(locatable) (DEPRECATED)')
 		let element = await locator.find(await this.context)
 		if (!element) throw toLocatorError(locatable, 'browser.extractText()')

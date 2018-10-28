@@ -58,10 +58,10 @@ export interface SuiteDefinition {
 }
 
 /**
- * Browser (also called Driver) is the main entry point in each <[step]>, it's your direct connection to the browser running the test.
+ * Browser is the main entry point in each <[step]>, it's your direct connection to the browser running the test.
  *
  * ```typescript
- * import { step } from "@flood/element"
+ * import { step } from '@flood/element'
  * export default () => {
  *   step("Start", async browser => {
  *     await browser.visit("https://challenge.flood.io")
@@ -69,6 +69,10 @@ export interface SuiteDefinition {
  * }
  * ```
  *
+ * @title Browser
+ * @class Browser
+ * @position 1
+ * @articleGroup API
  */
 export interface Browser {
 	title(): Promise<string>
@@ -126,7 +130,7 @@ export interface Browser {
 	 * **Example:**
 	 *
 	 * ```typescript
-	 * step("Start", async browser => {
+	 * step('Start', async browser => {
 	 *   await browser.wait(Until.elementIsVisible(By.css('h1.title')))
 	 * })
 	 * ```
@@ -282,5 +286,14 @@ export interface Browser {
 
 /**
  * Driver is an alias to Browser. Please use Browser when possible.
+ *
+ * > Notice:
+ * >
+ * > This is kept for simplifying migrations from Selenium WebDriver.js.
+ *
+ * @class Driver
+ * @position 10
+ * @articleGroup API
+ * @module Browser
  */
 export type Driver = Browser

@@ -33,6 +33,15 @@ export class Until {
 	 * - (Coming soon) locator which may be used to first locate a FRAME or IFRAME on the current page before attempting to switch to it.
 	 *
 	 * Upon successful resolution of this condition, the driver will be left focused on the new frame.
+	 *
+	 * **Example:**
+	 *
+	 * ```typescript
+	 * step('Switch frame', async browser => {
+	 *   await browser.wait(Until.ableToSwitchToFrame('frame1'))
+	 *   ...
+	 * })
+	 * ```
 	 */
 	static ableToSwitchToFrame(frame: Locatable): Condition {
 		return new FrameCondition('ableToSwitchToFrame', frame)
@@ -41,6 +50,15 @@ export class Until {
 	/**
 	 * Creates a condition that waits for an alert to be opened. Upon success,
 	 * the returned promise will be fulfilled with the handle for the opened alert.
+	 *
+	 * **Example:**
+	 *
+	 * ```typescript
+	 * step('Handle alert', async browser => {
+	 *   let dialog = await browser.wait(Until.alertIsPresent())
+	 *   await dialog.accept()
+	 * })
+	 * ```
 	 */
 	static alertIsPresent(): Condition {
 		return new DialogCondition('alertIsPresent')
@@ -49,6 +67,17 @@ export class Until {
 	/**
 	 * Creates a condition that will wait for the given element to be disabled
 	 * @param selectorOrLocator A <[Locatable]> to use to find the element.
+	 *
+	 * **Example:**
+	 *
+	 * ```typescript
+	 * step('Element state', async browser => {
+	 * 	 let btnLocator = By.css('button.submit')
+	 *   await browser.wait(Until.elementIsDisabled(btnLocator))
+	 *	 let element = await browser.findElement(btnLocator)
+	 *	 // element disabled attribute should be true
+	 * })
+	 * ```
 	 */
 	static elementIsDisabled(selectorOrLocator: NullableLocatable): Condition {
 		return new ElementStateCondition('elementIsDisabled', selectorOrLocator, true)
