@@ -46,7 +46,10 @@ export class BlockContentBuilder {
 		buildFn(newBlock)
 		this.tree.children.push(newBlock.tree)
 	}
-	public list() {}
+	public list(
+		listBuilder: () => void,
+		options: { ordered?: boolean; start?: number; spread?: boolean },
+	) {}
 	public table() {}
 	public html() {}
 	public code() {}
