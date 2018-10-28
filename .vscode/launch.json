@@ -1,0 +1,38 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Docs Debug",
+			"type": "node",
+			"request": "launch",
+			"protocol": "inspector",
+			"program": "${workspaceRoot}/packages/element/node_modules/.bin/ts-node",
+			"args": [
+				"--inspect-brk",
+				"--project",
+				"${workspaceRoot}/packages/element/tsconfig.doc.json",
+				"${workspaceRoot}/packages/element/scripts/docs/docs.ts"
+			],
+			"stopOnEntry": false,
+			"runtimeArgs": ["--nolazy"],
+			"sourceMaps": true
+		},
+
+		{
+			"name": "Documented",
+			"type": "node",
+			"request": "launch",
+			"protocol": "inspector",
+			"program": "${workspaceRoot}/packages/documented/node_modules/.bin/ts-node",
+			"args": [
+				"--inspect-brk",
+				"--project",
+				"${workspaceRoot}/packages/documented/tsconfig.json",
+				"${workspaceRoot}/packages/documented/index.ts"
+			],
+			"stopOnEntry": false,
+			"runtimeArgs": ["--nolazy"],
+			"sourceMaps": true
+		}
+	]
+}
