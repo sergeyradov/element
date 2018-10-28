@@ -102,6 +102,7 @@ class DocsParser {
 	public catchallDoc = MarkdownDocument.nullDoc()
 
 	public bookDir: string
+	constructor(public docsJSON: any, public puppeteerJSON: any) {}
 
 	getDoc(pageName: string): MarkdownDocument {
 		if (!this.docs.has(pageName)) {
@@ -113,8 +114,6 @@ class DocsParser {
 	// seenModule: Map<string, boolean> = new Map()
 
 	public puppeteerTypes: any
-
-	constructor(public docsJSON: any, public puppeteerJSON: any) {}
 
 	private async init() {
 		let version = await getDocVersion()
