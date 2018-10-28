@@ -31,9 +31,9 @@ export function typeToString(input: ParamType): string | never {
 		case 'reference':
 			if (input.name === 'Promise') {
 				let formattedArgs = (input.typeArguments || []).map(typeToString)
-				return `[Promise]&lt;${formattedArgs.join(' | ')}&gt;`
+				return `[Promise]<${formattedArgs.join(' | ')}>`
 			} else {
-				return `[${input.name}]`
+				return `<[${input.name}]>`
 			}
 		default:
 			console.assert(true, `Found unknown type: "${type}"`)
@@ -83,18 +83,3 @@ function reflectedDeclarationToAny(
 
 	return 'unknown reflection type'
 }
-
-// function
-// class TypeDocType {
-// type: string
-// toString() { return 'void' }
-// }
-
-// class UnionType extends TypeDocType {
-// type: 'union',
-// types: TypeDocType[]
-// }
-
-// export class TypeAliasFormatter {
-// constructor(public type: TypeDocType) {}
-// }
