@@ -1,28 +1,26 @@
 import * as u from 'unist-builder'
 import { Parent } from 'unist'
 
-export type ContentBuilderFn = (c: PhasingContentBuilder) => void
+export type ContentBuilderFn = (c: PhrasingContentBuilder) => void
 
-export class PhasingContentBuilder {
-	isBuilder = true
-
+export class PhrasingContentBuilder {
 	constructor(private tree: Parent) {}
 
 	public p(value?: string | ContentBuilderFn) {
 		if (!value) value = ''
-		this.phasingContent('paragraph', value)
+		this.phrasingContent('paragraph', value)
 	}
 
 	public strong(value: string | ContentBuilderFn) {
-		this.phasingContent('strong', value)
+		this.phrasingContent('strong', value)
 	}
 
 	public emphasis(value: string | ContentBuilderFn) {
-		this.phasingContent('emphasis', value)
+		this.phrasingContent('emphasis', value)
 	}
 
 	public delete(value: string | ContentBuilderFn) {
-		this.phasingContent('delete', value)
+		this.phrasingContent('delete', value)
 	}
 	public html(value: string) {
 		this.literalContent('html', value)
@@ -40,10 +38,19 @@ export class PhasingContentBuilder {
 		this.tree.children.push(u('break'))
 	}
 
-	private phasingContent(type: string, value: string | ContentBuilderFn) {
+	/**
+	 * Generates a reference to a footnote
+	 */
+	public ref(identifier: string, label?: string) {
+		if (!label) label = identifier
+		let ref = u('footnoteReference', { identifier, label })
+		this.tree.children.push(ref)
+	}
+
+	private phrasingContent(type: string, value: string | ContentBuilderFn) {
 		if (typeof value === 'function') {
 			let tree = u(type, [])
-			let builder = new PhasingContentBuilder(tree)
+			let builder = new PhrasingContentBuilder(tree)
 			value(builder)
 			this.tree.children.push(tree)
 		} else {
