@@ -3,6 +3,7 @@ import * as u from 'unist-builder'
 import { Markdown } from '../../../documented/markdown'
 import * as yaml from 'js-yaml'
 import { BlockContentBuilder } from './Builder'
+import { DefinitionBuilder } from './DefinitionBuilder'
 
 export class Document {
 	private compiler: Compiler
@@ -14,6 +15,11 @@ export class Document {
 
 	public block(builder: (builder: BlockContentBuilder) => void) {
 		let block = new BlockContentBuilder(this.tree)
+		builder(block)
+	}
+
+	public definition(builder: (b: DefinitionBuilder) => void) {
+		let block = new DefinitionBuilder(this.tree)
 		builder(block)
 	}
 
