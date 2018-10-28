@@ -18,18 +18,35 @@ export class APIDocument extends Document {
 	) {
 		let formattedType = typeToString(type)
 		this.block(b => {
-			if (name.startsWith('returns')) {
-				b.p(`* ${name} <${formattedType}> ${desc}`)
-			} else {
-				let defaultValueString = ''
-				if (defaultValue !== undefined) {
-					defaultValueString = `(Optional, default: \`${defaultValue.toString()})\``
-				} else if (isOptional) {
-					defaultValueString = '(Optional)'
-				}
+			b.list(list => {
+				if (name.startsWith('returns')) {
+					list.item(b => {
+						b.p(c => {
+							c.p(`${name} `)
+							c.ref(formattedType)
+							c.p(' ')
+							if (desc) c.p(desc)
+						})
+					})
+				} else {
+					list.item(b => {
+						b.p(c => {
+							c.p(`${name} `)
+							c.ref(formattedType)
+							c.p(' ')
+							if (defaultValue !== undefined) {
+								c.p('(Optional, default: ')
+								c.inlineCode(defaultValue.toString())
+								c.p(')')
+							} else if (isOptional) {
+								b.p('(Optional)')
+							}
 
-				b.p(`* \`${name}\` <${formattedType}>  ${defaultValueString} ${desc}`)
-			}
+							if (desc) b.p(desc)
+						})
+					})
+				}
+			})
 		})
 	}
 

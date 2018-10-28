@@ -23,7 +23,13 @@ async function main() {
 	doc.frontmatter({ title: 'Test' })
 	doc.section('Browser')
 	doc.comment('This is the first line', 'THis is the second line')
-	doc.parameter('name', { type: 'array', elementType: { type: 'stringLiteral', value: 'test' } })
+	doc.parameter(
+		'name',
+		{ type: 'array', elementType: { type: 'stringLiteral', value: 'test' } },
+		'This is a description',
+		true,
+		true,
+	)
 
 	doc.definition(b => {
 		b.footnote('note1', 'First note', c => {
