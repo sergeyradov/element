@@ -5,5 +5,5 @@
 		"noUnusedLocals": false,
 		"allowUnreachableCode": false
 	},
-	"files": ["./index.ts", "./Markdown.d.ts"]
+	"files": ["./index.ts", "./Markdown.d.ts", "./src/types.d.ts"]
 }
