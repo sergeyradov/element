@@ -1,6 +1,6 @@
 import * as u from 'unist-builder'
 import { Parent } from 'unist'
-import { BlockContentBuilder } from './Builder'
+import { BlockContentBuilder } from './BlockContentBuilder'
 
 export type DeffinitionBuilderFn = (c: DefinitionBuilder) => void
 

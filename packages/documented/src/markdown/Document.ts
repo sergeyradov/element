@@ -4,7 +4,7 @@ import { Markdown } from '../../../documented/markdown'
 import * as yaml from 'js-yaml'
 import { BlockContentBuilder } from './Builder'
 import { DefinitionBuilder } from './DefinitionBuilder'
-
+import { attachFrontmatterCompiler } from './frontmatter'
 export class Document {
 	private compiler: Compiler
 	private tree: Markdown.Root
@@ -31,7 +31,14 @@ export class Document {
 	}
 
 	public toMarkdown() {
-		this.compiler = new Compiler(this.tree)
+		let lastRoot = this.tree
+		this.middlewares.forEach(fn => {
+			lastRoot = fn(lastRoot)
+		})
+
+		this.compiler = new Compiler(lastRoot)
+		attachFrontmatterCompiler(this.compiler)
+
 		return this.compiler.compile()
 	}
 }

@@ -29,6 +29,7 @@
 	},
 	"dependencies": {
 		"@types/js-yaml": "^3.11.2",
-		"js-yaml": "^3.12.0"
+		"js-yaml": "^3.12.0",
+		"remark-abbr": "^1.2.1"
 	}
 }

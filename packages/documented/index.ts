@@ -2,7 +2,7 @@ const unified = require('unified')
 const parse = require('remark-parse')
 const frontmatter = require('remark-frontmatter')
 const chalk = require('chalk')
-
+import * as abbr from 'remark-abbr'
 import { APIDocument } from './src/APIDocument'
 
 async function main() {
@@ -18,7 +18,9 @@ async function main() {
 	// `)
 
 	let doc = new APIDocument()
-	// // doc.frontmatter({ title: 'Test' })
+	// doc.use(abbr)
+
+	doc.frontmatter({ title: 'Test' })
 	doc.section('Browser')
 	doc.comment('This is the first line', 'THis is the second line')
 	doc.parameter('name', { type: 'array', elementType: { type: 'stringLiteral', value: 'test' } })
@@ -30,8 +32,8 @@ async function main() {
 		})
 	})
 
-	debugger
-	process.stdout.write(Buffer.from(doc.toMarkdown()))
+	// debugger
+	console.log(doc.toMarkdown())
 }
 
 main()
