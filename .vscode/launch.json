@@ -33,6 +33,38 @@
 			"stopOnEntry": false,
 			"runtimeArgs": ["--nolazy"],
 			"sourceMaps": true
+		},
+
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "documented:start",
+			"runtimeArgs": ["-r", "ts-node/register"],
+			"env": {
+				"TS_NODE_PROJECT": "${workspaceRoot}/packages/documented/tsconfig.json"
+			},
+			"args": ["${workspaceRoot}/packages/documented/index.ts"]
+		},
+
+		{
+			"name": "documented:specs",
+			"type": "node",
+			"request": "launch",
+			"protocol": "inspector",
+			"program": "${workspaceRoot}/packages/documented/node_modules/.bin/mocha",
+			"env": {
+				"TS_NODE_PROJECT": "${workspaceRoot}/packages/documented/tsconfig.json"
+			},
+			"args": [
+				"--trace-warnings",
+				"--inspect-brk",
+				"-r",
+				"ts-node/register",
+				"${workspaceRoot}/packages/documented/src/**/*.spec.ts"
+			],
+			"stopOnEntry": false,
+			"runtimeArgs": ["--nolazy"],
+			"sourceMaps": true
 		}
 	]
 }
