@@ -79,8 +79,10 @@ declare namespace Markdown {
 	}
 
 	type Reference = {
-		referenceType: 'fille' | 'collapsed' | 'shortcut'
+		referenceType: ReferenceType
 	}
+
+	type ReferenceType = 'full' | 'collapsed' | 'shortcut'
 
 	type Definition = Association &
 		Resource & {
