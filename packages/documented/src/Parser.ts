@@ -1,19 +1,8 @@
 import { info, param } from './utils/out'
 import { APIDocument } from './APIDocument'
-import {
-	createSourceFile,
-	forEachChild,
-	ScriptTarget,
-	SyntaxKind,
-	Node,
-	JSDoc,
-	NodeWithTypeArguments,
-	isExportDeclaration,
-	isVariableDeclaration,
-	isVariableDeclarationList,
-	isVariableStatement,
-} from 'typescript'
+import { createSourceFile, forEachChild, ScriptTarget, SyntaxKind, Node, JSDoc } from 'typescript'
 import { promises as fs } from 'fs'
+import { getExportDeclaration, getVariableExport } from './utils/indexParsing'
 
 interface Section {}
 
@@ -56,7 +45,7 @@ class Context {
 	// }
 }
 
-type NodeWithDoc = Node & {
+export type NodeWithDoc = Node & {
 	jsDoc: JSDoc[]
 }
 
@@ -147,61 +136,4 @@ export class Parser {
 	}
 
 	private processNode(node: NodeLike) {}
-}
-
-const getTagsFromNode = (node: NodeWithDoc) => {
-	let tagsMap = {}
-
-	if (!node.jsDoc) return tagsMap
-	let tags = node.jsDoc[0].tags
-
-	if (!tags) return tagsMap
-
-	for (const tag of tags) {
-		tagsMap[tag.tagName.escapedText.toString()] = tag.comment || ''
-	}
-
-	return tagsMap
-}
-
-const getVariableExport = (ctx: ParseIndex, node: NodeWithDoc) => {
-	const tags = getTagsFromNode(node)
-
-	if (isVariableStatement(node)) {
-		node.declarationList.declarations.forEach(decl => {
-			const name = decl.name.getFullText()
-			if (name === undefined) return
-
-			addIndex(ctx, name, 'index', tags)
-		})
-	}
-}
-
-const getExportDeclaration = (ctx: ParseIndex, node: NodeWithDoc) => {
-	const tags = getTagsFromNode(node)
-
-	let src = node.getSourceFile().fileName
-	if (src.startsWith('./')) src = src.slice(2)
-
-	if (isExportDeclaration(node)) {
-		node.exportClause &&
-			node.exportClause.elements.forEach(exportDef => {
-				const name = exportDef.name.escapedText.toString()
-				addIndex(ctx, name, src, tags)
-			})
-	}
-}
-
-const addIndex = (ctx: ParseIndex, name: string, src: string, tags) => {
-	if (!name) return
-	const { docPage } = tags
-	if (!docPage) return
-
-	ctx.indexMap[`${src}.${name}`] = docPage
-	ctx.indexExports[name] = docPage
-	if (tags.docAlias && tags.docAlias[0] === name) {
-		const aliasName = tags.docAlias[1]
-		ctx.indexMap[`${src}.${aliasName}`] = docPage
-		ctx.indexExports[aliasName] = docPage
-	}
 }
