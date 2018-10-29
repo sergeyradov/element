@@ -115,7 +115,7 @@ describe('Document builder', () => {
 				})
 
 				c.p(' Link with inline code ')
-				c.linkRef('Browser', b => b.inlineCode('Browser'))
+				c.linkRef('Browser', b => b.inlineCode('Browser'), { referenceType: 'full' })
 				c.linkRef('Orphaned', b => b.inlineCode('Orphaned'))
 			})
 		})

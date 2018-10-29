@@ -1,5 +1,6 @@
 import * as u from 'unist-builder'
 import { Parent } from 'unist'
+import { Markdown } from '../../markdown'
 
 export type ContentBuilderFn = (c: PhrasingContentBuilder) => void
 
@@ -47,9 +48,13 @@ export class PhrasingContentBuilder {
 		this.tree.children.push(ref)
 	}
 
-	public linkRef(label: string, value?: string | ContentBuilderFn) {
+	public linkRef(
+		label: string,
+		value?: string | ContentBuilderFn,
+		options: { referenceType?: Markdown.ReferenceType } = {},
+	) {
 		let identifier = label
-		let tree = u('linkReference', { label, identifier }, [])
+		let tree = u('linkReference', { label, identifier, ...options }, [])
 
 		let builder = new PhrasingContentBuilder(tree)
 		if (typeof value === 'string') {
