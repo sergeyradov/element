@@ -3,7 +3,7 @@ import { APIDocument } from './src/APIDocument'
 import { join, resolve } from 'path'
 import { Parser } from './src/Parser'
 import { Compiler } from './src/Compiler'
-import { promises } from 'fs'
+import { promises as fs } from 'fs'
 import { mkdirpSync } from 'fs-extra'
 import { getVersion } from './src/utils/getVersion'
 
@@ -12,14 +12,17 @@ async function main(workspace: string) {
 
 	let version = getVersion(resolve(join(workspace, 'package.json')))
 	let destination = join(workspace, 'docs', 'api', version)
+	let indexTSPath = join(workspace, 'index.ts')
 
 	mkdirpSync(destination)
 
-	let typeDocFile = await promises
+	let typeDocFile = await fs
 		.readFile(join(workspace, 'docs.json'))
 		.then(file => file.toString('utf8'))
 
-	let parser = new Parser(JSON.parse(typeDocFile))
+	let parser = new Parser(JSON.parse(typeDocFile), indexTSPath)
+	await parser.parse()
+
 	let compiler = new Compiler(parser)
 	compiler.compile(destination)
 
