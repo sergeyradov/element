@@ -43,7 +43,7 @@
 			"env": {
 				"TS_NODE_PROJECT": "${workspaceRoot}/packages/documented/tsconfig.json"
 			},
-			"args": ["${workspaceRoot}/packages/documented/index.ts"]
+			"args": ["${workspaceRoot}/packages/documented/index.ts", "${workspaceRoot}/packages/element"]
 		},
 
 		{
