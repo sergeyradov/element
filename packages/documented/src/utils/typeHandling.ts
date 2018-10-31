@@ -1,25 +1,33 @@
 import { ParamType, ReflectedDeclaration, Variable, CallSignature } from '../types'
+import { TypeObject, ReflectionObject } from 'typedoc/dist/lib/serialization'
 
-export function typeToString(input: ParamType): string | never {
-	let { type } = input
-
-	switch (input.type) {
+export function typeToString(type: TypeObject): string | never {
+	switch (type.type) {
 		case 'intrinsic':
-			return `${input.name}`
+			return type.name || 'undefined'
 		case 'stringLiteral':
-			return `"${input.value}"`
+			return `"${type.value}"`
 		case 'array':
-			return `${typeToString(input.elementType)}\\[]`
-		case 'union':
-			return `${input.types.map(typeToString).join(' | ')}`
-		case 'reflection':
-			return reflectedDeclarationToAny(input.declaration).toString()
-		case 'reference':
-			if (input.name === 'Promise') {
-				let formattedArgs = (input.typeArguments || []).map(typeToString)
-				return `[Promise]<${formattedArgs.join(' | ')}>`
+			if (type.elementType) {
+				return `${typeToString(type.elementType)}\[\]`
 			} else {
-				return `<[${input.name}]>`
+				return `undefined\[\]`
+			}
+		case 'union':
+			if (type.types) {
+				return type.types.map(typeToString).join(' | ')
+			} else {
+				return 'undefined'
+			}
+		case 'reflection':
+			if (type.declaration)
+				return reflectedDeclarationToAny(type.declaration as ReflectedDeclaration).toString()
+		case 'reference':
+			if (type.name === 'Promise') {
+				let formattedArgs = (type.typeArguments || []).map(typeToString)
+				return `[[Promise]<${formattedArgs.join(' | ')}>][Promise]`
+			} else {
+				return `[${type.name}][${type.name}]`
 			}
 		default:
 			console.assert(true, `Found unknown type: "${type}"`)
@@ -29,14 +37,16 @@ export function typeToString(input: ParamType): string | never {
 
 function reflectedDeclarationToAny(
 	declaration: ReflectedDeclaration | Variable | CallSignature,
-): any {
+): string | object {
 	switch (declaration.kindString) {
 		case 'Type literal':
 			if (declaration.children) {
-				let children = declaration.children.map(reflectedDeclarationToAny).reduce((memo, obj) => {
-					memo = { ...obj, ...memo }
-					return memo
-				}, {})
+				let children = declaration.children
+					.map(reflectedDeclarationToAny)
+					.reduce((memo: object, obj: object) => {
+						memo = { ...obj, ...memo }
+						return memo
+					}, {})
 				return JSON.stringify(children)
 			}
 			break
