@@ -6,6 +6,7 @@ import { Compiler } from './src/Compiler'
 import { promises as fs } from 'fs'
 import { mkdirpSync } from 'fs-extra'
 import { getVersion } from './src/utils/getVersion'
+import { info } from './src/utils/out'
 
 async function main(workspace: string) {
 	console.log(chalk.grey('Starting documentation generator'))
@@ -21,10 +22,16 @@ async function main(workspace: string) {
 		.then(file => file.toString('utf8'))
 
 	let parser = new Parser(JSON.parse(typeDocFile), indexTSPath)
-	await parser.parse()
+	let documents = await parser.parse()
 
-	let compiler = new Compiler(parser)
-	compiler.compile(destination)
+	documents.forEach((doc, name) => {
+		let filename = join(destination, `${name}.md`)
+		console.log(info(`Writing ${filename}`))
+		fs.writeFile(filename, Buffer.from(doc.toMarkdown()))
+	})
+
+	// let compiler = new Compiler(parser)
+	// compiler.compile(destination)
 
 	// // 	var tree = unified()
 	// // 		.use(parse)
