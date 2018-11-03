@@ -9,9 +9,9 @@ export function typeToString(type: TypeObject): string | never {
 			return `"${type.value}"`
 		case 'array':
 			if (type.elementType) {
-				return `${typeToString(type.elementType)}\[\]`
+				return `${typeToString(type.elementType)}[]`
 			} else {
-				return `undefined\[\]`
+				return `undefined[]`
 			}
 		case 'union':
 			if (type.types) {
