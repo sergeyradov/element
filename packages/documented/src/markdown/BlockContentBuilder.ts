@@ -74,5 +74,7 @@ export class BlockContentBuilder extends Builder {
 	}
 	public table() {}
 	public html() {}
-	public code() {}
+	public code(value: string, language?: string, meta?: string) {
+		this.tree.children.push(u('code', { value, language, meta }))
+	}
 }
