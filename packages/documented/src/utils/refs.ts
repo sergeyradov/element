@@ -1,6 +1,6 @@
 export const fixReferences = (comment: string): string => {
 	// Change old style refs to linkRefs <[foo]> => [foo][foo]
-	return comment.replace(/(\<\[(\w+)\]\>)/gi, '[$2][$2]')
+	return (comment || '').replace(/(\<\[(\w+)\]\>)/gi, '[$2][$2]')
 }
 
 export const refs = {
