@@ -2,7 +2,6 @@
 
 TestDataSource is the instance returned by [TestDataFactory][TestDataFactory]'s methods.
 
-
 Call TestDataSource's methods to configure your data source:
 
 ```typescript
@@ -27,45 +26,22 @@ export default () => {
 }
 ```
 
-
 ### `circular(circular)`
-
-
-
-#### Arguments
-
--   circular `boolean` (Optional, default: `true`)Default: true. Pass `false` to disable.
-
-
-
-
-
 
 
 
 Instructs the data feeder to repeat the data set when it reaches the end. TestData is circular by default; use this to turn circular data off.
 
+**Parameters**
 
-
-
+-   circular `boolean` (Optional, default: `true`)Default: true. Pass `false` to disable.
+-   returns: [`TestDataSource`][TestDataSource]
 
 ### `filter(func)`
 
 
 
-#### Arguments
-
--   func [`FeedFilterFunction`][FeedFilterFunction] filter function to compare each line
-
-
-
-
-
-
-
-
 Adds a filter to apply against each line in the data set.
-
 
 Filters can be chained, and will be run in order only if the previous ffilter passed.
 
@@ -76,24 +52,18 @@ type Row = { browser: string, email: string }
 TestData.fromCSV("users.csv").filter((line, index, browserID) => line.browser === browserID)
 ```
 
+**Parameters**
+
+-   func [`FeedFilterFunction`][FeedFilterFunction] filter function to compare each line
+-   returns: [`TestDataSource`][TestDataSource]
 
 ### `shuffle(shuffle)`
 
 
 
-#### Arguments
-
--   shuffle `boolean` (Optional, default: `true`)Default: true. Pass `false` to disable.
-
-
-
-
-
-
-
-
 Shuffles the data set using the Fisher-Yates method. Use this to randomise the order of your data. This will always be applied after filtering.
 
+**Parameters**
 
-
-
+-   shuffle `boolean` (Optional, default: `true`)Default: true. Pass `false` to disable.
+-   returns: [`TestDataSource`][TestDataSource]

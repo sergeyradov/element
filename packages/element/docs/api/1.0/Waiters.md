@@ -7,76 +7,36 @@ docopaque: ''
 
 A Condition represents a predicate which can be used to wait for an [ElementHandle][ElementHandle]. They are generally created by using [Until][Until]'s helper methods.
 
+### `toString()`
 
 
 
+**Parameters**
 
-
-
-
-
-
-
-
-
-
-
-
+-   returns: `string`
 
 ### `waitFor(frame[, page])`
 
 
 
-#### Arguments
+**Parameters**
 
 -   frame [`Frame`][Frame] 
 -   page? [`Page`][Page] (Optional)
-
-### `waitFor(frame[, page])`
-
-
-
-#### Arguments
-
--   frame [`Frame`][Frame] 
--   page? [`Page`][Page] (Optional)
-
-
-
-
-
-
-
-
-
-
-
-
+-   returns: [Promise&lt;`any`\>][Promise]
 
 ### `waitForEvent(page)`
 
 
 
-#### Arguments
+**Parameters**
 
 -   page [`Page`][Page] 
-
-
-
-
-
-
-
-
-
-
-
-
+-   returns: [Promise&lt;`any`\>][Promise]
 
 # Until
 
 Until contains a wealth of useful [Condition][]s.
-
 
 [Condition][]s represent predicates used to wait for something to become true.
 
@@ -84,23 +44,11 @@ These predicates include waiting for elements to become active, visible, invisib
 
 You typically use these to control the flow of you test.
 
-
 ### `ableToSwitchToFrame(frame)`
 
 
 
-#### Arguments
-
--   frame [`Locatable`][Locatable] 
-
-
-
-
-
-
-
 Creates a condition that will wait until the input driver is able to switch to the designated frame.
-
 
 The target frame may be specified as:
 
@@ -119,16 +67,17 @@ step('Switch frame', async browser => {
 })
 ```
 
+**Parameters**
 
+-   frame [`Locatable`][Locatable] 
+-   returns: [`Condition`][Condition]
 
-
-
+### `alertIsPresent()`
 
 
 
 Creates a condition that waits for an alert to be opened. Upon success,
 the returned promise will be fulfilled with the handle for the opened alert.
-
 
 **Example:**
 
@@ -139,24 +88,15 @@ step('Handle alert', async browser => {
 })
 ```
 
+**Parameters**
+
+-   returns: [`Condition`][Condition]
 
 ### `elementIsDisabled(selectorOrLocator)`
 
 
 
-#### Arguments
-
--   selectorOrLocator [`NullableLocatable`][NullableLocatable] A [Locatable][] to use to find the element.
-
-
-
-
-
-
-
-
 Creates a condition that will wait for the given element to be disabled
-
 
 **Example:**
 
@@ -169,66 +109,38 @@ step('Element state', async browser => {
 })
 ```
 
+**Parameters**
+
+-   selectorOrLocator [`NullableLocatable`][NullableLocatable] A [Locatable][] to use to find the element.
+-   returns: [`Condition`][Condition]
 
 ### `elementIsEnabled(selectorOrLocator)`
 
 
 
-#### Arguments
-
--   selectorOrLocator [`NullableLocatable`][NullableLocatable] A [Locatable][] to use to find the element.
-
-
-
-
-
-
-
-
 Creates a condition that will wait for the given element to be enabled
 
+**Parameters**
 
-
-
+-   selectorOrLocator [`NullableLocatable`][NullableLocatable] A [Locatable][] to use to find the element.
+-   returns: [`Condition`][Condition]
 
 ### `elementIsNotSelected(selectorOrLocator)`
 
 
 
-#### Arguments
-
--   selectorOrLocator [`NullableLocatable`][NullableLocatable] A [Locatable][] to use to find the element.
-
-
-
-
-
-
-
-
 Creates a condition that will wait for the given element to be in the DOM, yet not visible to the user
 
+**Parameters**
 
-
-
+-   selectorOrLocator [`NullableLocatable`][NullableLocatable] A [Locatable][] to use to find the element.
+-   returns: [`Condition`][Condition]
 
 ### `elementIsNotVisible(selectorOrLocator)`
 
 
 
-#### Arguments
-
--   selectorOrLocator [`NullableLocatable`][NullableLocatable] A [Locatable][] to use to find the element.
-
-
-
-
-
-
-
-
 Creates a condition that will wait for the given element to become visible.
-
 
 Example:
 
@@ -239,45 +151,27 @@ step("Step 1", async browser => {
 })
 ```
 
+**Parameters**
+
+-   selectorOrLocator [`NullableLocatable`][NullableLocatable] A [Locatable][] to use to find the element.
+-   returns: [`Condition`][Condition]
 
 ### `elementIsSelected(selectorOrLocator)`
 
 
 
-#### Arguments
-
--   selectorOrLocator [`NullableLocatable`][NullableLocatable] A [Locatable][] to use to find the element.
-
-
-
-
-
-
-
-
 Creates a condition that will wait for the given element to be deselected.
 
+**Parameters**
 
-
-
+-   selectorOrLocator [`NullableLocatable`][NullableLocatable] A [Locatable][] to use to find the element.
+-   returns: [`Condition`][Condition]
 
 ### `elementIsVisible(selectorOrLocator)`
 
 
 
-#### Arguments
-
--   selectorOrLocator [`NullableLocatable`][NullableLocatable] A [Locatable][] to use to find the element.
-
-
-
-
-
-
-
-
 Creates a condition that will wait for the given element to be selected.
-
 
 Example:
 
@@ -287,263 +181,132 @@ step("Step 1", async browser => {
 })
 ```
 
+**Parameters**
+
+-   selectorOrLocator [`NullableLocatable`][NullableLocatable] A [Locatable][] to use to find the element.
+-   returns: [`Condition`][Condition]
 
 ### `elementLocated(selectorOrLocator)`
 
 
 
-#### Arguments
-
--   selectorOrLocator [`NullableLocatable`][NullableLocatable] 
-
-
-
-
-
-
-
 Creates a condition which will wait until the element is located on the page.
 
-
-
-
-
-### `elementTextContains(selectorOrLocator, text)`
-
-
-
-#### Arguments
+**Parameters**
 
 -   selectorOrLocator [`NullableLocatable`][NullableLocatable] 
--   text `string` 
+-   returns: [`Condition`][Condition]
 
 ### `elementTextContains(selectorOrLocator, text)`
-
-
-
-#### Arguments
-
--   selectorOrLocator [`NullableLocatable`][NullableLocatable] 
--   text `string` 
-
-
-
-
 
 
 
 Creates a condition which will wait until the element's text content contains the target text.
 
-
-
-
-
-### `elementTextIs(selectorOrLocator, text)`
-
-
-
-#### Arguments
+**Parameters**
 
 -   selectorOrLocator [`NullableLocatable`][NullableLocatable] 
 -   text `string` 
+-   returns: [`Condition`][Condition]
 
 ### `elementTextIs(selectorOrLocator, text)`
-
-
-
-#### Arguments
-
--   selectorOrLocator [`NullableLocatable`][NullableLocatable] 
--   text `string` 
-
-
-
-
 
 
 
 Creates a condition which will wait until the element's text exactly matches the target text, excluding leading and trailing whitespace.
 
-
-
-
-
-### `elementTextMatches(selectorOrLocator, regex)`
-
-
-
-#### Arguments
+**Parameters**
 
 -   selectorOrLocator [`NullableLocatable`][NullableLocatable] 
--   regex [`RegExp`][RegExp] 
+-   text `string` 
+-   returns: [`Condition`][Condition]
 
 ### `elementTextMatches(selectorOrLocator, regex)`
-
-
-
-#### Arguments
-
--   selectorOrLocator [`NullableLocatable`][NullableLocatable] 
--   regex [`RegExp`][RegExp] 
-
-
-
-
 
 
 
 Creates a condition which will wait until the element's text matches the target Regular Expression.
 
-
-
-
-
-### `elementsLocated(selectorOrLocator, desiredCount)`
-
-
-
-#### Arguments
+**Parameters**
 
 -   selectorOrLocator [`NullableLocatable`][NullableLocatable] 
--   desiredCount `number` (Optional, default: `1`)
+-   regex [`RegExp`][RegExp] 
+-   returns: [`Condition`][Condition]
 
 ### `elementsLocated(selectorOrLocator, desiredCount)`
-
-
-
-#### Arguments
-
--   selectorOrLocator [`NullableLocatable`][NullableLocatable] 
--   desiredCount `number` (Optional, default: `1`)
-
-
-
-
 
 
 
 Creates a condition that will wait until at least the desired number of elements are found.
 
+**Parameters**
 
-
-
+-   selectorOrLocator [`NullableLocatable`][NullableLocatable] 
+-   desiredCount `number` (Optional, default: `1`)
+-   returns: [`Condition`][Condition]
 
 ### `titleContains(title)`
 
 
 
-#### Arguments
-
--   title `string` 
-
-
-
-
-
-
-
 Creates a condition which waits until the page title contains the expected text.
 
+**Parameters**
 
-
-
+-   title `string` 
+-   returns: [`Condition`][Condition]
 
 ### `titleIs(title)`
 
 
 
-#### Arguments
-
--   title `string` 
-
-
-
-
-
-
-
 Creates a condition which waits until the page title exactly matches the expected text.
 
+**Parameters**
 
-
-
+-   title `string` 
+-   returns: [`Condition`][Condition]
 
 ### `titleMatches(title)`
 
 
 
-#### Arguments
-
--   title [`RegExp`][RegExp] 
-
-
-
-
-
-
-
 Creates a condition which waits until the page title matches the title `RegExp`.
 
+**Parameters**
 
-
-
+-   title [`RegExp`][RegExp] 
+-   returns: [`Condition`][Condition]
 
 ### `urlContains(url)`
 
 
 
-#### Arguments
-
--   url `string` 
-
-
-
-
-
-
-
 Creates a condition which waits until the page URL contains the expected path.
 
+**Parameters**
 
-
-
+-   url `string` 
+-   returns: [`Condition`][Condition]
 
 ### `urlIs(url)`
 
 
 
-#### Arguments
-
--   url `string` 
-
-
-
-
-
-
-
 Creates a condition which waits until the page URL exactly matches the expected URL.
 
+**Parameters**
 
-
-
+-   url `string` 
+-   returns: [`Condition`][Condition]
 
 ### `urlMatches(url)`
 
 
 
-#### Arguments
-
--   url [`RegExp`][RegExp] 
-
-
-
-
-
-
-
 Creates a condition which waits until the page URL matches the supplied `RegExp`.
 
+**Parameters**
 
-
-
+-   url [`RegExp`][RegExp] 
+-   returns: [`Condition`][Condition]

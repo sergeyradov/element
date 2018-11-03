@@ -14,6 +14,7 @@ export class ParamTypeFormatter {
 	}
 }
 
+// @deprecated Use native formatter instead
 export function typeToString(input: ParamType): string | never {
 	let { type } = input
 

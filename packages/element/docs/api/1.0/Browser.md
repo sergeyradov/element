@@ -4,732 +4,326 @@
 
 
 
-#### Arguments
+**Parameters**
 
 -   username? `string` (Optional)
 -   password? `string` (Optional)
-
-### `Browser.authenticate([, username, password])`
-
-
-
-#### Arguments
-
--   username? `string` (Optional)
--   password? `string` (Optional)
-
-
-
-
-
-
-
-
-
-
-
-
+-   returns: [Promise&lt;`void`\>][Promise]
 
 ### `Browser.blur(locatable)`
 
 
 
-#### Arguments
+**Parameters**
 
 -   locatable [`NullableLocatable`][NullableLocatable] 
-
-
-
-
-
-
-
-
-
-
-
-
+-   returns: [Promise&lt;`void`\>][Promise]
 
 ### `Browser.clear(locatable)`
 
 
 
-#### Arguments
+**Parameters**
 
 -   locatable [`NullableLocatable`][NullableLocatable] \| `string` 
+-   returns: [Promise&lt;`void`\>][Promise]
+
+### `Browser.clearBrowserCache()`
 
 
 
+**Parameters**
+
+-   returns: [Promise&lt;`any`\>][Promise]
+
+### `Browser.clearBrowserCookies()`
 
 
 
+**Parameters**
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+-   returns: [Promise&lt;`any`\>][Promise]
 
 ### `Browser.click(selectorOrLocator[, options])`
-
-
-
-#### Arguments
-
--   selectorOrLocator [`NullableLocatable`][NullableLocatable] 
--   options? [`ClickOptions`][ClickOptions] (Optional)
-
-### `Browser.click(selectorOrLocator[, options])`
-
-
-
-#### Arguments
-
--   selectorOrLocator [`NullableLocatable`][NullableLocatable] 
--   options? [`ClickOptions`][ClickOptions] (Optional)
-
-
-
-
 
 
 
 Sends a click event to the element located at `selector`. If the element is
 currently outside the viewport it will first scroll to that element.
 
-
-
-
-
-### `Browser.doubleClick(selectorOrLocator[, options])`
-
-
-
-#### Arguments
+**Parameters**
 
 -   selectorOrLocator [`NullableLocatable`][NullableLocatable] 
 -   options? [`ClickOptions`][ClickOptions] (Optional)
+-   returns: [Promise&lt;`void`\>][Promise]
 
 ### `Browser.doubleClick(selectorOrLocator[, options])`
-
-
-
-#### Arguments
-
--   selectorOrLocator [`NullableLocatable`][NullableLocatable] 
--   options? [`ClickOptions`][ClickOptions] (Optional)
-
-
-
-
 
 
 
 Sends a double-click event to the element located by the supplied Locator or `selector`. If the element is
 currently outside the viewport it will first scroll to that element.
 
+**Parameters**
 
-
-
+-   selectorOrLocator [`NullableLocatable`][NullableLocatable] 
+-   options? [`ClickOptions`][ClickOptions] (Optional)
+-   returns: [Promise&lt;`void`\>][Promise]
 
 ### `Browser.emulateDevice(deviceName)`
 
 
 
-#### Arguments
+**Parameters**
 
 -   deviceName `string` 
-
-
-
-
-
-
-
-
-
-
-
-
+-   returns: [Promise&lt;`void`\>][Promise]
 
 ### `Browser.evaluate(fn, ...args)`
 
 
 
-#### Arguments
+**Parameters**
 
 -   fn [`EvaluateFn`][EvaluateFn] 
 -   args `any`\[] 
-
-### `Browser.evaluate(fn, ...args)`
-
-
-
-#### Arguments
-
--   fn [`EvaluateFn`][EvaluateFn] 
--   args `any`\[] 
-
-
-
-
-
-
-
-
-
-
-
-
+-   returns: [Promise&lt;`any`\>][Promise]
 
 ### `extractText(locatable)`
 
 
 
-#### Arguments
+**Parameters**
 
 -   locatable [`NullableLocatable`][NullableLocatable] 
+-   returns: [Promise&lt;`string`\>][Promise]
+
+### `fetchScreenshots()`
 
 
 
+**Parameters**
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+-   returns: `string`\[]
 
 ### `Browser.findElement(locatable)`
 
 
 
-#### Arguments
+**Parameters**
 
 -   locatable [`NullableLocatable`][NullableLocatable] 
-
-
-
-
-
-
-
-
-
-
-
-
+-   returns: [Promise&lt;[`ElementHandle`][ElementHandle]\>][Promise]
 
 ### `Browser.findElements(locatable)`
 
 
 
-#### Arguments
+**Parameters**
 
 -   locatable [`NullableLocatable`][NullableLocatable] 
-
-
-
-
-
-
-
-
-
-
-
-
+-   returns: [Promise&lt;[`ElementHandle`][ElementHandle]\[\]\>][Promise]
 
 ### `Browser.focus(locatable)`
 
 
 
-#### Arguments
+**Parameters**
 
 -   locatable [`NullableLocatable`][NullableLocatable] 
-
-
-
-
-
-
-
-
-
-
-
-
+-   returns: [Promise&lt;`void`\>][Promise]
 
 ### `Browser.highlightElement(element)`
 
 
 
-#### Arguments
+**Parameters**
 
 -   element [`ElementHandle`][ElementHandle] 
+-   returns: [Promise&lt;`void`\>][Promise]
+
+### `interactionTiming()`
 
 
 
+**Parameters**
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+-   returns: [Promise&lt;`number`\>][Promise]
 
 ### `Browser.maybeFindElement(locatable)`
 
 
 
-#### Arguments
+**Parameters**
 
 -   locatable [`NullableLocatable`][NullableLocatable] 
+-   returns: [Promise&lt;[`ElementHandle`][ElementHandle] \| `null`\>][Promise]
+
+### `navigationTiming()`
 
 
 
+**Parameters**
 
+-   returns: [Promise&lt;[`PerformanceTiming`][PerformanceTiming]\>][Promise]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+### `paintTiming()`
 
 
 
 Fetches the paint performance timing entries
 
+**Parameters**
+
+-   returns: [Promise&lt;[`PerformanceEntry`][PerformanceEntry]\[\]\>][Promise]
+
+### `performanceTiming()`
 
 
 
+**Parameters**
 
-
-
-
-
-
-
-
-
-
-
-
+-   returns: [Promise&lt;[`PerformanceTiming`][PerformanceTiming]\>][Promise]
 
 ### `Browser.press(keyCode[, options])`
 
 
 
-#### Arguments
+**Parameters**
 
 -   keyCode `string` 
 -   options?  (Optional)
-
-### `Browser.press(keyCode[, options])`
-
-
-
-#### Arguments
-
--   keyCode `string` 
--   options?  (Optional)
-
-
-
-
-
-
-
-
-
-
-
-
+-   returns: [Promise&lt;`void`\>][Promise]
 
 ### `saveScreenshot(fn)`
 
 
 
-#### Arguments
+**Parameters**
 
 -   fn  
-
-
-
-
-
-
-
-
-
-
-
-
+-   returns: [Promise&lt;`void`\>][Promise]
 
 ### `Browser.selectByIndex(locatable, index)`
 
 
 
-#### Arguments
+**Parameters**
 
 -   locatable [`NullableLocatable`][NullableLocatable] 
 -   index `string` 
-
-### `Browser.selectByIndex(locatable, index)`
-
-
-
-#### Arguments
-
--   locatable [`NullableLocatable`][NullableLocatable] 
--   index `string` 
-
-
-
-
-
-
-
-
-
-
-
-
+-   returns: [Promise&lt;`string`\[\]\>][Promise]
 
 ### `Browser.selectByText(locatable, text)`
 
 
 
-#### Arguments
+**Parameters**
 
 -   locatable [`NullableLocatable`][NullableLocatable] 
 -   text `string` 
-
-### `Browser.selectByText(locatable, text)`
-
-
-
-#### Arguments
-
--   locatable [`NullableLocatable`][NullableLocatable] 
--   text `string` 
-
-
-
-
-
-
-
-
-
-
-
-
+-   returns: [Promise&lt;`string`\[\]\>][Promise]
 
 ### `Browser.selectByValue(locatable, ...values)`
 
 
 
-#### Arguments
+**Parameters**
 
 -   locatable [`NullableLocatable`][NullableLocatable] 
 -   values `string`\[] 
-
-### `Browser.selectByValue(locatable, ...values)`
-
-
-
-#### Arguments
-
--   locatable [`NullableLocatable`][NullableLocatable] 
--   values `string`\[] 
-
-
-
-
-
-
-
-
-
-
-
-
+-   returns: [Promise&lt;`string`\[\]\>][Promise]
 
 ### `Browser.sendKeys(...keys)`
 
 
 
-#### Arguments
+**Parameters**
 
 -   keys `string`\[] 
-
-
-
-
-
-
-
-
-
-
-
-
+-   returns: [Promise&lt;`void`\>][Promise]
 
 ### `setCacheDisabled(cacheDisabled)`
 
 
 
-#### Arguments
+**Parameters**
 
 -   cacheDisabled `boolean` (Optional, default: `true`)
-
-
-
-
-
-
-
-
-
-
-
-
+-   returns: [Promise&lt;`void`\>][Promise]
 
 ### `Browser.setUserAgent(userAgent)`
 
 
 
-#### Arguments
+**Parameters**
 
 -   userAgent `string` 
+-   returns: [Promise&lt;`void`\>][Promise]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+### `Browser.switchTo()`
 
 
 
 Switch the focus of the browser to another frame or window
 
+**Parameters**
 
-
-
+-   returns: [`TargetLocator`][TargetLocator]
 
 ### `Browser.takeScreenshot([, options])`
 
 
 
-#### Arguments
-
--   options? [`ScreenshotOptions`][ScreenshotOptions] (Optional)
-
-
-
-
-
-
-
 Takes a screenshot of this element and saves it to the results folder with a random name.
 
+**Parameters**
+
+-   options? [`ScreenshotOptions`][ScreenshotOptions] (Optional)
+-   returns: [Promise&lt;`void`\>][Promise]
+
+### `Browser.title()`
 
 
 
+**Parameters**
 
-
-
-
-
-
-
-
-
-
-
-
+-   returns: [Promise&lt;`string`\>][Promise]
 
 ### `Browser.type(locatable, text[, options])`
 
 
 
-#### Arguments
+**Parameters**
 
 -   locatable [`NullableLocatable`][NullableLocatable] 
 -   text `string` 
 -   options?  (Optional)
-
-### `Browser.type(locatable, text[, options])`
-
-
-
-#### Arguments
-
--   locatable [`NullableLocatable`][NullableLocatable] 
--   text `string` 
--   options?  (Optional)
-
-### `Browser.type(locatable, text[, options])`
-
-
-
-#### Arguments
-
--   locatable [`NullableLocatable`][NullableLocatable] 
--   text `string` 
--   options?  (Optional)
-
-
-
-
-
-
-
-
-
-
-
-
+-   returns: [Promise&lt;`void`\>][Promise]
 
 ### `Browser.visit(url, options)`
 
 
 
-#### Arguments
+**Parameters**
 
 -   url `string` 
 -   options [`NavigationOptions`][NavigationOptions] (Optional, default: `{}`)
-
-### `Browser.visit(url, options)`
-
-
-
-#### Arguments
-
--   url `string` 
--   options [`NavigationOptions`][NavigationOptions] (Optional, default: `{}`)
-
-
-
-
-
-
-
-
-
-
-
-
+-   returns: [Promise&lt;`void`\>][Promise]
 
 ### `Browser.wait(timeoutOrCondition)`
 
 
 
-#### Arguments
+**Parameters**
 
 -   timeoutOrCondition [`Condition`][Condition] \| `number` 
+-   returns: [Promise&lt;`boolean`\>][Promise]
+
+### `Browser.waitForNavigation()`
 
 
 
+**Parameters**
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+-   returns: [Promise&lt;`any`\>][Promise]
