@@ -14,9 +14,9 @@ import { Condition } from './Condition'
 import { NullableLocatable, Locatable } from '../runtime/types'
 
 /**
- * Until contains a wealth of useful <Condition>s.
+ * Until contains a wealth of useful [Condition][]s.
  *
- * <[Condition]>s represent predicates used to wait for something to become true.
+ * [Condition][]s represent predicates used to wait for something to become true.
  *
  * These predicates include waiting for elements to become active, visible, invisible or disabled on the page.
  *
@@ -66,18 +66,19 @@ export class Until {
 
 	/**
 	 * Creates a condition that will wait for the given element to be disabled
-	 * @param selectorOrLocator A <[Locatable]> to use to find the element.
 	 *
 	 * **Example:**
 	 *
 	 * ```typescript
 	 * step('Element state', async browser => {
-	 * 	 let btnLocator = By.css('button.submit')
+	 *   let btnLocator = By.css('button.submit')
 	 *   await browser.wait(Until.elementIsDisabled(btnLocator))
-	 *	 let element = await browser.findElement(btnLocator)
-	 *	 // element disabled attribute should be true
+	 *   let element = await browser.findElement(btnLocator)
+	 *   // element disabled attribute should be true
 	 * })
 	 * ```
+	 *
+	 * @param selectorOrLocator A [Locatable][] to use to find the element.
 	 */
 	static elementIsDisabled(selectorOrLocator: NullableLocatable): Condition {
 		return new ElementStateCondition('elementIsDisabled', selectorOrLocator, true)
@@ -85,7 +86,7 @@ export class Until {
 
 	/**
 	 * Creates a condition that will wait for the given element to be enabled
-	 * @param selectorOrLocator A <[Locatable]> to use to find the element.
+	 * @param selectorOrLocator A [Locatable][] to use to find the element.
 	 */
 	static elementIsEnabled(selectorOrLocator: NullableLocatable): Condition {
 		return new ElementStateCondition('elementIsEnabled', selectorOrLocator, false)
@@ -93,7 +94,7 @@ export class Until {
 
 	/**
 	 * Creates a condition that will wait for the given element to be deselected.
-	 * @param selectorOrLocator A <[Locatable]> to use to find the element.
+	 * @param selectorOrLocator A [Locatable][] to use to find the element.
 	 */
 	static elementIsSelected(selectorOrLocator: NullableLocatable): Condition {
 		return new ElementSelectedCondition('elementIsSelected', selectorOrLocator, true)
@@ -101,7 +102,7 @@ export class Until {
 
 	/**
 	 * Creates a condition that will wait for the given element to be in the DOM, yet not visible to the user
-	 * @param selectorOrLocator A <[Locatable]> to use to find the element.
+	 * @param selectorOrLocator A [Locatable][] to use to find the element.
 	 */
 	static elementIsNotSelected(selectorOrLocator: NullableLocatable): Condition {
 		return new ElementSelectedCondition('elementIsNotSelected', selectorOrLocator, false)
@@ -117,7 +118,7 @@ export class Until {
 	 * })
 	 * ```
 	 *
-	 * @param selectorOrLocator A <[Locatable]> to use to find the element.
+	 * @param selectorOrLocator A [Locatable][] to use to find the element.
 	 */
 	static elementIsVisible(selectorOrLocator: NullableLocatable): Condition {
 		return new ElementVisibilityCondition('elementIsVisible', selectorOrLocator, true, false)
@@ -134,7 +135,7 @@ export class Until {
 	 * })
 	 * ```
 	 *
-	 * @param selectorOrLocator A <[Locatable]> to use to find the element.
+	 * @param selectorOrLocator A [Locatable][] to use to find the element.
 	 */
 	static elementIsNotVisible(selectorOrLocator: NullableLocatable): Condition {
 		return new ElementVisibilityCondition('elementIsNotVisible', selectorOrLocator, false, true)
