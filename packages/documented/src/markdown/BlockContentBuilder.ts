@@ -11,36 +11,46 @@ export class BlockContentBuilder extends Builder {
 		contentBuilder.p(value)
 	}
 
-	public h1(value: string) {
+	public h1(value: string | ContentBuilderFn) {
 		this.heading(value, 1)
 	}
 
-	public h2(value: string) {
+	public h2(value: string | ContentBuilderFn) {
 		this.heading(value, 2)
 	}
 
-	public h3(value: string) {
+	public h3(value: string | ContentBuilderFn) {
 		this.heading(value, 3)
 	}
 
-	public h4(value: string) {
+	public h4(value: string | ContentBuilderFn) {
 		this.heading(value, 4)
 	}
 
-	public h5(value: string) {
+	public h5(value: string | ContentBuilderFn) {
 		this.heading(value, 5)
 	}
-	public h6(value: string) {
+	public h6(value: string | ContentBuilderFn) {
 		this.heading(value, 6)
 	}
 
-	private heading(value: string, depth: number = 1) {
-		this.tree.children.push(u('heading', { depth }, [u('text', value)]))
+	private heading(content: string | ContentBuilderFn, depth: number = 1) {
+		let block = u('heading', { depth }, [])
+		let newBlock = new PhrasingContentBuilder(block)
+
+		if (typeof content === 'string') {
+			newBlock.p(content)
+		} else {
+			content(newBlock)
+		}
+
+		this.tree.children.push(newBlock.children)
 	}
 
 	public thematicBreak() {
 		this.tree.children.push(u('thematicBreak', {}, []))
 	}
+
 	public blockquote(content: string | BlockContentBuilderFn) {
 		let block = u('blockquote', [])
 		let newBlock = new BlockContentBuilder(block)
