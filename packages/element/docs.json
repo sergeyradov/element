@@ -1481,7 +1481,7 @@
 									"flags": {},
 									"comment": {
 										"shortText": "Locates an element where the attribute matches the value.",
-										"text": "**Example:**\nBy.attr('name', 'frame-name')\n",
+										"text": "**Example:**\n\n```typescript\nBy.attr('name', 'frame-name')\n```\n",
 										"tags": [
 											{
 												"tag": "memberof",
@@ -1534,7 +1534,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/By.ts",
-									"line": 122,
+									"line": 133,
 									"character": 19
 								}
 							]
@@ -1558,7 +1558,18 @@
 									"kindString": "Call signature",
 									"flags": {},
 									"comment": {
-										"shortText": "Locates an element using a CSS (jQuery) style selector"
+										"shortText": "Locates an element using a CSS (jQuery) style selector.",
+										"text": "This locator is implemented using `document.querySelector` on the page.\n",
+										"tags": [
+											{
+												"tag": "static",
+												"text": ""
+											},
+											{
+												"tag": "memberof",
+												"text": "By\n"
+											}
+										]
 									},
 									"parameters": [
 										{
@@ -1567,6 +1578,7 @@
 											"kind": 32768,
 											"kindString": "Parameter",
 											"flags": {},
+											"comment": {},
 											"type": {
 												"type": "intrinsic",
 												"name": "string"
@@ -1605,7 +1617,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/By.ts",
-									"line": 31,
+									"line": 39,
 									"character": 18
 								}
 							]
@@ -1657,7 +1669,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/By.ts",
-									"line": 44,
+									"line": 52,
 									"character": 17
 								}
 							]
@@ -1725,7 +1737,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/By.ts",
-									"line": 96,
+									"line": 104,
 									"character": 10
 								}
 							]
@@ -1776,7 +1788,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/By.ts",
-									"line": 55,
+									"line": 63,
 									"character": 16
 								}
 							]
@@ -1829,7 +1841,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/By.ts",
-									"line": 110,
+									"line": 118,
 									"character": 23
 								}
 							]
@@ -1880,7 +1892,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/By.ts",
-									"line": 65,
+									"line": 73,
 									"character": 23
 								}
 							]
@@ -1931,7 +1943,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/By.ts",
-									"line": 85,
+									"line": 93,
 									"character": 26
 								}
 							]
@@ -1955,7 +1967,7 @@
 									"flags": {},
 									"comment": {
 										"shortText": "Locates elements with a given tag name.",
-										"returns": "The new locator.\n"
+										"returns": "The new locator instance.\n"
 									},
 									"parameters": [
 										{
@@ -1983,7 +1995,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/By.ts",
-									"line": 135,
+									"line": 146,
 									"character": 15
 								}
 							]
@@ -2034,7 +2046,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/By.ts",
-									"line": 75,
+									"line": 83,
 									"character": 19
 								}
 							]
@@ -2092,7 +2104,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/By.ts",
-									"line": 147,
+									"line": 158,
 									"character": 13
 								}
 							]
