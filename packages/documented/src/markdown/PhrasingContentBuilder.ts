@@ -12,6 +12,16 @@ export class PhrasingContentBuilder {
 		this.phrasingContent('paragraph', value)
 	}
 
+	/**
+	 * Creates a basic text node which can only accept a string
+	 *
+	 * @param {string} value
+	 * @memberof PhrasingContentBuilder
+	 */
+	public text(value: string) {
+		this.tree.children.push(u('text', value || ''))
+	}
+
 	public strong(value: string | ContentBuilderFn) {
 		this.phrasingContent('strong', value)
 	}
