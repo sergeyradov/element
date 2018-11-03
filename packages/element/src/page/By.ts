@@ -9,7 +9,7 @@ import { BaseLocator } from './Locator'
 import { EvaluateFn } from 'puppeteer'
 
 /**
- * By is used to create <[Locator]>s to find Elements or use in any place which accepts a Locator or <[Locatable]>.
+ * By is used to create [Locators][Locator] to find Elements or use in any place which accepts a Locator or [Locatable][].
  *
  * @title By
  * @class By
@@ -27,7 +27,6 @@ export class By {
 
 	/**
 	 * Locates an element using a CSS (jQuery) style selector
-	 * @param selector
 	 */
 	public static css(selector: string, debugString?: string): Locator {
 		if (debugString === undefined) {
@@ -117,6 +116,8 @@ export class By {
 	 *
 	 * **Example:**
 	 * By.attr('name', 'frame-name')
+	 *
+	 * @memberof By
 	 */
 	public static attr(tagName: string, attrName: string, attrValue: string): Locator {
 		return By.css(
@@ -136,15 +137,12 @@ export class By {
 	}
 
 	/**
-	 * Locates elements matching a XPath selector. Care should be taken when
-	 * using an XPath selector with a {@link webdriver.WebElement} as WebDriver
-	 * will respect the context in the specified in the selector. For example,
-	 * given the selector `//div`, WebDriver will search from the document root
-	 * regardless of whether the locator was used with a WebElement.
+	 * Locates elements matching a [XPath][] selector.
 	 *
 	 * @param {string} xpath The XPath selector to use.
 	 * @return {!By} The new locator.
-	 * @see http://www.w3.org/TR/xpath/
+	 *
+	 * @implements By.xpath
 	 */
 	static xpath(xpath: string): Locator {
 		return new XPathLocator(xpath)
