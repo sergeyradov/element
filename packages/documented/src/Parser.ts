@@ -1,3 +1,4 @@
+import * as camelcase from 'lodash.camelcase'
 import { info, param } from './utils/out'
 import { APIDocument } from './APIDocument'
 import { createSourceFile, forEachChild, ScriptTarget, SyntaxKind, Node, JSDoc } from 'typescript'
@@ -70,6 +71,15 @@ type CallSignatureType = TypeContainer & {
 	comment?: CommentObject
 }
 
+export type CallSignatureWriteParam = {
+	name: string
+	type: TypeObject
+	desc: string
+	isReference: boolean
+	isOptional: boolean
+	defaultValue: any
+}
+
 type Parameter = ParameterReflectionObject & {
 	kindString: 'Parameter'
 	name: string
@@ -92,11 +102,10 @@ export type ParseIndex = {
 }
 
 const toFileName = (file: string): string => `${file}.md`
+
 const writeComment = (doc: APIDocument, comment: any) => {
 	let { shortText, text } = comment || { shortText: null, text: null }
-
-	if (shortText) doc.comment(fixReferences(shortText))
-	if (text) doc.comment(fixReferences(text))
+	doc.comment(fixReferences(shortText), fixReferences(text))
 }
 
 export class Parser {
@@ -156,6 +165,8 @@ export class Parser {
 		//   mkdirpSync(join('docs', 'api'))
 		//   fs.writeFile()
 		// })
+
+		this.associateMissingReferences()
 
 		return this.documents
 	}
@@ -235,7 +246,6 @@ export class Parser {
 		if (!doc) return
 
 		doc.section(name)
-		writeComment(doc, node.comment)
 
 		// Set class tags as meta data on the doc
 		if (node.comment) this.visitClassComment(node.comment, doc)
@@ -244,6 +254,8 @@ export class Parser {
 	}
 
 	private visitClassComment(comment: CommentObject, doc: APIDocument) {
+		writeComment(doc, comment)
+
 		if (!comment.tags) return
 		let meta: any = {}
 		comment.tags.forEach(tag => {
@@ -263,85 +275,66 @@ export class Parser {
 	private visitObjectLiteral(node: NodeLike) {}
 	private visitProperty(node: NodeLike) {}
 	private visitFunction(node: NodeLike, doc?: APIDocument) {
-		console.log(info(`Function ${node.name}`))
+		// console.log(info(`Function ${node.name}`))
+
+		this.visitMethod(node, doc)
 	}
 	private visitMethod(node: NodeLike, doc?: APIDocument) {
+		// console.log(`Method: ${node.name}`)
+
 		if (isMethodReflection(node) && doc) {
 			let implementationName = (node.implementationOf && node.implementationOf.name) || node.name
-			if (node.implementationOf) console.log(info(`Method ${implementationName}`))
+			// if (node.implementationOf) console.log(info(`Method ${implementationName}`, node.comment))
+
+			if (node.name === 'authenticate') {
+				// debugger
+			}
 
 			if (isNodeInternal(node)) return
 
-			// let ref = new ContainerReflection(node as any)
-
-			// debugger
-
 			if (isCallableNode(node)) {
-				node.signatures.forEach(sig => this.visitCallSignature(sig, doc))
+				// let params = node.signatures.map(sig => this.visitCallSignature(sig))
+				let [sig] = node.signatures
+				if (sig) {
+					let params = this.visitCallSignature(sig)
+					doc.callSignature(implementationName, params)
 
-				// node.signatures.forEach(sig => {
-				// 	let { name, type, parameters = [] } = sig
+					writeComment(doc, node.comment)
+					writeComment(doc, sig.comment)
 
-				// 	let params = parameters.map(param => {
-				// 		let {
-				// 			name,
-				// 			type,
-				// 			flags: { isOptional = false, isExported, isPublic },
-				// 			defaultValue,
-				// 			comment,
-				// 			originalName,
-				// 		} = param
-				// 		let isReference = type.type === 'reference'
-				// 		let { shortText, text } = comment || { shortText: null, text: null }
-
-				// 		let desc = [shortText, text].filter(Boolean).join(`\n`)
-
-				// 		return { name, type, isOptional, isReference, defaultValue, desc }
-				// 	})
-
-				// 	// doc.callSignature(params)
-
-				// 	// console.log(name, type, parameters)
-
-				// 	// debugger
-
-				// 	// this.processCallSignature(doc, sig, parent)
-				// 	// if (doc.filePath) {
-				// 	// 	let name = `${camelcase(parent)}.${sig.name}`
-				// 	// 	this.addReference(name, doc)
-				// 	// }
-				// })
+					// if (node.implementationOf) this.referenceMap.set(node.implementationOf.name, 'TODO')
+				}
 			}
-			// doc.parameter(node.name, )
 		}
 	}
 
-	private visitCallSignature(signature: CallSignatureType, doc: APIDocument) {
-		if (!signature.parameters) return
+	private visitCallSignature(signature: CallSignatureType): CallSignatureWriteParam[] {
+		if (!signature.parameters) return []
 		let { parameters } = signature
 
-		let params = parameters.map(param => {
-			let {
-				name,
-				type,
-				flags: { isOptional = false, isExported, isPublic },
-				defaultValue,
-				comment,
-				originalName,
-			} = param
-			let isReference = type.type === 'reference'
-			let { shortText, text } = comment || { shortText: null, text: null }
+		let params = parameters
+			.map(param => {
+				let {
+					name,
+					type,
+					flags: { isOptional = false, isExported, isPublic, isStatic },
+					defaultValue,
+					comment,
+					originalName,
+				} = param
+				let isReference = type.type === 'reference'
+				let { shortText, text } = comment || { shortText: null, text: null }
 
-			let desc = [shortText, text]
-				.filter(Boolean)
-				.map(fixReferences)
-				.join(`\n`)
-			let formattedType = typeToString(type)
+				let desc = [shortText, text]
+					.filter(Boolean)
+					.map(fixReferences)
+					.join(`\n`)
 
-			return { name, type: formattedType, isOptional, isReference, defaultValue, desc }
-		})
-
-		doc.callSignature(params)
+				// let formattedType = typeToString(type)
+				return { name, type, isOptional, isReference, defaultValue, desc, isPublic, isStatic }
+			})
+			.filter(param => param.isPublic !== false)
+		return params
 	}
 
 	private visitVariable(node: NodeLike) {
