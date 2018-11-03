@@ -38,30 +38,18 @@ export class APIDocument extends Document {
 					if (param.name && param.type) {
 						let { name, type, defaultValue, desc, isOptional } = param
 
-						if (name.startsWith('returns')) {
-							list.item(b => {
+						list.item(b => {
+							if (name.startsWith('returns:')) {
 								b.p(c => {
-									c.p(`${name} `)
+									c.text(`${name} `)
 									this.formatType(type, c)
-
-									// if (type) {
-									// 	c.linkRef(type.trim())
-									// }
-									if (desc) c.raw(desc)
-									// b.p(` ${desc.trim()}`)
+									if (desc) c.raw(desc.trim())
 								})
-							})
-						} else {
-							list.item(b => {
+							} else {
 								b.p(c => {
-									if (isOptional) {
-										c.p(`${name.trim()}? `)
-									} else {
-										c.p(`${name.trim()} `)
-									}
+									isOptional ? c.text(`${name.trim()}? `) : c.text(`${name.trim()} `)
 
 									this.formatType(type, c)
-									// c.linkRef(type.trim())
 									c.p(' ')
 									if (defaultValue !== undefined) {
 										c.p('(Optional, default: ')
@@ -70,12 +58,10 @@ export class APIDocument extends Document {
 									} else if (isOptional) {
 										c.p('(Optional)')
 									}
-
-									// if (desc) b.p(` ${desc.trim()}`)
-									if (desc) c.raw(desc)
+									if (desc) c.raw(desc.trim())
 								})
-							})
-						}
+							}
+						})
 					}
 				})
 			})
@@ -150,54 +136,52 @@ export class APIDocument extends Document {
 		})
 	}
 
-	callSignature(methodName: string, params: CallSignatureWriteParam[], returnType?: any) {
+	callSignature(methodName: string, params: CallSignatureWriteParam[]) {
 		this.block(b => {
-			params.forEach(param => {
-				let required = params
-					.filter(p => !p.isOptional)
-					.map(p => {
-						if (
-							p.type.type === 'array' &&
-							p.type.elementType &&
-							p.type.elementType.type === 'intrinsic'
-						) {
-							return `...${p.name}`
-						} else {
-							return p.name
-						}
-					})
-					.join(`, `)
-				let optional = params
-					.filter(p => p.isOptional)
-					.map(p => p.name)
-					.join(`, `)
-
-				let callSignatureString = `${methodName}(${required.length ? required : ''}${
-					optional.length ? `[, ${optional}]` : ''
-				})`
-
-				b.p(c => {
-					b.h3(c => {
-						c.inlineCode(callSignatureString)
-						// c.text(methodName)
-						// c.text('(')
-						// if (required.length) c.text(required)
-						// if (optional.length) c.text(`[, ${optional}]`)
-						// c.text(')')
-					})
+			// params.forEach(param => {
+			let required = params
+				.filter(p => !p.isOptional)
+				.map(p => {
+					if (
+						p.type.type === 'array' &&
+						p.type.elementType &&
+						p.type.elementType.type === 'intrinsic'
+					) {
+						return `...${p.name}`
+					} else {
+						return p.name
+					}
 				})
+				.join(`, `)
+			let optional = params
+				.filter(p => p.isOptional)
+				.map(p => p.name)
+				.join(`, `)
 
-				b.h4('Arguments')
+			let callSignatureString = `${methodName}(${required.length ? required : ''}${
+				optional.length ? `[, ${optional}]` : ''
+			})`
 
-				this.parameters([...params, { name: 'returns:', type: returnType }])
-
-				// params.forEach(param => {
-				// 	if (param.name && param.type) {
-				// 		let { name, type, defaultValue, desc, isOptional, isReference } = param
-				// 	}
-				// })
-				// this.parameter('returns:', returnType)
+			b.p(c => {
+				b.h3(c => {
+					c.inlineCode(callSignatureString)
+				})
 			})
+
+			// params.forEach(param => {
+			// 	if (param.name && param.type) {
+			// 		let { name, type, defaultValue, desc, isOptional, isReference } = param
+			// 	}
+			// })
+			// this.parameter('returns:', returnType)
+			// })
+		})
+	}
+
+	public writeParameters(params, returnType?: any) {
+		this.block(b => {
+			b.p(c => c.strong('Parameters'))
+			this.parameters([...params, { name: 'returns:', type: returnType }])
 		})
 	}
 }

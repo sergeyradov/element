@@ -48,7 +48,7 @@ export class Document {
 			.use(parse)
 			.parse(text)
 
-		this.tree.children.push(tree.children)
+		this.tree.children.push(...tree.children)
 	}
 
 	public get definitions(): Markdown.Definition[] {

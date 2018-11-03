@@ -276,31 +276,31 @@ export class Parser {
 	private visitProperty(node: NodeLike) {}
 	private visitFunction(node: NodeLike, doc?: APIDocument) {
 		// console.log(info(`Function ${node.name}`))
+		if (isNodeInternal(node)) return
 
 		this.visitMethod(node, doc)
 	}
 	private visitMethod(node: NodeLike, doc?: APIDocument) {
-		// console.log(`Method: ${node.name}`)
-
 		if (isMethodReflection(node) && doc) {
 			let implementationName = (node.implementationOf && node.implementationOf.name) || node.name
-			// if (node.implementationOf) console.log(info(`Method ${implementationName}`, node.comment))
-
-			if (node.name === 'authenticate') {
-				// debugger
-			}
-
 			if (isNodeInternal(node)) return
 
 			if (isCallableNode(node)) {
 				// let params = node.signatures.map(sig => this.visitCallSignature(sig))
 				let [sig] = node.signatures
 				if (sig) {
+					let returnType = sig.type
 					let params = this.visitCallSignature(sig)
+					if (implementationName === 'ElementHandle.bindBrowser') {
+						debugger
+					}
+
 					doc.callSignature(implementationName, params)
 
 					writeComment(doc, node.comment)
 					writeComment(doc, sig.comment)
+
+					doc.writeParameters(params, returnType)
 
 					// if (node.implementationOf) this.referenceMap.set(node.implementationOf.name, 'TODO')
 				}
@@ -320,7 +320,6 @@ export class Parser {
 					flags: { isOptional = false, isExported, isPublic, isStatic },
 					defaultValue,
 					comment,
-					originalName,
 				} = param
 				let isReference = type.type === 'reference'
 				let { shortText, text } = comment || { shortText: null, text: null }
@@ -330,7 +329,6 @@ export class Parser {
 					.map(fixReferences)
 					.join(`\n`)
 
-				// let formattedType = typeToString(type)
 				return { name, type, isOptional, isReference, defaultValue, desc, isPublic, isStatic }
 			})
 			.filter(param => param.isPublic !== false)

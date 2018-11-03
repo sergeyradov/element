@@ -85,7 +85,7 @@ export class PhrasingContentBuilder {
 			.use(parse)
 			.parse(text)
 
-		this.tree.children.push(tree)
+		this.tree.children.push(...tree.children)
 	}
 
 	private phrasingContent(type: string, value: string | ContentBuilderFn) {
