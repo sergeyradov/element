@@ -562,10 +562,6 @@ export class Browser<T> implements BrowserInterface {
 		return elements
 	}
 
-	public async set(key: string, value: string): Promise<void> {}
-
-	public async get(key: string): Promise<void> {}
-
 	@rewriteError()
 	public async extractText(locatable: NullableLocatable): Promise<string> {
 		console.warn(`DEPRECATED: browser.extractText() is deprecated, please use ElementHandle.text()`)
