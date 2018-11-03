@@ -14,6 +14,8 @@ export { Condition } from './src/page/Condition'
 export { Device, Key, MouseButtons } from './src/page/Enums'
 
 /**
+ * Locators make it easy to locate elements on the page.
+ *
  * @docPage Locators
  */
 export { By } from './src/page/By'

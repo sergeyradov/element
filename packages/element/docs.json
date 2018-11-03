@@ -35,7 +35,7 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 83,
+							"line": 85,
 							"character": 16
 						}
 					],
@@ -68,7 +68,7 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 59,
+							"line": 61,
 							"character": 21
 						}
 					],
@@ -1337,7 +1337,7 @@
 						"tags": [
 							{
 								"tag": "title",
-								"text": "By"
+								"text": "Locators"
 							},
 							{
 								"tag": "class",
