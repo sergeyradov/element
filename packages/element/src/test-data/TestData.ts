@@ -97,7 +97,7 @@ export class TestDataSource<T> {
 	/**
 	 * Instructs the data feeder to repeat the data set when it reaches the end. TestData is circular by default; use this to turn circular data off.
 	 *
-	 * @param circular Default: true. Pass `false` to disable.
+	 * @param circular Passing `false` will to disable circular data loading, causing test to complete after 1 loop of test data.
 	 */
 	public circular(circular = true): TestDataSource<T> {
 		this.feeder.circular(circular)
@@ -106,7 +106,6 @@ export class TestDataSource<T> {
 
 	/**
 	 * Shuffles the data set using the Fisher-Yates method. Use this to randomise the order of your data. This will always be applied after filtering.
-	 * @param shuffle Default: true. Pass `false` to disable.
 	 */
 	public shuffle(shuffle = true): TestDataSource<T> {
 		this.feeder.shuffle(shuffle)
