@@ -1,6 +1,8 @@
 import * as u from 'unist-builder'
 import { Parent } from 'unist'
 import { Markdown } from '../../markdown'
+const unified = require('unified')
+const parse = require('remark-parse')
 
 export type ContentBuilderFn = (c: PhrasingContentBuilder) => void
 
@@ -74,6 +76,14 @@ export class PhrasingContentBuilder {
 		} else {
 			builder.p(label)
 		}
+
+		this.tree.children.push(tree)
+	}
+
+	public raw(text: string) {
+		let tree = unified()
+			.use(parse)
+			.parse(text)
 
 		this.tree.children.push(tree)
 	}
