@@ -75,6 +75,12 @@ export interface SuiteDefinition {
  * @articleGroup API
  */
 export interface Browser {
+	/**
+	 * Returns the title of the current page
+	 *
+	 * @returns {Promise<string>}
+	 * @memberof Browser
+	 */
 	title(): Promise<string>
 
 	/**
