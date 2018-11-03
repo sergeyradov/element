@@ -26,7 +26,15 @@ export class By {
 	}
 
 	/**
-	 * Locates an element using a CSS (jQuery) style selector
+	 * Locates an element using a CSS (jQuery) style selector.
+	 *
+	 * This locator is implemented using `document.querySelector` on the page.
+	 *
+	 * @static
+	 * @param {string} selector
+	 * @param {string} [debugString] an additional message used to help debug your test.
+	 * @returns {Locator}
+	 * @memberof By
 	 */
 	public static css(selector: string, debugString?: string): Locator {
 		if (debugString === undefined) {
@@ -115,7 +123,10 @@ export class By {
 	 * Locates an element where the attribute matches the value.
 	 *
 	 * **Example:**
+	 *
+	 * ```typescript
 	 * By.attr('name', 'frame-name')
+	 * ```
 	 *
 	 * @memberof By
 	 */
@@ -130,7 +141,7 @@ export class By {
 	 * Locates elements with a given tag name.
 	 *
 	 * @param {string} name The tag name to search for.
-	 * @return {!By} The new locator.
+	 * @return {By} The new locator instance.
 	 */
 	static tagName(name: string): Locator {
 		return new TagNameLocator(name)
@@ -140,7 +151,7 @@ export class By {
 	 * Locates elements matching a [XPath][] selector.
 	 *
 	 * @param {string} xpath The XPath selector to use.
-	 * @return {!By} The new locator.
+	 * @return {By} The new locator.
 	 *
 	 * @implements By.xpath
 	 */
