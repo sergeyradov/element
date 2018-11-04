@@ -12,7 +12,7 @@ const visit = require('unist-util-visit-parents')
 
 export class Document {
 	private compiler: Compiler
-	private tree: Markdown.Root
+	protected tree: Markdown.Root
 
 	private middlewares: ((root: Markdown.Root) => Markdown.Root)[]
 
@@ -36,9 +36,14 @@ export class Document {
 		builder(block)
 	}
 
-	public frontmatter(data: { [key: string]: string | number | boolean | null }) {
-		if (this.tree.children[0] && this.tree.children[0].type === 'yaml')
-			throw new Error('Document already contains frontmatter')
+	public frontmatter(data: { [key: string]: object | string | number | boolean | null }) {
+		if (this.tree.children[0] && this.tree.children[0].type === 'yaml') {
+			let yamlNode = this.tree.children.shift()
+			if (yamlNode) {
+				let existingData = yamlNode.data
+				data = { ...existingData, ...data }
+			}
+		}
 
 		this.tree.children = [u('yaml', yaml.safeDump(data)), ...this.tree.children]
 	}
