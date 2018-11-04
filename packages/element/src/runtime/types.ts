@@ -30,19 +30,20 @@ export type NullableLocatable = Locatable | null
  * Defines a test suite of steps to run.
  *
  * **Example:**
- * ```
- *   import { TestData } from '@flood/element'
- *   interface Row {
- *     user: string
- *     systemID: number
- *   }
- *   const testData = TestData.withCSV<Row>(...)
  *
- *   export default suite.withData((testData, step) => {
- *     step("Step 1", async (row: Row, browser: Browser) => {
- *       await browser.visit(`http://example.com/user-${row.systemID}.html`)
- *     })
+ * ```typescript
+ * import { TestData } from '@flood/element'
+ * interface Row {
+ *   user: string
+ *   systemID: number
+ * }
+ * const testData = TestData.withCSV<Row>(...)
+ *
+ * export default suite.withData((testData, step) => {
+ *   step("Step 1", async (browser: Browser, row: Row) => {
+ *     await browser.visit(`http://example.com/user-${row.systemID}.html`)
  *   })
+ * })
  * ```
  *
  * @param testDefinition

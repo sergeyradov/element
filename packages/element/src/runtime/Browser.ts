@@ -580,10 +580,22 @@ export class Browser<T> implements BrowserInterface {
 		})
 	}
 
+	/**
+	 * @internal
+	 * @returns {Promise<PerformanceTiming>}
+	 * @memberof Browser
+	 */
 	public async performanceTiming(): Promise<PerformanceTiming> {
 		return this.page.evaluate(() => performance.timing.toJSON())
 	}
 
+	/**
+	 * Fetches navigation timing information
+	 *
+	 * @internal
+	 * @returns {Promise<PerformanceTiming>}
+	 * @memberof Browser
+	 */
 	public async navigationTiming(): Promise<PerformanceTiming> {
 		let data = await this.page.evaluate(() => JSON.stringify(window.performance.timing))
 		return JSON.parse(data.toString())
@@ -591,6 +603,8 @@ export class Browser<T> implements BrowserInterface {
 
 	/**
 	 * Fetches the paint performance timing entries
+	 *
+	 * @internal
 	 */
 	public async paintTiming(): Promise<PerformanceEntry[]> {
 		let data = await this.page.evaluate(() =>
@@ -599,11 +613,22 @@ export class Browser<T> implements BrowserInterface {
 		return JSON.parse(data.toString())
 	}
 
+	/**
+	 * Convenience method to wait for browser navigation before doing the next action.
+	 *
+	 * @returns {Promise<any>}
+	 * @memberof Browser
+	 */
 	public async waitForNavigation(): Promise<any> {
 		return this.page.waitForNavigation({ waitUntil: 'domcontentloaded' })
 	}
 
-	// TODO fix this
+	/**
+	 * @todo FIX this
+	 * @internal
+	 * @returns {Promise<number>}
+	 * @memberof Browser
+	 */
 	public async interactionTiming(): Promise<number> {
 		try {
 			let polyfill = readFileSync(
@@ -618,17 +643,34 @@ export class Browser<T> implements BrowserInterface {
 		}
 	}
 
+	/**
+	 * Disables the browser cache
+	 * @internal
+	 * @param {boolean} [cacheDisabled=true]
+	 * @returns {Promise<void>}
+	 * @memberof Browser
+	 */
 	public async setCacheDisabled(cacheDisabled: boolean = true): Promise<void> {
 		const client = await this.page['target']().createCDPSession()
 		await client.send('Network.setCacheDisabled', { cacheDisabled })
 	}
 
-	public fetchScreenshots() {
+	/**
+	 * @internal
+	 * @memberof Browser
+	 */
+	public fetchScreenshots(): string[] {
 		let screenshots = [...this.screenshots]
 		this.screenshots = []
 		return screenshots
 	}
 
+	/**
+	 * @internal
+	 * @param {(path: string) => Promise<boolean>} fn
+	 * @returns {Promise<void>}
+	 * @memberof Browser
+	 */
 	public async saveScreenshot(fn: (path: string) => Promise<boolean>): Promise<void> {
 		const path = this.workRoot.join('screenshots', `${cuid()}.jpg`)
 		debugScreenshot(`Saving screenshot to: ${path}`)

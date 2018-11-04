@@ -61,6 +61,11 @@ import { NullTestDataLoaders } from './src/test-data/TestDataLoaders'
 export const TestData = new NullTestDataLoaders()
 
 /**
+ * @docPage TestData
+ */
+export { Feeder } from './src/test-data/Feeder'
+
+/**
  * @docPage Settings
  */
 export {
