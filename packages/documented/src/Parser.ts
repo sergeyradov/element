@@ -40,23 +40,23 @@ function stripQuotes(name: string): string {
 }
 
 class Context {
-	constructor(public mod: string, public docSource: Parser) {}
+	constructor(private mod: string, private parser: Parser) {}
 
-	forMod(mod: string): Context {
-		return new Context(stripQuotes(mod), this.docSource)
+	forModule(mod: string): Context {
+		return new Context(stripQuotes(mod), this.parser)
 	}
 
-	// docForKey(key: string): APIDocument {
-	// 	const fullKey = `${this.mod}.${key}`
-	// 	// const pageName = indexMap[fullKey]
-	// 	// debug('fullKey %s pageName %s', fullKey, pageName)
+	docForKey(key: string): APIDocument {
+		const fullKey = `${this.mod}.${key}`
+		const pageName = this.parser.index.indexMap[fullKey]
+		// debug('fullKey %s pageName %s', fullKey, pageName)
 
-	// 	// if (pageName === undefined) return this.docSource.catchallDoc
+		// if (pageName === undefined) return this.parser.catchallDoc
 
-	// 	// const path = `api/${pageName}.md`
+		// const path = `api/${pageName}.md`
 
-	// 	// return this.docSource.getDoc(path)
-	// }
+		return this.parser.documents.get(pageName) || this.parser.catchallDoc
+	}
 }
 
 export type NodeWithDoc = Node & {
