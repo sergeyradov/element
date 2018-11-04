@@ -264,7 +264,7 @@ export class Parser {
 
 	private visitClass(node: NodeLike, doc?: APIDocument) {
 		let { name, children } = node
-		console.log(info(`visit Class: ${name}`))
+		debug(`Visit ${node.kindString}: ${name}`)
 
 		// let doc = this.documentForName(name)
 		if (!doc) return
