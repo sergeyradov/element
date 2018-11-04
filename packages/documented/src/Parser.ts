@@ -310,6 +310,48 @@ export class Parser {
 		// @ts-ignore
 		console.log(node.type.type)
 	}
+	private visitExternalModule(node: NodeLike) {
+		debug(`Visit '${node.kindString}' ${node.name}`)
+	}
+	private visitObjectLiteral(node: NodeLike, doc: APIDocument) {
+		debug(`Visit '${node.kindString}' ${node.name}`)
+		this.addReference(node.name, doc)
+
+		doc.block(b => b.h1(c => c.inlineCode(node.name)))
+		writeComment(doc, node.comment)
+
+		// throw new Error(`TBD`)
+		// this.processObject(doc, node.name, node.children)
+
+		doc.block(b => {
+			b.table(
+				t => {
+					t.row([node.name, 'Default Value', 'Comment'])
+
+					if (node.children) {
+						node.children.forEach((node: any) => {
+							let { name, defaultValue, comment } = node
+							t.row(c => {
+								c.cell(c => c.inlineCode(name))
+								c.cell(defaultValue || '')
+								c.cell(c => c.p(commentToString(comment).trim()))
+							})
+						})
+					}
+				},
+				['left', 'left', 'left'],
+			)
+		})
+
+		// doc.writeTable([
+		// 	[thing, 'Default Value', 'Comment'],
+		// 	...members.map(node => {
+		// 		let { name, defaultValue } = node
+		// 		let comment = commentFromNode(node)
+		// 		return [`\`${name}\``, defaultValue ? defaultValue : '', comment ? comment : '']
+		// 	}),
+		// ])
+	}
 	private visitFunction(node: NodeLike, doc?: APIDocument) {
 		// console.log(info(`Function ${node.name}`))
 		if (isNodeInternal(node)) return
