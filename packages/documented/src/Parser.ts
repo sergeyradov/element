@@ -159,26 +159,21 @@ export class Parser {
 	public async parse() {
 		this.index = await this.preParseIndex(this.indexTS)
 		let files = [...new Set(Object.values(this.index.indexExports))]
-		console.dir(files, { depth: null })
+		console.dir(this.index, { depth: null })
 
-		// 1. Create destination documents
+		for (const [key, target] of Object.entries(refs)) {
+			this.addReference(key, target)
+		}
+
+		for (const [key, target] of Object.entries(this.index.indexExports)) {
+			this.addReference(key, target)
+		}
+
 		files.forEach(file => {
 			this.documents.set(file, new APIDocument())
 		})
 
-		// 2. Index global references
-
-		// 3. Index local references
-
-		// 4. Parse tree
-
 		this.walk(this.typeDoc)
-
-		// this.documents.forEach((doc, name) => {
-		//   doc.toMarkdown()
-		//   mkdirpSync(join('docs', 'api'))
-		//   fs.writeFile()
-		// })
 
 		this.associateMissingReferences()
 
