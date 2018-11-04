@@ -367,14 +367,16 @@ export class Parser {
 			if (isNodeInternal(node)) return
 
 			if (isCallableNode(node)) {
-				// let params = node.signatures.map(sig => this.visitCallSignature(sig))
 				let [sig] = node.signatures
 				if (sig) {
+					this.addReference(sig.name, doc)
+
 					let returnType = sig.type
 					let params = this.visitCallSignature(sig)
-					if (implementationName === 'ElementHandle.bindBrowser') {
-						debugger
-					}
+
+					// if (node.name === 'bindBrowser') {
+					// 	debugger
+					// }
 
 					doc.callSignature(implementationName, params)
 
