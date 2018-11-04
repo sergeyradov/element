@@ -21,7 +21,7 @@ async function main(workspace: string) {
 		.readFile(join(workspace, 'docs.json'))
 		.then(file => file.toString('utf8'))
 
-	let parser = new Parser(JSON.parse(typeDocFile), indexTSPath)
+	let parser = new Parser(destination, JSON.parse(typeDocFile), indexTSPath)
 	let documents = await parser.parse()
 
 	documents.forEach((doc, name) => {
@@ -29,6 +29,8 @@ async function main(workspace: string) {
 		console.log(info(`Writing ${filename}`))
 		fs.writeFile(filename, Buffer.from(doc.toMarkdown()))
 	})
+
+	console.dir(parser.references, { depth: null })
 }
 
 main(process.argv[2])
