@@ -7,12 +7,14 @@ import { DefinitionBuilder } from './DefinitionBuilder'
 import { attachFrontmatterCompiler } from './frontmatter'
 const unified = require('unified')
 const parse = require('remark-parse')
-const frontmatter = require('remark-frontmatter')
+// const frontmatter = require('remark-frontmatter')
 const visit = require('unist-util-visit-parents')
 
 export class Document {
 	private compiler: Compiler
 	protected tree: Markdown.Root
+
+	public shouldWrite = true
 
 	private middlewares: ((root: Markdown.Root) => Markdown.Root)[]
 
