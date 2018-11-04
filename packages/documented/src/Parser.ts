@@ -238,12 +238,17 @@ export class Parser {
 
 		// console.log(`${info(kindString)} ${param(name)}`)
 
-		if (isClassReflection(node)) {
-			let maybeDoc = this.documentForName(name)
-			if (maybeDoc) doc = maybeDoc
+		// if (isClassReflection(node)) {
+		let maybeDoc = this.documentForName(name)
+		if (maybeDoc) {
+			doc = maybeDoc
+			this.visit(node, doc)
+		} else {
+			console.log(info(`Missing doc for ${node.name}`))
 		}
-
-		this.visit(node, doc)
+		// } else {
+		// 	console.error(`Not a class reflection: ${JSON.stringify(node, null, 2)}`)
+		// }
 
 		if (node.children)
 			node.children.forEach(node => {
@@ -253,12 +258,16 @@ export class Parser {
 
 	visit(node: NodeLike, doc?: APIDocument) {
 		if (node.kindString) {
+			debug(`Visit ${node.kindString}: ${node.name}`)
+
 			let visitor = this.visitors[node.kindString]
 			if (visitor) {
 				visitor.apply(this, [node, doc])
 			} else {
 				console.log(info(`TODO: ${node.kindString}`))
 			}
+		} else {
+			console.error(`ERR: Unknown node type: ${node.name}`)
 		}
 	}
 
