@@ -2,21 +2,38 @@ import { join, relative, resolve, isAbsolute } from 'path'
 import { major, minor } from 'semver'
 import * as camelcase from 'lodash.camelcase'
 // import * as upperFirst from 'lodash.upperfirst'
-import * as glob from 'glob'
+// import * as glob from 'glob'
 import { mkdirpSync, copySync, createFileSync, writeFileSync, readFileSync } from 'fs-extra'
-import * as frontMatter from 'front-matter'
+// import * as frontMatter from 'front-matter'
 
 import { preParseIndex } from './preParseIndex'
 import { parsePuppeteer } from './puppeteer'
-import { generateAnchor } from './generateAnchor'
-import { MarkdownDocument, FrontMatter, Comment } from './MarkdownDocument'
-import { ParamType, typeToString } from './Formatters'
+// import { generateAnchor } from './generateAnchor'
+// import { MarkdownDocument, FrontMatter, Comment } from './MarkdownDocument'
+import { typeToString } from './Formatters'
 
 import * as debugFactory from 'debug'
+import { Document } from './Document'
 const debug = debugFactory('element:docs')
 
 const repoRoot = join(__dirname, '../../../..')
 const root = join(__dirname, '../..')
+
+const generateAnchor = (name: string) =>
+	name
+		.toLowerCase()
+		.replace(/\s+/gi, '-')
+		.replace(/[^a-z0-9-_]/gi, '')
+
+const writeComment = (doc: Document, comment: any) => {
+	let { shortText, text } = comment || { shortText: null, text: null }
+	doc.comment(shortText, text)
+}
+
+const commentToString = (comment: any): string => {
+	let { shortText, text } = comment || { shortText: null, text: null }
+	return [shortText, text].join('\n')
+}
 
 const getDocVersion = async (): Promise<string> => {
 	let pkg = require('../../package.json')
@@ -31,7 +48,7 @@ const puppeteerJSON = parsePuppeteer()
 debug('indexMap', indexMap)
 debug('indexExports', indexExports)
 
-function commentFromNode(node) {
+function commentFromNode(node: any) {
 	let { comment: { shortText, text } = { shortText: null, text: null } } = node
 	return [shortText, text].filter(t => t && t.length).join('\n\n')
 }
@@ -78,7 +95,7 @@ class parseCtx {
 		return new parseCtx(stripQuotes(mod), this.docSource)
 	}
 
-	docForKey(key: string): MarkdownDocument {
+	docForKey(key: string): Document {
 		const fullKey = `${this.mod}.${key}`
 		const pageName = indexMap[fullKey]
 		debug('fullKey %s pageName %s', fullKey, pageName)
@@ -96,17 +113,17 @@ class DocsParser {
 
 	public references: Map<string, { target: string; title?: string }> = new Map()
 	public summaryParts: string[] = []
-	public enumerations: MarkdownDocument[] = []
+	// public enumerations: Document[] = []
 
-	public docs: Map<string, MarkdownDocument> = new Map()
-	public catchallDoc = MarkdownDocument.nullDoc()
+	public docs: Map<string, Document> = new Map()
+	public catchallDoc = Document.nullDoc()
 
 	public bookDir: string
 	constructor(public docsJSON: any, public puppeteerJSON: any) {}
 
-	getDoc(pageName: string): MarkdownDocument {
+	getDoc(pageName: string): Document {
 		if (!this.docs.has(pageName)) {
-			this.docs.set(pageName, new MarkdownDocument(pageName))
+			this.docs.set(pageName, new Document(pageName))
 		}
 		return this.docs.get(pageName) || this.catchallDoc
 	}
@@ -151,10 +168,10 @@ class DocsParser {
 		await this.init()
 
 		console.log('processing')
-		this.docsJSON.children.forEach(child => this.processTopLevelNode(child))
+		this.docsJSON.children.forEach((child: any) => this.processTopLevelNode(child))
 
 		const ctx = new parseCtx('puppeteer', this)
-		this.puppeteerJSON.forEach(child => this.processNode(ctx, child)) //, this.puppeteerJSON)
+		this.puppeteerJSON.forEach((child: any) => this.processNode(ctx, child)) //, this.puppeteerJSON)
 
 		// console.log('creating summary')
 		// this.createSummary()
@@ -165,7 +182,7 @@ class DocsParser {
 		this.rewriteReadmePaths()
 	}
 
-	private processTopLevelNode(node) {
+	private processTopLevelNode(node: any) {
 		debug('processTopLevelNode')
 		const { name, kindString } = node
 
@@ -240,7 +257,7 @@ class DocsParser {
 	// // return relativePath
 	// }
 
-	private processNode(ctx, node) {
+	private processNode(ctx: parseCtx, node: any) {
 		debug('processNode', node.kindString, node.name)
 		if (isNodeInternal(node)) {
 			return
@@ -275,30 +292,31 @@ class DocsParser {
 		}
 	}
 
-	public applyReferencesToHandWrittenDocs() {
-		let files = glob.sync('docs/**/*.md')
-		files.forEach(path => {
-			let doc = MarkdownDocument.fromFile(path)
-			doc.applyReferences(this.references)
-			createFileSync(path)
-			writeFileSync(path, doc.toString())
-		})
-	}
+	// public applyReferencesToHandWrittenDocs() {
+	// 	let files = glob.sync('docs/**/*.md')
+	// 	files.forEach(path => {
+	// 		let doc = MarkdownDocument.fromFile(path)
+	// 		doc.applyReferences(this.references)
+	// 		createFileSync(path)
+	// 		writeFileSync(path, doc.toString())
+	// 	})
+	// }
 
 	public writeDocsToFiles() {
 		debug('writeDocsToFiles()')
-		this.applyReferencesToHandWrittenDocs()
+		// this.applyReferencesToHandWrittenDocs()
 		let contents: Map<string, string[]> = new Map()
 		// debug('docs', this.docs)
 		this.docs.forEach((doc, path) => {
 			if (!doc.shouldWrite) return
 
-			doc.applyReferences(this.references)
+			// doc.applyReferences(this.references)
+
 			let absPath = join(this.bookDir, path)
 			if (!contents.has(absPath)) contents.set(absPath, [])
 
 			const content = contents.get(absPath)
-			if (content) content.push(doc.toString())
+			if (content) content.push(doc.toMarkdown())
 		})
 		contents.forEach((content, absPath) => {
 			createFileSync(absPath)
@@ -306,12 +324,12 @@ class DocsParser {
 		})
 	}
 
-	private addReference(name: string, pathOrDoc: MarkdownDocument | string) {
+	private addReference(name: string, pathOrDoc: Document | string) {
 		let target: string
 		if (typeof pathOrDoc === 'string') {
 			target = pathOrDoc
-		} else if ((<MarkdownDocument>pathOrDoc).path !== undefined) {
-			target = (<MarkdownDocument>pathOrDoc).path
+		} else if ((pathOrDoc as Document).path !== undefined) {
+			target = (pathOrDoc as Document).path
 		} else {
 			return
 		}
@@ -320,121 +338,152 @@ class DocsParser {
 		this.references.set(name, { target })
 	}
 
-	private createSummary() {
-		const doc = this.getDoc('SUMMARY.md')
-		// const doc = this.getDoc(new MarkdownDocument('SUMMARY.md')
-		doc.enableReferences = false
-		doc.writeHeading('Documentation', 2)
-		doc.writeLine('')
-		doc.writeBullet('[Quick Start](README.md)')
+	// private createSummary() {
+	// 	const doc = this.getDoc('SUMMARY.md')
+	// 	// const doc = this.getDoc(new MarkdownDocument('SUMMARY.md')
+	// 	doc.enableReferences = false
+	// 	doc.writeHeading('Documentation', 2)
+	// 	doc.writeLine('')
+	// 	doc.writeBullet('[Quick Start](README.md)')
 
-		// Adds everything in the examples directory
-		let examples = glob.sync('docs/examples/**/*.md')
-		examples.forEach(file => {
-			let content = readFileSync(file).toString('utf8')
-			let { title } = frontMatter<FrontMatter>(content).attributes
-			if (title) {
-				let relativePath = relative(this.bookDir, file)
-				doc.writeBullet(`[${title}](${relativePath})`)
-			}
-		})
+	// 	// Adds everything in the examples directory
+	// 	let examples = glob.sync('docs/examples/**/*.md')
+	// 	examples.forEach(file => {
+	// 		let content = readFileSync(file).toString('utf8')
+	// 		let { title } = frontMatter<FrontMatter>(content).attributes
+	// 		if (title) {
+	// 			let relativePath = relative(this.bookDir, file)
+	// 			doc.writeBullet(`[${title}](${relativePath})`)
+	// 		}
+	// 	})
 
-		doc.writeLine('')
+	// 	doc.writeLine('')
 
-		doc.writeHeading('Flood Chrome API', 2)
-		doc.writeLine('')
+	// 	doc.writeHeading('Flood Chrome API', 2)
+	// 	doc.writeLine('')
 
-		// let sortedMethods: string[] = this.summaryParts
+	// 	// let sortedMethods: string[] = this.summaryParts
 
-		// debug('createSummary %O', this.summaryParts)
-		// this.summaryParts.forEach((links, name) => {
-		// links.forEach(m => {
-		// sortedMethods.push(m)
-		// })
-		// })
+	// 	// debug('createSummary %O', this.summaryParts)
+	// 	// this.summaryParts.forEach((links, name) => {
+	// 	// links.forEach(m => {
+	// 	// sortedMethods.push(m)
+	// 	// })
+	// 	// })
 
-		this.summaryParts
-			.sort()
-			// .sort((a, b) => a.toLowerCase() - b.toLowerCase())
-			.forEach(m => {
-				doc.writeBullet(m, 2)
-			})
+	// 	this.summaryParts
+	// 		.sort()
+	// 		// .sort((a, b) => a.toLowerCase() - b.toLowerCase())
+	// 		.forEach(m => {
+	// 			doc.writeBullet(m, 2)
+	// 		})
 
-		// this.docs.set('Index', doc)
+	// 	// this.docs.set('Index', doc)
 
-		// doc = new MarkdownDocument('Enumerations.md')
-		// doc.writeHeading('Enumerations')
-		// doc.writeLine(
-		// 'Here you will find a list of all the possible values for fields which accept a typed enumerated property, such as `userAgent` or `click()`',
-		// )
-		// const enumDoc = this.docs.get('Enumeration')
-		// if (enumDoc) enumDoc.unshift(doc)
-	}
+	// 	// doc = new MarkdownDocument('Enumerations.md')
+	// 	// doc.writeHeading('Enumerations')
+	// 	// doc.writeLine(
+	// 	// 'Here you will find a list of all the possible values for fields which accept a typed enumerated property, such as `userAgent` or `click()`',
+	// 	// )
+	// 	// const enumDoc = this.docs.get('Enumeration')
+	// 	// if (enumDoc) enumDoc.unshift(doc)
+	// }
 
-	private processCallSignature(doc, sig, prefix?) {
+	private processCallSignature(doc: Document, sig: any, prefix?: string) {
 		let { name, type, parameters = [] } = sig
 
 		if (prefix) name = `${prefix}.${name}`
 
-		let params: any[] = []
-		parameters.forEach(p => {
-			let {
-				name,
-				type,
-				flags: { isOptional = false },
-				defaultValue,
-			} = p
-			let desc = commentFromNode(p)
-			params.push({ name, desc, type, isOptional, defaultValue })
-		})
+		// let params: any[] = []
+		// parameters.forEach(p => {
+		// 	let {
+		// 		name,
+		// 		type,
+		// 		flags: { isOptional = false },
+		// 		defaultValue,
+		// 	} = p
+		// 	let desc = commentFromNode(p)
+		// 	params.push({ name, desc, type, isOptional, defaultValue })
+		// })
 
-		let required = params
-			.filter(p => !p.isOptional)
-			.map(p => p.name)
-			.join(`, `)
-		let optional = params
-			.filter(p => p.isOptional)
-			.map(p => p.name)
-			.join(`, `)
+		let params: any[] = parameters
+			.map((param: any) => {
+				let {
+					name,
+					type,
+					flags: { isOptional = false, isPublic, isStatic },
+					defaultValue,
+					comment,
+				} = param
+				let isReference = type.type === 'reference'
+				let { shortText, text } = comment || { shortText: null, text: null }
 
-		name = `\`${name}(${required}${optional.length ? `[, ${optional}]` : ''})\``
-		this.writeCallSignature(doc, name, sig.comment, params, type)
+				let desc = [shortText, text]
+					.filter(Boolean)
+					// .map(fixReferences)
+					.join(`\n`)
+
+				return { name, type, isOptional, isReference, defaultValue, desc, isPublic, isStatic }
+			})
+			.filter((param: any) => param.isPublic !== false)
+
+		// let required = params
+		// 	.filter(p => !p.isOptional)
+		// 	.map(p => p.name)
+		// 	.join(`, `)
+		// let optional = params
+		// 	.filter(p => p.isOptional)
+		// 	.map(p => p.name)
+		// 	.join(`, `)
+
+		doc.callSignature(name, params)
+
+		writeComment(doc, sig.comment)
+
+		doc.writeParameters(params, type)
+
+		// name = `\`${name}(${required}${optional.length ? `[, ${optional}]` : ''})\``
+		// this.writeCallSignature(doc, name, sig.comment, params, type)
 	}
 
-	private writeCallSignature(
-		doc: MarkdownDocument,
-		name: string,
-		comment: Comment,
-		params: {
-			name: string
-			type: ParamType
-			desc?: string
-			isReference: boolean
-			isOptional: boolean
-			defaultValue: any
-		}[],
-		returnType?: any,
-	) {
-		doc.writeHeading(`${name}`, 4)
+	// private writeCallSignature(
+	// 	doc: Document,
+	// 	name: string,
+	// 	comment: Comment,
+	// 	params: {
+	// 		name: string
+	// 		type: ParamType
+	// 		desc?: string
+	// 		isReference: boolean
+	// 		isOptional: boolean
+	// 		defaultValue: any
+	// 	}[],
+	// 	returnType?: any,
+	// ) {
+	// 	doc.block(b => b.h3(name))
+	// 	// doc.h3(`${name}`, 4)
 
-		params.forEach(param => {
-			if (param.name && param.type)
-				doc.writeParameterLine(
-					param.name,
-					param.type,
-					param.desc,
-					param.isOptional,
-					param.defaultValue,
-				)
-		})
+	// 	doc.writeParameters(params, returnType)
 
-		if (returnType) doc.writeParameterLine('returns:', returnType)
+	// 	// params.forEach(param => {
+	// 	// 	if (param.name && param.type)
+	// 	// 		doc.writeParameterLine(
+	// 	// 			param.name,
+	// 	// 			param.type,
+	// 	// 			param.desc,
+	// 	// 			param.isOptional,
+	// 	// 			param.defaultValue,
+	// 	// 		)
+	// 	// })
 
-		doc.writeLine()
-		doc.writeComment(comment)
-	}
+	// 	if (returnType) doc.writeParameterLine('returns:', returnType)
 
-	private processFunction(ctx, node) {
+	// 	// doc.writeLine()
+
+	// 	doc.comment(comment)
+	// }
+
+	private processFunction(ctx: parseCtx, node: any) {
 		const doc = ctx.docForKey(node.name)
 
 		node.signatures.forEach(sig => {
@@ -446,16 +495,16 @@ class DocsParser {
 				// sig.name,
 				// )}`,
 			)
-			this.processCallSignature(doc, sig, null)
+			this.processCallSignature(doc, sig)
 		})
 	}
 
-	private processAlias(ctx, node) {
+	private processAlias(ctx: parseCtx, node: any) {
 		debug('processAlias', node.name, ctx.mod, node)
 		const doc = ctx.docForKey(node.name)
 
-		doc.writeHeading(`\`${node.name}\``, 2)
-		doc.writeComment(node.comment)
+		doc.block(b => b.h2(c => c.inlineCode(node.name)))
+		writeComment(doc, node.comment)
 
 		this.addReference(node.name, doc)
 
@@ -488,34 +537,36 @@ class DocsParser {
 		// }
 	}
 
-	private processAlias_union(doc, node) {
+	private processAlias_union(doc: Document, node: any) {
 		debug('processAlias_union', node.name)
 		debug(node.type, typeToString(node.type))
 
-		doc.writeLine('```typescript')
-		doc.writeLine(typeToString(node.type))
-		doc.writeLine('```')
+		doc.block(b => b.code(typeToString(node.type), 'typescript'))
 	}
 
-	private processObjectLiteral(ctx, node) {
+	private processObjectLiteral(ctx: parseCtx, node: any) {
 		debug('processObjectLiteral', node)
 		const doc = ctx.docForKey(node.name)
 
-		doc.writeHeading(`\`${node.name}\``)
-		doc.writeComment(node.comment)
+		doc.block(b => b.h1(c => c.inlineCode(node.name)))
+		writeComment(doc, node.comment)
+
 		this.processObject(doc, node.name, node.children)
 		this.addReference(node.name, doc)
 	}
 
-	private processVariable(ctx, node) {
+	private processVariable(ctx: parseCtx, node: any) {
 		debug('processVariable', node)
 		const { name } = node
 
 		const doc = ctx.docForKey(name)
 
+		doc.block(b => b.h1(c => c.inlineCode(node.name)))
+		writeComment(doc, node.comment)
+
 		// 1. Create file and reference
-		doc.writeSection(`\`${name}\``)
-		doc.writeComment(node.comment)
+		// doc.writeSection(`\`${name}\``)
+		// doc.writeComment(node.comment)
 		// doc.writeCodeBlock(typeToString(node.type))
 	}
 
@@ -530,22 +581,23 @@ class DocsParser {
 		node.children.forEach(node => this.processNode(modCtx, node))
 	}
 
-	private processClass(ctx, node) {
+	private processClass(ctx: parseCtx, node: any) {
 		let { name, children } = node
 		debug('processClass', name, children)
 
 		const doc = ctx.docForKey(name)
 
 		// 1. Create file and reference
-		doc.writeSection(`\`${name}\``)
-		doc.writeComment(node.comment)
+
+		doc.block(b => b.h1(c => c.inlineCode(name)))
+		writeComment(doc, node.comment)
 
 		if (isNodeOpaque(node)) return
 
 		let meta: any = {}
 
 		if (node.comment && node.comment.tags) {
-			node.comment.tags.forEach(tag => {
+			node.comment.tags.forEach((tag: any) => {
 				meta[tag.tag] = tag.text.trim()
 
 				if (tag.tag === 'class') {
@@ -554,46 +606,45 @@ class DocsParser {
 				}
 			})
 
-			doc.addMeta(meta)
+			doc.frontmatter(meta)
 		}
 
 		if (!children) children = []
 
 		const methods = children.filter(node => node.kindString === 'Method')
 		if (methods.length) {
-			doc.writeHeading('methods', 4)
+			doc.block(b => b.p(c => c.strong('Methods')))
 			methods.forEach(node => this.processClass_Method(doc, name, node))
 		}
 
 		const properties = children.filter(node => node.kindString === 'Property')
 		if (properties.length) {
-			doc.writeHeading('properties', 4)
+			// doc.writeHeading('properties', 4)
+			doc.block(b => b.p(c => c.strong('Properties')))
 			properties.forEach(node => this.processClass_Property(doc, name, node))
 		}
 
 		let members = children.filter(node => node.kindString === 'Enumeration member')
 		if (members.length) {
 			this.processObject(doc, name, members, 'Member')
-			// doc.writeTableHeader('Member', 'Default Value', 'Comment')
-			// members.forEach(node => this.processMember(name, node, doc))
 		}
 
 		// console.log(children.filter(node => !['Method', 'Property'].includes(node.kindString)))
 	}
 
-	private processClass_Method(doc, parent, node) {
+	private processClass_Method(doc: Document, parent: string, node: any) {
 		if (isNodeInternal(node)) return
 
 		node.signatures.forEach(sig => {
 			this.processCallSignature(doc, sig, parent)
-			if (doc.filePath) {
+			if (doc.path) {
 				let name = `${camelcase(parent)}.${sig.name}`
 				this.addReference(name, doc)
 			}
 		})
 	}
 
-	private processClass_Property(doc, parent, node) {
+	private processClass_Property(doc: Document, parent: string, node: any) {
 		debug('processClass_Property', parent, node.name, node)
 		if (isNodeInternal(node)) return
 
@@ -603,18 +654,38 @@ class DocsParser {
 		// comment rendered as part of an unordered list, so indent
 		comment = '  ' + comment.replace(/\n/g, '  \n  ') + '  '
 
-		doc.writeParameterLine(name, type, comment, !!flags.isOptional, node.defaultValue)
+		doc.parameters([
+			{
+				name,
+				type,
+				desc: comment,
+				isOptional: !!flags.isOptional,
+				defaultValue: node.defaultValue,
+			},
+		])
+		// doc.writeParameterLine(name, type, comment, !!flags.isOptional, node.defaultValue)
 	}
 
-	private processObject(doc, parent, members, thing = 'Name') {
-		doc.writeTable([
-			[thing, 'Default Value', 'Comment'],
-			...members.map(node => {
-				let { name, defaultValue } = node
-				let comment = commentFromNode(node)
-				return [`\`${name}\``, defaultValue ? defaultValue : '', comment ? comment : '']
-			}),
-		])
+	private processObject(doc: Document, parent: string, children: any[], thing = 'Name') {
+		doc.block(b => {
+			b.table(
+				t => {
+					t.row([parent, 'Default Value', 'Comment'])
+
+					if (children) {
+						children.forEach((node: any) => {
+							let { name, defaultValue, comment } = node
+							t.row(c => {
+								c.cell(c => c.inlineCode(name))
+								c.cell(defaultValue || '')
+								c.cell(c => c.p(commentFromNode(node).trim()))
+							})
+						})
+					}
+				},
+				['left', 'left', 'left'],
+			)
+		})
 	}
 
 	private rewriteReadmePaths() {
