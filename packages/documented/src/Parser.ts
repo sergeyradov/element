@@ -294,10 +294,22 @@ export class Parser {
 		doc.frontmatter(meta)
 	}
 
-	private visitAlias(node: NodeLike) {}
-	private visitExternalModule(node: NodeLike) {}
-	private visitObjectLiteral(node: NodeLike) {}
-	private visitProperty(node: NodeLike) {}
+	private visitAlias(node: NodeLike, doc: APIDocument) {
+		debug(`Visit '${node.kindString}' ${node.name}`)
+
+		this.addReference(node.name, doc)
+
+		doc.block(b => {
+			b.h2(c => {
+				c.inlineCode(node.name)
+			})
+		})
+
+		writeComment(doc, node.comment)
+
+		// @ts-ignore
+		console.log(node.type.type)
+	}
 	private visitFunction(node: NodeLike, doc?: APIDocument) {
 		// console.log(info(`Function ${node.name}`))
 		if (isNodeInternal(node)) return
