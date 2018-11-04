@@ -123,8 +123,9 @@ const commentToString = (comment: any): string => {
 }
 
 export class Parser {
-	private documents: Map<string, APIDocument>
-	private index: ParseIndex
+	public catchallDoc: APIDocument = new APIDocument()
+	public documents: Map<string, APIDocument>
+	public index: ParseIndex
 
 	/**
 	 * Stores references between Classes and Class Method combinations and the document.
@@ -151,7 +152,7 @@ export class Parser {
 		'Object literal': this.visitObjectLiteral,
 	}
 
-	constructor(private typeDoc: NodeLike, private indexTS: string) {
+	constructor(private rootPath: string, private typeDoc: NodeLike, private indexTS: string) {
 		this.documents = new Map()
 		this.references = new Map()
 	}
