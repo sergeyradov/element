@@ -17,20 +17,22 @@ async function main(workspace: string) {
 
 	mkdirpSync(destination)
 
-	let typeDocFile = await fs
-		.readFile(join(workspace, 'docs.json'))
-		.then(file => file.toString('utf8'))
+	let typeDocs = ['docs.json', 'puppeteer-1.6-docs.json']
 
-	let parser = new Parser(destination, JSON.parse(typeDocFile), indexTSPath)
-	let documents = await parser.parse()
+	for (const file of typeDocs) {
+		let typeDocFile = await fs.readFile(join(workspace, file)).then(file => file.toString('utf8'))
 
-	documents.forEach((doc, name) => {
-		let filename = join(destination, `${name}.md`)
-		console.log(info(`Writing ${filename}`))
-		fs.writeFile(filename, Buffer.from(doc.toMarkdown()))
-	})
+		let parser = new Parser(destination, JSON.parse(typeDocFile), indexTSPath)
+		let documents = await parser.parse()
 
-	console.dir(parser.references, { depth: null })
+		documents.forEach((doc, name) => {
+			let filename = join(destination, `${name}.md`)
+			console.log(info(`Writing ${filename}`))
+			fs.writeFile(filename, Buffer.from(doc.toMarkdown()))
+		})
+
+		console.dir(parser.references, { depth: null })
+	}
 }
 
 main(process.argv[2])

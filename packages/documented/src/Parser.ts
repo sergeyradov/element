@@ -147,6 +147,7 @@ export class Parser {
 		Function: this.visitFunction,
 		Property: this.visitProperty,
 		Method: this.visitMethod,
+		'Enumeration member': this.visitEnumerationMember,
 		'External module': this.visitExternalModule,
 		'Type alias': this.visitAlias,
 		'Object literal': this.visitObjectLiteral,
@@ -316,6 +317,10 @@ export class Parser {
 		console.log(node.type.type)
 	}
 	private visitExternalModule(node: NodeLike) {
+		debug(`Visit '${node.kindString}' ${node.name}`)
+	}
+
+	private visitEnumerationMember(node: NodeLike, doc: APIDocument) {
 		debug(`Visit '${node.kindString}' ${node.name}`)
 	}
 	private visitObjectLiteral(node: NodeLike, doc: APIDocument) {
