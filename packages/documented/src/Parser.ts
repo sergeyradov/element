@@ -20,7 +20,10 @@ import {
 	isCallableNode,
 } from './utils/predicates'
 import { typeToString } from './utils/typeHandling'
-import { fixReferences } from './utils/refs'
+import { fixReferences, refs } from './utils/refs'
+import * as debugFactory from 'debug'
+import { relative } from 'path'
+const debug = debugFactory('element:docs')
 
 export type NodeLike = {
 	name: string
