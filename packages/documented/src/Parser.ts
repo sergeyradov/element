@@ -103,6 +103,12 @@ export type ParseIndex = {
 
 const toFileName = (file: string): string => `${file}.md`
 
+const generateAnchor = (name: string) =>
+	name
+		.toLowerCase()
+		.replace(/\s+/gi, '-')
+		.replace(/[^a-z0-9-_]/gi, '')
+
 const writeComment = (doc: APIDocument, comment: any) => {
 	let { shortText, text } = comment || { shortText: null, text: null }
 	doc.comment(fixReferences(shortText), fixReferences(text))
