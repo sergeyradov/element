@@ -17,6 +17,15 @@ export class APIDocument extends Document {
 		this.refMap.set(name, value)
 	}
 
+	intro(title: string, text: string) {
+		this.frontmatter({ title })
+
+		this.block(b => {
+			b.h1(title)
+			b.p(text)
+		})
+	}
+
 	section(title: string) {
 		this.block(b => {
 			b.h1(title)
