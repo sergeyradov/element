@@ -352,6 +352,9 @@ export class Parser {
 		// 	}),
 		// ])
 	}
+	private visitProperty(node: NodeLike) {
+		debug(`Visit '${node.kindString}' ${node.name}`)
+	}
 	private visitFunction(node: NodeLike, doc?: APIDocument) {
 		// console.log(info(`Function ${node.name}`))
 		if (isNodeInternal(node)) return
