@@ -359,8 +359,14 @@ export class Parser {
 		return params
 	}
 
-	private visitVariable(node: NodeLike) {
-		// console.dir(node, { depth: null })
+	private visitVariable(node: NodeLike, doc: APIDocument) {
+		debug(`Visit '${node.kindString}' ${node.name}`)
+		this.addReference(node.name, doc)
+
+		doc.section(node.name)
+		writeComment(doc, node.comment)
+	}
+
 	/**
 	 * Stores a reference to a variable, method, or class to a document name which can be used
 	 * later to assign a reference definition in Markdown.
