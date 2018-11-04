@@ -88,11 +88,11 @@ function stripQuotes(name: string): string {
 // }
 // }
 
-class parseCtx {
+class Context {
 	constructor(public mod: string, public docSource: DocsParser) {}
 
-	forMod(mod: string): parseCtx {
-		return new parseCtx(stripQuotes(mod), this.docSource)
+	forMod(mod: string): Context {
+		return new Context(stripQuotes(mod), this.docSource)
 	}
 
 	docForKey(key: string): Document {
@@ -170,7 +170,7 @@ class DocsParser {
 		console.log('processing')
 		this.docsJSON.children.forEach((child: any) => this.processTopLevelNode(child))
 
-		const ctx = new parseCtx('puppeteer', this)
+		const ctx = new Context('puppeteer', this)
 		this.puppeteerJSON.forEach((child: any) => this.processNode(ctx, child)) //, this.puppeteerJSON)
 
 		// console.log('creating summary')
@@ -179,7 +179,7 @@ class DocsParser {
 		console.log('writing')
 		this.writeDocsToFiles()
 
-		this.rewriteReadmePaths()
+		// this.rewriteReadmePaths()
 	}
 
 	private processTopLevelNode(node: any) {
@@ -189,75 +189,12 @@ class DocsParser {
 		debug('name: %s, kind: %s', name, kindString)
 		// if (this.seenModule(node)) return
 
-		const ctx = new parseCtx('top', this)
+		const ctx = new Context('top', this)
 
 		this.processNode(ctx, node)
 	}
 
-	// seenModule(node): boolean {
-	// return node.kindString === 'External module' &&
-	// }
-
-	/**
-	 * Translates the node type and name to a relative file path, and ensures the file exists
-	 */
-	// docForNode(node): MarkdownDocument | undefined {
-	// let { name } = node
-	// // debug('maybeFilePathForNameAndType(%s, %s)', kind, name)
-	// name = stripQuotes(name)
-
-	// // const unmapped = indexMap[name]
-	// // if (!unmapped) {
-	// // return undefined
-	// // }
-
-	// const paths = {
-	// 'src/page/Enums': 'api/Constants.md',
-
-	// 'src/page/By': 'api/By.md',
-	// 'src/page/Until': 'api/Until.md',
-
-	// 'src/runtime/types': 'api/Browser.md',
-	// 'src/page/types': 'api/Page.md',
-	// 'src/page/TargetLocator': 'api/Page.md',
-
-	// 'src/runtime/Step': 'api/DSL.md',
-	// 'src/runtime/Settings': 'api/DSL.md',
-	// 'src/runtime-environment/types': 'api/DSL.md',
-
-	// 'src/test-data/TestData': 'api/TestData.md',
-	// 'src/test-data/TestDataFactory': 'api/TestData.md',
-	// }
-
-	// if (!paths[name]) {
-	// return undefined
-	// }
-
-	// const docPath = paths[name]
-
-	// if (!this.docs.has(docPath)) this.docs.set(docPath, new MarkdownDocument(docPath, name))
-
-	// return this.docs.get(docPath)
-
-	// // debug('n', node)
-	// // const resolved = maybeFilePathForNameAndType(kindString, name)
-	// // if (resolved === undefined) return
-	// // const [resolvedName, resolvedPath] = resolved
-	// // debug('resolved as path %s and name %s', resolvedPath, name)
-
-	// // let doc = new MarkdownDocument(resolvedPath)
-	// // if (!this.docs.has(resolvedPath)) this.docs.set(resolvedPath, [])
-
-	// // const docsForPath = this.docs.get(resolvedPath)
-	// // if (docsForPath) docsForPath.push(doc)
-	// // return paths[name]
-
-	// // let relativePath = paths[kind](name)
-	// // debug('relativePath', relativePath)
-	// // return relativePath
-	// }
-
-	private processNode(ctx: parseCtx, node: any) {
+	private processNode(ctx: Context, node: any) {
 		debug('processNode', node.kindString, node.name)
 		if (isNodeInternal(node)) {
 			return
@@ -321,6 +258,7 @@ class DocsParser {
 		contents.forEach((content, absPath) => {
 			createFileSync(absPath)
 			writeFileSync(absPath, content.join('\n'))
+			console.log(`-> ${absPath}`)
 		})
 	}
 
@@ -483,7 +421,7 @@ class DocsParser {
 	// 	doc.comment(comment)
 	// }
 
-	private processFunction(ctx: parseCtx, node: any) {
+	private processFunction(ctx: Context, node: any) {
 		const doc = ctx.docForKey(node.name)
 
 		node.signatures.forEach(sig => {
@@ -499,7 +437,7 @@ class DocsParser {
 		})
 	}
 
-	private processAlias(ctx: parseCtx, node: any) {
+	private processAlias(ctx: Context, node: any) {
 		debug('processAlias', node.name, ctx.mod, node)
 		const doc = ctx.docForKey(node.name)
 
@@ -544,7 +482,7 @@ class DocsParser {
 		doc.block(b => b.code(typeToString(node.type), 'typescript'))
 	}
 
-	private processObjectLiteral(ctx: parseCtx, node: any) {
+	private processObjectLiteral(ctx: Context, node: any) {
 		debug('processObjectLiteral', node)
 		const doc = ctx.docForKey(node.name)
 
@@ -555,7 +493,7 @@ class DocsParser {
 		this.addReference(node.name, doc)
 	}
 
-	private processVariable(ctx: parseCtx, node: any) {
+	private processVariable(ctx: Context, node: any) {
 		debug('processVariable', node)
 		const { name } = node
 
@@ -581,7 +519,7 @@ class DocsParser {
 		node.children.forEach(node => this.processNode(modCtx, node))
 	}
 
-	private processClass(ctx: parseCtx, node: any) {
+	private processClass(ctx: Context, node: any) {
 		let { name, children } = node
 		debug('processClass', name, children)
 
