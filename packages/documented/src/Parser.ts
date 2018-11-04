@@ -114,6 +114,11 @@ const writeComment = (doc: APIDocument, comment: any) => {
 	doc.comment(fixReferences(shortText), fixReferences(text))
 }
 
+const commentToString = (comment: any): string => {
+	let { shortText, text } = comment || { shortText: null, text: null }
+	return [fixReferences(shortText), fixReferences(text)].join('\n')
+}
+
 export class Parser {
 	private documents: Map<string, APIDocument>
 	private index: ParseIndex
