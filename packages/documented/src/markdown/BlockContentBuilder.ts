@@ -3,6 +3,7 @@ import { Parent } from 'unist'
 import { PhrasingContentBuilder, ContentBuilderFn } from './PhrasingContentBuilder'
 import { Builder } from './Builder'
 import { ListBuilder } from './ListBuilder'
+import { TableBuilder, TableBuilderFn, TableAlignType } from './TableBuilder'
 
 export type BlockContentBuilderFn = (tree: BlockContentBuilder) => void
 export class BlockContentBuilder extends Builder {
@@ -34,7 +35,7 @@ export class BlockContentBuilder extends Builder {
 		this.heading(value, 6)
 	}
 
-	private heading(content: string | ContentBuilderFn, depth: number = 1) {
+	public heading(content: string | ContentBuilderFn, depth: number = 1) {
 		let block = u('heading', { depth }, [])
 		let newBlock = new PhrasingContentBuilder(block)
 
@@ -72,8 +73,17 @@ export class BlockContentBuilder extends Builder {
 		fn(newBlock)
 		this.tree.children.push(tree)
 	}
-	public table() {}
-	public html() {}
+	public table(fn: TableBuilderFn, headerAlignment?: TableAlignType[]) {
+		let tree = u('table', { align: headerAlignment }, [])
+
+		let newBlock = new TableBuilder(tree)
+		fn(newBlock)
+
+		this.tree.children.push(tree)
+	}
+	public html(value: string) {
+		this.tree.children.push(u('html', { value }))
+	}
 	public code(value: string, language?: string, meta?: string) {
 		this.tree.children.push(u('code', { value, language, meta }))
 	}
