@@ -135,7 +135,7 @@ export class Parser {
 	 *
 	 * @type {Map<string, string>}
 	 */
-	private referenceMap: Map<string, string>
+	public references: Map<string, string>
 
 	private visitors = {
 		Variable: this.visitVariable,
@@ -153,7 +153,7 @@ export class Parser {
 
 	constructor(private typeDoc: NodeLike, private indexTS: string) {
 		this.documents = new Map()
-		this.referenceMap = new Map()
+		this.references = new Map()
 	}
 
 	public async parse() {
@@ -189,8 +189,18 @@ export class Parser {
 		this.documents.forEach(doc => {
 			doc.definition(b => {
 				doc.orphanedReferences.forEach(ref => {
-					let referenceFilename = this.referenceMap.get(ref.identifier)
-					if (referenceFilename) b.definition(ref.identifier, referenceFilename)
+					let target = this.references.get(ref.identifier)
+					// TODO: Convert `target` to proper file path
+					if (target) {
+						let link
+						if (target.startsWith('http')) {
+							link = target
+						} else {
+							link = `${relative(this.rootPath, target)}#${generateAnchor(ref.identifier)}`
+						}
+
+						b.definition(ref.identifier, link)
+					}
 				})
 			})
 		})
@@ -351,6 +361,27 @@ export class Parser {
 
 	private visitVariable(node: NodeLike) {
 		// console.dir(node, { depth: null })
+	/**
+	 * Stores a reference to a variable, method, or class to a document name which can be used
+	 * later to assign a reference definition in Markdown.
+	 *
+	 * @private
+	 * @param {string} name
+	 * @param {(APIDocument | string)} target
+	 * @memberof Parser
+	 */
+	private addReference(name: string, target: APIDocument | string) {
+		if (target instanceof APIDocument) {
+			let entry = [...this.documents.entries()].find(([path, doc]) => doc === target)
+			if (!entry) {
+				debug(`Missing document for reference ${name}`)
+				return
+			}
+			target = entry[0]
+		}
+
+		debug(`addReference ${name} -> ${target}`)
+		this.references.set(name, target)
 	}
 
 	private documentForName(name: string): APIDocument | null {
