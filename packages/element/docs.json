@@ -35,7 +35,7 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 85,
+							"line": 90,
 							"character": 16
 						}
 					],
@@ -26356,6 +26356,18 @@
 									"kind": 4096,
 									"kindString": "Call signature",
 									"flags": {},
+									"comment": {
+										"tags": [
+											{
+												"tag": "internal",
+												"text": ""
+											},
+											{
+												"tag": "memberof",
+												"text": "Browser\n"
+											}
+										]
+									},
 									"type": {
 										"type": "array",
 										"elementType": {
@@ -26368,7 +26380,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Browser.ts",
-									"line": 626,
+									"line": 662,
 									"character": 24
 								}
 							]
@@ -26683,6 +26695,22 @@
 									"kind": 4096,
 									"kindString": "Call signature",
 									"flags": {},
+									"comment": {
+										"tags": [
+											{
+												"tag": "todo",
+												"text": "FIX this"
+											},
+											{
+												"tag": "internal",
+												"text": ""
+											},
+											{
+												"tag": "memberof",
+												"text": "Browser\n"
+											}
+										]
+									},
 									"type": {
 										"type": "reference",
 										"name": "Promise",
@@ -26698,7 +26726,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Browser.ts",
-									"line": 607,
+									"line": 632,
 									"character": 31
 								}
 							]
@@ -26791,6 +26819,19 @@
 									"kind": 4096,
 									"kindString": "Call signature",
 									"flags": {},
+									"comment": {
+										"shortText": "Fetches navigation timing information",
+										"tags": [
+											{
+												"tag": "internal",
+												"text": ""
+											},
+											{
+												"tag": "memberof",
+												"text": "Browser\n"
+											}
+										]
+									},
 									"type": {
 										"type": "reference",
 										"name": "Promise",
@@ -26806,7 +26847,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Browser.ts",
-									"line": 587,
+									"line": 599,
 									"character": 30
 								}
 							]
@@ -26829,7 +26870,13 @@
 									"kindString": "Call signature",
 									"flags": {},
 									"comment": {
-										"shortText": "Fetches the paint performance timing entries"
+										"shortText": "Fetches the paint performance timing entries",
+										"tags": [
+											{
+												"tag": "internal",
+												"text": "\n"
+											}
+										]
 									},
 									"type": {
 										"type": "reference",
@@ -26849,7 +26896,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Browser.ts",
-									"line": 595,
+									"line": 609,
 									"character": 25
 								}
 							]
@@ -26871,6 +26918,18 @@
 									"kind": 4096,
 									"kindString": "Call signature",
 									"flags": {},
+									"comment": {
+										"tags": [
+											{
+												"tag": "internal",
+												"text": ""
+											},
+											{
+												"tag": "memberof",
+												"text": "Browser\n"
+											}
+										]
+									},
 									"type": {
 										"type": "reference",
 										"name": "Promise",
@@ -26886,7 +26945,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Browser.ts",
-									"line": 583,
+									"line": 588,
 									"character": 31
 								}
 							]
@@ -27074,6 +27133,18 @@
 									"kind": 4096,
 									"kindString": "Call signature",
 									"flags": {},
+									"comment": {
+										"tags": [
+											{
+												"tag": "internal",
+												"text": ""
+											},
+											{
+												"tag": "memberof",
+												"text": "Browser\n"
+											}
+										]
+									},
 									"parameters": [
 										{
 											"id": 1379,
@@ -27081,6 +27152,7 @@
 											"kind": 32768,
 											"kindString": "Parameter",
 											"flags": {},
+											"comment": {},
 											"type": {
 												"type": "reflection",
 												"declaration": {
@@ -27124,7 +27196,7 @@
 													"sources": [
 														{
 															"fileName": "src/runtime/Browser.ts",
-															"line": 632,
+															"line": 674,
 															"character": 32
 														}
 													]
@@ -27147,7 +27219,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Browser.ts",
-									"line": 632,
+									"line": 674,
 									"character": 28
 								}
 							]
@@ -27508,6 +27580,19 @@
 									"kind": 4096,
 									"kindString": "Call signature",
 									"flags": {},
+									"comment": {
+										"shortText": "Disables the browser cache",
+										"tags": [
+											{
+												"tag": "internal",
+												"text": ""
+											},
+											{
+												"tag": "memberof",
+												"text": "Browser\n"
+											}
+										]
+									},
 									"parameters": [
 										{
 											"id": 1374,
@@ -27537,7 +27622,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Browser.ts",
-									"line": 621,
+									"line": 653,
 									"character": 30
 								}
 							]
@@ -28105,6 +28190,15 @@
 									"kind": 4096,
 									"kindString": "Call signature",
 									"flags": {},
+									"comment": {
+										"shortText": "Convenience method to wait for browser navigation before doing the next action.",
+										"tags": [
+											{
+												"tag": "memberof",
+												"text": "Browser\n"
+											}
+										]
+									},
 									"type": {
 										"type": "reference",
 										"name": "Promise",
@@ -28125,7 +28219,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Browser.ts",
-									"line": 602,
+									"line": 622,
 									"character": 31
 								}
 							],
@@ -32922,7 +33016,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/types.ts",
-									"line": 91,
+									"line": 92,
 									"character": 13
 								}
 							]
@@ -32982,7 +33076,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/types.ts",
-									"line": 216,
+									"line": 217,
 									"character": 5
 								}
 							]
@@ -33035,7 +33129,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/types.ts",
-									"line": 194,
+									"line": 195,
 									"character": 6
 								}
 							]
@@ -33074,7 +33168,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/types.ts",
-									"line": 101,
+									"line": 102,
 									"character": 18
 								}
 							]
@@ -33113,7 +33207,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/types.ts",
-									"line": 96,
+									"line": 97,
 									"character": 20
 								}
 							]
@@ -33180,7 +33274,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/types.ts",
-									"line": 168,
+									"line": 169,
 									"character": 6
 								}
 							]
@@ -33246,7 +33340,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/types.ts",
-									"line": 174,
+									"line": 175,
 									"character": 12
 								}
 							]
@@ -33299,7 +33393,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/types.ts",
-									"line": 106,
+									"line": 107,
 									"character": 14
 								}
 							]
@@ -33365,7 +33459,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/types.ts",
-									"line": 151,
+									"line": 152,
 									"character": 9
 								}
 							]
@@ -33419,7 +33513,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/types.ts",
-									"line": 280,
+									"line": 281,
 									"character": 12
 								}
 							]
@@ -33476,7 +33570,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/types.ts",
-									"line": 285,
+									"line": 286,
 									"character": 13
 								}
 							]
@@ -33538,7 +33632,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/types.ts",
-									"line": 225,
+									"line": 226,
 									"character": 6
 								}
 							]
@@ -33591,7 +33685,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/types.ts",
-									"line": 269,
+									"line": 270,
 									"character": 17
 								}
 							]
@@ -33654,7 +33748,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/types.ts",
-									"line": 274,
+									"line": 275,
 									"character": 17
 								}
 							]
@@ -33729,7 +33823,7 @@
 																	"sources": [
 																		{
 																			"fileName": "src/runtime/types.ts",
-																			"line": 243,
+																			"line": 244,
 																			"character": 8
 																		}
 																	],
@@ -33762,7 +33856,7 @@
 																	"sources": [
 																		{
 																			"fileName": "src/runtime/types.ts",
-																			"line": 239,
+																			"line": 240,
 																			"character": 7
 																		}
 																	],
@@ -33812,7 +33906,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/types.ts",
-									"line": 230,
+									"line": 231,
 									"character": 6
 								}
 							]
@@ -33879,7 +33973,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/types.ts",
-									"line": 184,
+									"line": 185,
 									"character": 14
 								}
 							]
@@ -33946,7 +34040,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/types.ts",
-									"line": 189,
+									"line": 190,
 									"character": 13
 								}
 							]
@@ -34018,7 +34112,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/types.ts",
-									"line": 179,
+									"line": 180,
 									"character": 14
 								}
 							]
@@ -34076,7 +34170,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/types.ts",
-									"line": 259,
+									"line": 260,
 									"character": 9
 								}
 							]
@@ -34128,7 +34222,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/types.ts",
-									"line": 111,
+									"line": 112,
 									"character": 13
 								}
 							]
@@ -34162,7 +34256,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/types.ts",
-									"line": 290,
+									"line": 291,
 									"character": 9
 								}
 							]
@@ -34216,7 +34310,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/types.ts",
-									"line": 264,
+									"line": 265,
 									"character": 15
 								}
 							]
@@ -34261,7 +34355,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/types.ts",
-									"line": 84,
+									"line": 85,
 									"character": 6
 								}
 							]
@@ -34345,7 +34439,7 @@
 																	"sources": [
 																		{
 																			"fileName": "src/runtime/types.ts",
-																			"line": 207,
+																			"line": 208,
 																			"character": 67
 																		}
 																	],
@@ -34385,7 +34479,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/types.ts",
-									"line": 207,
+									"line": 208,
 									"character": 5
 								}
 							]
@@ -34457,7 +34551,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/types.ts",
-									"line": 129,
+									"line": 130,
 									"character": 6
 								}
 							]
@@ -34520,7 +34614,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/types.ts",
-									"line": 147,
+									"line": 148,
 									"character": 5
 								}
 							]
@@ -34556,7 +34650,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/types.ts",
-									"line": 149,
+									"line": 150,
 									"character": 18
 								}
 							]
@@ -34600,7 +34694,7 @@
 					"sources": [
 						{
 							"fileName": "src/runtime/types.ts",
-							"line": 77,
+							"line": 78,
 							"character": 24
 						}
 					],
@@ -34690,7 +34784,7 @@
 											"sources": [
 												{
 													"fileName": "src/runtime/types.ts",
-													"line": 53,
+													"line": 54,
 													"character": 11
 												}
 											]
@@ -34810,7 +34904,7 @@
 													"sources": [
 														{
 															"fileName": "src/runtime/types.ts",
-															"line": 56,
+															"line": 57,
 															"character": 11
 														}
 													]
@@ -34827,7 +34921,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/types.ts",
-									"line": 54,
+									"line": 55,
 									"character": 9
 								}
 							]
@@ -34845,7 +34939,7 @@
 					"sources": [
 						{
 							"fileName": "src/runtime/types.ts",
-							"line": 52,
+							"line": 53,
 							"character": 32
 						}
 					]
@@ -34884,7 +34978,7 @@
 					"sources": [
 						{
 							"fileName": "src/runtime/types.ts",
-							"line": 305,
+							"line": 306,
 							"character": 18
 						}
 					],
@@ -35057,7 +35151,7 @@
 					},
 					"comment": {
 						"shortText": "Defines a test suite of steps to run.",
-						"text": "**Example:**\n```\n  import { TestData } from '@flood/element'\n  interface Row {\n    user: string\n    systemID: number\n  }\n  const testData = TestData.withCSV<Row>(...)\n\n  export default suite.withData((testData, step) => {\n    step(\"Step 1\", async (row: Row, browser: Browser) => {\n      await browser.visit(`http://example.com/user-${row.systemID}.html`)\n    })\n  })\n```\n",
+						"text": "**Example:**\n\n```typescript\nimport { TestData } from '@flood/element'\ninterface Row {\n  user: string\n  systemID: number\n}\nconst testData = TestData.withCSV<Row>(...)\n\nexport default suite.withData((testData, step) => {\n  step(\"Step 1\", async (browser: Browser, row: Row) => {\n    await browser.visit(`http://example.com/user-${row.systemID}.html`)\n  })\n})\n```\n",
 						"tags": [
 							{
 								"tag": "param",
@@ -35069,7 +35163,7 @@
 					"sources": [
 						{
 							"fileName": "src/runtime/types.ts",
-							"line": 50,
+							"line": 51,
 							"character": 26
 						}
 					],
@@ -38007,7 +38101,7 @@
 							"sources": [
 								{
 									"fileName": "src/test-data/TestData.ts",
-									"line": 160,
+									"line": 159,
 									"character": 22
 								}
 							]
@@ -38052,7 +38146,7 @@
 							"sources": [
 								{
 									"fileName": "src/test-data/TestData.ts",
-									"line": 167,
+									"line": 166,
 									"character": 19
 								}
 							]
@@ -38097,7 +38191,7 @@
 							"sources": [
 								{
 									"fileName": "src/test-data/TestData.ts",
-									"line": 174,
+									"line": 173,
 									"character": 19
 								}
 							]
@@ -38142,7 +38236,7 @@
 							"sources": [
 								{
 									"fileName": "src/test-data/TestData.ts",
-									"line": 153,
+									"line": 152,
 									"character": 16
 								}
 							]
@@ -38175,7 +38269,7 @@
 											"kindString": "Parameter",
 											"flags": {},
 											"comment": {
-												"text": "Default: true. Pass `false` to disable.\n"
+												"text": "Passing `false` will to disable circular data loading, causing test to complete after 1 loop of test data.\n"
 											},
 											"type": {
 												"type": "intrinsic",
@@ -38246,7 +38340,7 @@
 							"sources": [
 								{
 									"fileName": "src/test-data/TestData.ts",
-									"line": 137,
+									"line": 136,
 									"character": 12
 								}
 							]
@@ -38311,7 +38405,7 @@
 							"sources": [
 								{
 									"fileName": "src/test-data/TestData.ts",
-									"line": 129,
+									"line": 128,
 									"character": 14
 								}
 							]
@@ -38402,7 +38496,7 @@
 							"sources": [
 								{
 									"fileName": "src/test-data/TestData.ts",
-									"line": 145,
+									"line": 144,
 									"character": 12
 								}
 							]
@@ -38486,9 +38580,6 @@
 											"kind": 32768,
 											"kindString": "Parameter",
 											"flags": {},
-											"comment": {
-												"text": "Default: true. Pass `false` to disable.\n"
-											},
 											"type": {
 												"type": "intrinsic",
 												"name": "boolean"
@@ -38512,7 +38603,7 @@
 							"sources": [
 								{
 									"fileName": "src/test-data/TestData.ts",
-									"line": 111,
+									"line": 110,
 									"character": 15
 								}
 							]
@@ -38551,7 +38642,7 @@
 							"sources": [
 								{
 									"fileName": "src/test-data/TestData.ts",
-									"line": 181,
+									"line": 180,
 									"character": 16
 								}
 							]
