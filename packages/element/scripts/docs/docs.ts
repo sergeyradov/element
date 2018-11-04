@@ -52,6 +52,7 @@ function commentFromNode(node: any) {
 	let { comment: { shortText, text } = { shortText: null, text: null } } = node
 	return [shortText, text].filter(t => t && t.length).join('\n\n')
 }
+
 function isNodeInternal(node) {
 	if (node && node.comment && node.comment.tags) {
 		return node.comment.tags.find(t => t.tag === 'internal')
@@ -60,6 +61,7 @@ function isNodeInternal(node) {
 	}
 	return false
 }
+
 function isNodeOpaque(node) {
 	if (node && node.comment && node.comment.tags) {
 		return node.comment.tags.find(t => t.tag === 'docopaque')
@@ -135,19 +137,19 @@ class DocsParser {
 	private async init() {
 		let version = await getDocVersion()
 		console.log(`Preparing docs, version: ${version}`)
-		this.bookDir = join(root, 'docs/api/', `${version}`)
+		this.bookDir = join(root, 'docs', version)
 
 		mkdirpSync(this.bookDir)
 
-		debug('README', join(repoRoot, 'README.md'), join(this.bookDir, 'README.md'))
-		copySync(join(repoRoot, 'README.md'), join(this.bookDir, 'README.md'))
+		// debug('README', join(repoRoot, 'README.md'), join(this.bookDir, 'README.md'))
+		// copySync(join(repoRoot, 'README.md'), join(this.bookDir, 'README.md'))
 
 		for (const [key, target] of Object.entries(externalRefs)) {
 			this.addReference(key, target)
 		}
 
 		for (const [key, target] of Object.entries(indexExports)) {
-			const path = `api/${target}.md`
+			const path = `${target}.md`
 			this.addReference(key, path)
 			console.log('adding', key, path, `[${key}](${path}#${generateAnchor(key)})`)
 			this.summaryParts.push(`[${key}](${path}#${generateAnchor(key)})`)
