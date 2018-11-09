@@ -14,6 +14,8 @@ export class Document {
 	private compiler: Compiler
 	protected tree: Markdown.Root
 
+	protected data: {} = {}
+
 	public shouldWrite = true
 
 	private middlewares: ((root: Markdown.Root) => Markdown.Root)[]
@@ -39,15 +41,11 @@ export class Document {
 	}
 
 	public frontmatter(data: { [key: string]: object | string | number | boolean | null }) {
-		if (this.tree.children[0] && this.tree.children[0].type === 'yaml') {
-			let yamlNode = this.tree.children.shift()
-			if (yamlNode) {
-				let existingData = yamlNode.data
-				data = { ...existingData, ...data }
-			}
-		}
+		this.data = { ...this.data, ...data }
+	}
 
-		this.tree.children = [u('yaml', yaml.safeDump(data)), ...this.tree.children]
+	private applyFrontMatterData() {
+		this.tree.children = [u('yaml', yaml.safeDump(this.data)), ...this.tree.children]
 	}
 
 	public raw(text: string) {
@@ -78,6 +76,8 @@ export class Document {
 	}
 
 	public toMarkdown() {
+		this.applyFrontMatterData()
+
 		let lastRoot = this.tree
 		this.middlewares.forEach(fn => {
 			lastRoot = fn(lastRoot)

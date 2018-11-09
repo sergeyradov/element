@@ -1,3 +1,10 @@
+/**
+ *
+ * @article_group API
+ * @position 10
+ * @export
+ * @enum {number}
+ */
 export enum MouseButtons {
 	LEFT = 'left',
 	RIGHT = 'right',
@@ -6,6 +13,7 @@ export enum MouseButtons {
 
 /**
  * Chrome DevTools Device Emulation
+ * @article_group Constants
  */
 export enum Device {
 	'blackberryPlayBook' = 'Blackberry PlayBook',
@@ -66,6 +74,7 @@ export enum Device {
 /**
  * Lists all available keyboard control keys which can be used when sending a key press combination.
  *
+ * @article_group Constants
  * @export
  * @enum {number}
  */
@@ -135,6 +144,9 @@ export const Key = {
 	META: 'MetaLeft',
 }
 
+/**
+ * @article_group Constants
+ */
 export const userAgents = {
 	iphone:
 		'Mozilla/5.0 (iPhone; CPU iPhone OS 5_1 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Version/5.1 Mobile/9B179 Safari/7534.48.3',

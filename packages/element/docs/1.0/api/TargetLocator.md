@@ -1,6 +1,8 @@
 ---
-class: TargetLocator
 title: TargetLocator
+position: '4'
+articleGroup: API
+class: TargetLocator
 
 ---
 
@@ -8,7 +10,7 @@ title: TargetLocator
 
 The target locator is accessed through `browser.switchTo()` and enables you to switch frames, tabs, or browser windows. As well as access the `activeElement` or an alert box.
 
-**Methods**
+## Methods
 
 ### `TargetLocator.activeElement()`
 
@@ -46,5 +48,5 @@ ElementHandle: Switch to a frame using the supplied ElementHandle of a frame.
 
 **Parameters**
 
--   id `number` \| `string` \| [`ElementHandle`][ElementHandle] number | string | ElementHandle
+-   id `number` \| `string` \| [`ElementHandle`][ElementHandle]  number | string | ElementHandle
 -   returns: [Promise&lt;`void`\>][Promise]

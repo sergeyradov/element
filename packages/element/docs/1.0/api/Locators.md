@@ -1,8 +1,7 @@
 ---
-title: By
-class: By
+title: Locators
 position: '2'
-articlegroup: API
+articleGroup: API
 
 ---
 
@@ -10,7 +9,7 @@ articlegroup: API
 
 By is used to create [Locators][Locator] to find Elements or use in any place which accepts a Locator or [Locatable][].
 
-**Methods**
+## Methods
 
 ### `By.attr(tagName, attrName, attrValue)`
 
@@ -54,7 +53,7 @@ Locates elements by the ID attribute. This locator uses the CSS selector
 
 **Parameters**
 
--   id `string` The ID to search for
+-   id `string`  The ID to search for
 -   returns: [`Locator`][Locator]
 
 ### `By.js(script, ...args)`
@@ -66,7 +65,7 @@ The result of this expression must be an element or list of elements.
 
 **Parameters**
 
--   script [`EvaluateFn`][EvaluateFn] The script to execute.
+-   script [`EvaluateFn`][EvaluateFn]  The script to execute.
 -   args `any`\[] 
 -   returns: [`Locator`][Locator]
 
@@ -79,7 +78,7 @@ string.
 
 **Parameters**
 
--   text `string` The link text to search for.
+-   text `string`  The link text to search for.
 -   returns: [`Locator`][Locator]
 
 ### `By.nameAttr(value)`
@@ -90,7 +89,7 @@ Locates elements whose `name` attribute has the given value.
 
 **Parameters**
 
--   value `string` The name attribute to search for.
+-   value `string`  The name attribute to search for.
 -   returns: [`Locator`][Locator]
 
 ### `By.partialLinkText(text)`
@@ -102,7 +101,7 @@ substring.
 
 **Parameters**
 
--   text `string` The substring to check for in a link's visible text.
+-   text `string`  The substring to check for in a link's visible text.
 -   returns: [`Locator`][Locator]
 
 ### `By.partialVisibleText(text)`
@@ -114,7 +113,7 @@ substring and is not hidden by CSS.
 
 **Parameters**
 
--   text `string` The substring to check for in a elements's visible text.
+-   text `string`  The substring to check for in a elements's visible text.
 -   returns: [`Locator`][Locator]
 
 ### `By.tagName(name)`
@@ -125,7 +124,7 @@ Locates elements with a given tag name.
 
 **Parameters**
 
--   name `string` The tag name to search for.
+-   name `string`  The tag name to search for.
 -   returns: [`Locator`][Locator]
 
 ### `By.visibleText(text)`
@@ -137,7 +136,7 @@ substring and is not hidden by CSS.
 
 **Parameters**
 
--   text `string` The string to check for in a elements's visible text.
+-   text `string`  The string to check for in a elements's visible text.
 -   returns: [`Locator`][Locator]
 
 ### `By.xpath(xpath)`
@@ -148,14 +147,12 @@ Locates elements matching a [XPath][] selector.
 
 **Parameters**
 
--   xpath `string` The XPath selector to use.
+-   xpath `string`  The XPath selector to use.
 -   returns: [`Locator`][Locator]
 
 **Properties**
 
 -   args `string`\[] 
-
-
 -   command `string` 
 
 # `Locator`

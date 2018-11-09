@@ -7,6 +7,10 @@ import { Loader } from './Loader'
  *
  * TODO
  * Files should be uploaded to ...
+ *
+ * @title TestData
+ * @position 5
+ * @article_group API
  */
 export interface TestDataFactory {
 	/**

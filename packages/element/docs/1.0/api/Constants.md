@@ -1,3 +1,11 @@
+---
+articleGroup: API
+position: '10'
+export: ''
+enum: '{number}'
+
+---
+
 # `Device`
 
 Chrome DevTools Device Emulation
@@ -66,7 +74,7 @@ Chrome DevTools Device Emulation
 | `MIDDLE`     | "middle"      |         |
 | `RIGHT`      | "right"       |         |
 
-# `Key`
+### `Key`
 
 Lists all available keyboard control keys which can be used when sending a key press combination.
 

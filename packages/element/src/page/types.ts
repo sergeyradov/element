@@ -7,6 +7,9 @@ import { EvaluateFn, ExecutionContext, ElementHandle as PElementHandle } from 'p
  * A Locator represents an object used to locate elements on the page. It is usually constructed using the helper methods of <[By]>.
  * An <[ElementHandle]> can also be used as a Locator which finds itself.
  *
+ * @title Locators
+ * @position 2
+ * @article_group API
  * @docOpaque
  */
 export interface Locator {
@@ -27,6 +30,10 @@ export interface Locator {
  * Example Handle represents a remote element in the DOM of the browser. It implements useful methods for querying and interacting with this DOM element.
  *
  * All methods on this class are asynchronous and must be used with `await` to wait for the result to fulfill from the browser.
+ *
+ * @title ElementHandle
+ * @position 3
+ * @article_group API
  */
 export interface ElementHandle {
 	/**
@@ -154,7 +161,10 @@ export interface ElementHandle {
 
 /**
  * The target locator is accessed through `browser.switchTo()` and enables you to switch frames, tabs, or browser windows. As well as access the `activeElement` or an alert box.
- *
+
+ * @title targetLocator
+ * @position 4
+ * @article_group API
  * @class TargetLocator
  */
 export interface TargetLocator {

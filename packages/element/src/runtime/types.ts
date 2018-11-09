@@ -73,7 +73,7 @@ export interface SuiteDefinition {
  * @title Browser
  * @class Browser
  * @position 1
- * @articleGroup API
+ * @article_group API
  */
 export interface Browser {
 	/**
@@ -300,7 +300,7 @@ export interface Browser {
  *
  * @class Driver
  * @position 10
- * @articleGroup API
+ * @article_group API
  * @module Browser
  */
 export type Driver = Browser

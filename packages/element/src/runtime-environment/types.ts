@@ -1,3 +1,7 @@
+/**
+ * @article_group API
+ * @position 9
+ */
 export interface FloodProcessEnv {
 	BROWSER_ID: number
 	FLOOD_GRID_REGION: string

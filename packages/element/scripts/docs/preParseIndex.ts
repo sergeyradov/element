@@ -5,10 +5,19 @@ import { readFileSync } from 'fs-extra'
 import * as debugFactory from 'debug'
 const debug = debugFactory('element:docs')
 
+interface IndexContext {
+	indexMap: ObjectMap<string>
+	indexExports: ObjectMap<string>
+	pageTags: ObjectMap<ObjectMap<string>>
+}
+
+export type ObjectMap<T> = { [key: string]: T }
+
 export function preParseIndex(fileName: string) {
-	const ctx = {
-		indexMap: {} as { [key: string]: string },
-		indexExports: {} as { [key: string]: string },
+	const ctx: IndexContext = {
+		indexMap: {},
+		indexExports: {},
+		pageTags: {},
 	}
 
 	const s = ts.createSourceFile(
@@ -59,17 +68,24 @@ function getDocTags(node): tags {
 	return t
 }
 
-function addIndex(ctx, name, srcFile, docTags) {
+function addIndex(ctx: IndexContext, name, srcFile, docTags) {
 	if (name === undefined) return
-	const { docPage } = docTags
-	if (docPage === undefined) return
+	let { docPage, docAlias, ...otherTags } = docTags
+	if (!docPage) return
 
-	debug('alias', docTags.docAlias)
+	debug('alias', docAlias)
 
 	ctx.indexMap[`${srcFile}.${name}`] = docPage
 	ctx.indexExports[name] = docPage
-	if (docTags.docAlias && docTags.docAlias[0] === name) {
-		const aliasName = docTags.docAlias[1]
+
+	if (!otherTags) otherTags = {}
+	if (!ctx.pageTags[docPage]) ctx.pageTags[docPage] = {}
+	ctx.pageTags[docPage] = { ...ctx.pageTags[docPage], ...otherTags }
+
+	// if (Object.keys(ctx.pageTags[docPage]).length) debugger
+
+	if (docAlias && docAlias[0] === name) {
+		const aliasName = docAlias[1]
 		ctx.indexMap[`${srcFile}.${aliasName}`] = docPage
 		ctx.indexExports[aliasName] = docPage
 	}

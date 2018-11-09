@@ -14,6 +14,9 @@ import CustomDeviceDescriptors from '../utils/CustomDeviceDescriptors'
  * ```
 
  * @export
+ * @title Settings
+ * @position 6
+ * @article_group API
  * @param {TestSettings} settings
  */
 export declare function setup(settings: TestSettings): void
@@ -62,6 +65,10 @@ export type ChromeVersion = 'puppeteer' | 'stable'
  * ```
  *
  * See [DEFAULT_SETTINGS] for a list of the default value for each setting.
+ *
+ * @article_group API
+ * @position 9
+ * @title Test Settings
  */
 // TODO provide ConcreteTestSettings
 export interface TestSettings {

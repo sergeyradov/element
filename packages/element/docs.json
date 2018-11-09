@@ -24,18 +24,22 @@
 						"isConst": true
 					},
 					"comment": {
-						"shortText": "A subset of `process.env` available to this test. It is of type <[FloodProcessEnv]>.",
+						"shortText": "A subset of `process.env` available to this test. It is of type [FloodProcessEnv][].",
 						"tags": [
 							{
 								"tag": "docpage",
-								"text": "DSL\n"
+								"text": "DSL"
+							},
+							{
+								"tag": "article_group",
+								"text": "API\n"
 							}
 						]
 					},
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 90,
+							"line": 102,
 							"character": 16
 						}
 					],
@@ -56,19 +60,23 @@
 						"isConst": true
 					},
 					"comment": {
-						"shortText": "`TestData` is a pre-configured instance of <[TestDataFactory]> that can be used to prepare test data for your script.",
+						"shortText": "`TestData` is a pre-configured instance of [TestDataFactory][] that can be used to prepare test data for your script.",
 						"text": "**Example**\n```typescript\nimport { step, Browser, TestData, TestSettings } from '@flood/element'\n\ninterface Row {\n  username: string\n  userID: number\n}\nTestData.fromCSV<Row>('users.csv').shuffle()\n```\n",
 						"tags": [
 							{
 								"tag": "docpage",
-								"text": "TestData\n"
+								"text": "TestData"
+							},
+							{
+								"tag": "article_group",
+								"text": "API\n"
 							}
 						]
 					},
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 61,
+							"line": 70,
 							"character": 21
 						}
 					],
@@ -1340,15 +1348,11 @@
 								"text": "Locators"
 							},
 							{
-								"tag": "class",
-								"text": "By"
-							},
-							{
 								"tag": "position",
 								"text": "2"
 							},
 							{
-								"tag": "articlegroup",
+								"tag": "article_group",
 								"text": "API\n"
 							}
 						]
@@ -1409,7 +1413,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/By.ts",
-									"line": 21,
+									"line": 20,
 									"character": 31
 								}
 							]
@@ -1427,7 +1431,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/By.ts",
-									"line": 21,
+									"line": 20,
 									"character": 21
 								}
 							],
@@ -1452,7 +1456,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/By.ts",
-									"line": 20,
+									"line": 19,
 									"character": 24
 								}
 							],
@@ -1534,7 +1538,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/By.ts",
-									"line": 133,
+									"line": 132,
 									"character": 19
 								}
 							]
@@ -1617,7 +1621,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/By.ts",
-									"line": 39,
+									"line": 38,
 									"character": 18
 								}
 							]
@@ -1669,7 +1673,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/By.ts",
-									"line": 52,
+									"line": 51,
 									"character": 17
 								}
 							]
@@ -1737,7 +1741,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/By.ts",
-									"line": 104,
+									"line": 103,
 									"character": 10
 								}
 							]
@@ -1788,7 +1792,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/By.ts",
-									"line": 63,
+									"line": 62,
 									"character": 16
 								}
 							]
@@ -1841,7 +1845,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/By.ts",
-									"line": 118,
+									"line": 117,
 									"character": 23
 								}
 							]
@@ -1892,7 +1896,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/By.ts",
-									"line": 73,
+									"line": 72,
 									"character": 23
 								}
 							]
@@ -1943,7 +1947,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/By.ts",
-									"line": 93,
+									"line": 92,
 									"character": 26
 								}
 							]
@@ -1995,7 +1999,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/By.ts",
-									"line": 146,
+									"line": 145,
 									"character": 15
 								}
 							]
@@ -2046,7 +2050,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/By.ts",
-									"line": 83,
+									"line": 82,
 									"character": 19
 								}
 							]
@@ -2104,7 +2108,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/By.ts",
-									"line": 158,
+									"line": 157,
 									"character": 13
 								}
 							]
@@ -2147,7 +2151,7 @@
 					"sources": [
 						{
 							"fileName": "src/page/By.ts",
-							"line": 19,
+							"line": 18,
 							"character": 15
 						}
 					]
@@ -2192,8 +2196,20 @@
 						"isAbstract": true
 					},
 					"comment": {
-						"shortText": "A Condition represents a predicate which can be used to wait for an <[ElementHandle]>. They are generally created by using <[Until]>'s helper methods.",
+						"shortText": "A Condition represents a predicate which can be used to wait for an [ElementHandle][]. They are generally created by using [Until][]'s helper methods.",
 						"tags": [
+							{
+								"tag": "title",
+								"text": "Condition"
+							},
+							{
+								"tag": "position",
+								"text": "2"
+							},
+							{
+								"tag": "article_group",
+								"text": "API"
+							},
 							{
 								"tag": "docopaque",
 								"text": "\n"
@@ -2241,7 +2257,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 24,
+									"line": 28,
 									"character": 54
 								}
 							]
@@ -2260,7 +2276,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 26,
+									"line": 30,
 									"character": 24
 								}
 							],
@@ -2282,7 +2298,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 23,
+									"line": 27,
 									"character": 18
 								}
 							],
@@ -2305,7 +2321,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 24,
+									"line": 28,
 									"character": 16
 								}
 							],
@@ -2340,7 +2356,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 35,
+									"line": 39,
 									"character": 22
 								}
 							]
@@ -2372,7 +2388,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 28,
+									"line": 32,
 									"character": 25
 								}
 							]
@@ -2436,7 +2452,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 29,
+									"line": 33,
 									"character": 30
 								}
 							]
@@ -2486,7 +2502,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 31,
+									"line": 35,
 									"character": 26
 								}
 							]
@@ -2529,7 +2545,7 @@
 					"sources": [
 						{
 							"fileName": "src/page/Condition.ts",
-							"line": 22,
+							"line": 26,
 							"character": 31
 						}
 					],
@@ -2629,7 +2645,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 72,
+									"line": 76,
 									"character": 65
 								}
 							],
@@ -2653,7 +2669,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 45,
+									"line": 49,
 									"character": 13
 								}
 							],
@@ -2685,7 +2701,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 23,
+									"line": 27,
 									"character": 18
 								}
 							],
@@ -2713,7 +2729,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 42,
+									"line": 46,
 									"character": 15
 								}
 							],
@@ -2742,7 +2758,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 47,
+									"line": 51,
 									"character": 17
 								}
 							],
@@ -2779,7 +2795,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 41,
+									"line": 45,
 									"character": 20
 								}
 							],
@@ -2809,7 +2825,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 24,
+									"line": 28,
 									"character": 16
 								}
 							],
@@ -2849,7 +2865,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 79,
+									"line": 83,
 									"character": 20
 								}
 							]
@@ -2883,7 +2899,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 35,
+									"line": 39,
 									"character": 22
 								}
 							],
@@ -2947,7 +2963,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 58,
+									"line": 62,
 									"character": 29
 								}
 							],
@@ -2989,7 +3005,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 77,
+									"line": 81,
 									"character": 25
 								}
 							],
@@ -3062,7 +3078,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 83,
+									"line": 87,
 									"character": 21
 								}
 							],
@@ -3122,7 +3138,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 31,
+									"line": 35,
 									"character": 26
 								}
 							],
@@ -3175,7 +3191,7 @@
 					"sources": [
 						{
 							"fileName": "src/page/Condition.ts",
-							"line": 72,
+							"line": 76,
 							"character": 38
 						}
 					],
@@ -3324,7 +3340,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 42,
+									"line": 46,
 									"character": 24
 								}
 							],
@@ -3348,7 +3364,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 45,
+									"line": 49,
 									"character": 13
 								}
 							],
@@ -3375,7 +3391,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 23,
+									"line": 27,
 									"character": 18
 								}
 							],
@@ -3403,7 +3419,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 42,
+									"line": 46,
 									"character": 15
 								}
 							],
@@ -3427,7 +3443,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 47,
+									"line": 51,
 									"character": 17
 								}
 							],
@@ -3459,7 +3475,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 41,
+									"line": 45,
 									"character": 20
 								}
 							],
@@ -3484,7 +3500,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 24,
+									"line": 28,
 									"character": 16
 								}
 							],
@@ -3529,7 +3545,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 35,
+									"line": 39,
 									"character": 22
 								}
 							],
@@ -3588,7 +3604,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 58,
+									"line": 62,
 									"character": 29
 								}
 							]
@@ -3625,7 +3641,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 28,
+									"line": 32,
 									"character": 25
 								}
 							],
@@ -3699,7 +3715,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 29,
+									"line": 33,
 									"character": 30
 								}
 							],
@@ -3759,7 +3775,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 31,
+									"line": 35,
 									"character": 26
 								}
 							],
@@ -3811,7 +3827,7 @@
 					"sources": [
 						{
 							"fileName": "src/page/Condition.ts",
-							"line": 40,
+							"line": 44,
 							"character": 38
 						}
 					],
@@ -6764,7 +6780,13 @@
 						"isExternal": true
 					},
 					"comment": {
-						"shortText": "Chrome DevTools Device Emulation"
+						"shortText": "Chrome DevTools Device Emulation",
+						"tags": [
+							{
+								"tag": "article_group",
+								"text": "Constants\n"
+							}
+						]
 					},
 					"children": [
 						{
@@ -6779,7 +6801,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 13,
+									"line": 21,
 									"character": 16
 								}
 							],
@@ -6797,7 +6819,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 14,
+									"line": 22,
 									"character": 25
 								}
 							],
@@ -6815,7 +6837,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 11,
+									"line": 19,
 									"character": 21
 								}
 							],
@@ -6833,7 +6855,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 12,
+									"line": 20,
 									"character": 30
 								}
 							],
@@ -6851,7 +6873,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 17,
+									"line": 25,
 									"character": 15
 								}
 							],
@@ -6869,7 +6891,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 18,
+									"line": 26,
 									"character": 24
 								}
 							],
@@ -6887,7 +6909,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 15,
+									"line": 23,
 									"character": 15
 								}
 							],
@@ -6905,7 +6927,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 16,
+									"line": 24,
 									"character": 24
 								}
 							],
@@ -6923,7 +6945,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 21,
+									"line": 29,
 									"character": 11
 								}
 							],
@@ -6941,7 +6963,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 22,
+									"line": 30,
 									"character": 20
 								}
 							],
@@ -6959,7 +6981,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 19,
+									"line": 27,
 									"character": 13
 								}
 							],
@@ -6977,7 +6999,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 20,
+									"line": 28,
 									"character": 22
 								}
 							],
@@ -6995,7 +7017,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 23,
+									"line": 31,
 									"character": 7
 								}
 							],
@@ -7013,7 +7035,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 24,
+									"line": 32,
 									"character": 16
 								}
 							],
@@ -7031,7 +7053,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 25,
+									"line": 33,
 									"character": 11
 								}
 							],
@@ -7049,7 +7071,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 26,
+									"line": 34,
 									"character": 20
 								}
 							],
@@ -7067,7 +7089,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 27,
+									"line": 35,
 									"character": 10
 								}
 							],
@@ -7085,7 +7107,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 28,
+									"line": 36,
 									"character": 19
 								}
 							],
@@ -7103,7 +7125,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 29,
+									"line": 37,
 									"character": 10
 								}
 							],
@@ -7121,7 +7143,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 30,
+									"line": 38,
 									"character": 19
 								}
 							],
@@ -7139,7 +7161,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 31,
+									"line": 39,
 									"character": 10
 								}
 							],
@@ -7157,7 +7179,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 32,
+									"line": 40,
 									"character": 19
 								}
 							],
@@ -7175,7 +7197,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 33,
+									"line": 41,
 									"character": 10
 								}
 							],
@@ -7193,7 +7215,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 34,
+									"line": 42,
 									"character": 19
 								}
 							],
@@ -7211,7 +7233,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 35,
+									"line": 43,
 									"character": 14
 								}
 							],
@@ -7229,7 +7251,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 36,
+									"line": 44,
 									"character": 23
 								}
 							],
@@ -7247,7 +7269,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 37,
+									"line": 45,
 									"character": 10
 								}
 							],
@@ -7265,7 +7287,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 38,
+									"line": 46,
 									"character": 19
 								}
 							],
@@ -7283,7 +7305,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 39,
+									"line": 47,
 									"character": 16
 								}
 							],
@@ -7301,7 +7323,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 40,
+									"line": 48,
 									"character": 25
 								}
 							],
@@ -7319,7 +7341,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 41,
+									"line": 49,
 									"character": 15
 								}
 							],
@@ -7337,7 +7359,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 42,
+									"line": 50,
 									"character": 24
 								}
 							],
@@ -7355,7 +7377,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 43,
+									"line": 51,
 									"character": 20
 								}
 							],
@@ -7373,7 +7395,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 44,
+									"line": 52,
 									"character": 20
 								}
 							],
@@ -7391,7 +7413,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 45,
+									"line": 53,
 									"character": 29
 								}
 							],
@@ -7409,7 +7431,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 46,
+									"line": 54,
 									"character": 10
 								}
 							],
@@ -7427,7 +7449,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 47,
+									"line": 55,
 									"character": 19
 								}
 							],
@@ -7445,7 +7467,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 48,
+									"line": 56,
 									"character": 9
 								}
 							],
@@ -7463,7 +7485,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 49,
+									"line": 57,
 									"character": 18
 								}
 							],
@@ -7481,7 +7503,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 50,
+									"line": 58,
 									"character": 9
 								}
 							],
@@ -7499,7 +7521,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 51,
+									"line": 59,
 									"character": 18
 								}
 							],
@@ -7517,7 +7539,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 52,
+									"line": 60,
 									"character": 10
 								}
 							],
@@ -7535,7 +7557,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 53,
+									"line": 61,
 									"character": 19
 								}
 							],
@@ -7553,7 +7575,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 54,
+									"line": 62,
 									"character": 9
 								}
 							],
@@ -7571,7 +7593,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 55,
+									"line": 63,
 									"character": 18
 								}
 							],
@@ -7589,7 +7611,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 56,
+									"line": 64,
 									"character": 10
 								}
 							],
@@ -7607,7 +7629,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 57,
+									"line": 65,
 									"character": 19
 								}
 							],
@@ -7625,7 +7647,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 58,
+									"line": 66,
 									"character": 9
 								}
 							],
@@ -7643,7 +7665,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 59,
+									"line": 67,
 									"character": 18
 								}
 							],
@@ -7661,7 +7683,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 60,
+									"line": 68,
 									"character": 17
 								}
 							],
@@ -7679,7 +7701,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 61,
+									"line": 69,
 									"character": 26
 								}
 							],
@@ -7697,7 +7719,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 62,
+									"line": 70,
 									"character": 10
 								}
 							],
@@ -7715,7 +7737,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 63,
+									"line": 71,
 									"character": 19
 								}
 							],
@@ -7786,7 +7808,7 @@
 					"sources": [
 						{
 							"fileName": "src/page/Enums.ts",
-							"line": 10,
+							"line": 18,
 							"character": 18
 						}
 					]
@@ -7799,6 +7821,26 @@
 					"flags": {
 						"isExported": true,
 						"isExternal": true
+					},
+					"comment": {
+						"tags": [
+							{
+								"tag": "article_group",
+								"text": "API"
+							},
+							{
+								"tag": "position",
+								"text": "10"
+							},
+							{
+								"tag": "export",
+								"text": ""
+							},
+							{
+								"tag": "enum",
+								"text": "{number}\n"
+							}
+						]
 					},
 					"children": [
 						{
@@ -7813,7 +7855,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 2,
+									"line": 9,
 									"character": 5
 								}
 							],
@@ -7831,7 +7873,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 4,
+									"line": 11,
 									"character": 7
 								}
 							],
@@ -7849,7 +7891,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 3,
+									"line": 10,
 									"character": 6
 								}
 							],
@@ -7870,7 +7912,7 @@
 					"sources": [
 						{
 							"fileName": "src/page/Enums.ts",
-							"line": 1,
+							"line": 8,
 							"character": 24
 						}
 					]
@@ -7888,6 +7930,10 @@
 					"comment": {
 						"shortText": "Lists all available keyboard control keys which can be used when sending a key press combination.",
 						"tags": [
+							{
+								"tag": "article_group",
+								"text": "Constants"
+							},
 							{
 								"tag": "export",
 								"text": ""
@@ -7911,7 +7957,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 115,
+									"line": 124,
 									"character": 4
 								}
 							],
@@ -7933,7 +7979,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 83,
+									"line": 92,
 									"character": 4
 								}
 							],
@@ -7955,7 +8001,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 97,
+									"line": 106,
 									"character": 11
 								}
 							],
@@ -7977,7 +8023,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 91,
+									"line": 100,
 									"character": 11
 								}
 							],
@@ -7999,7 +8045,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 95,
+									"line": 104,
 									"character": 12
 								}
 							],
@@ -8021,7 +8067,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 93,
+									"line": 102,
 									"character": 9
 								}
 							],
@@ -8043,7 +8089,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 76,
+									"line": 85,
 									"character": 11
 								}
 							],
@@ -8065,7 +8111,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 74,
+									"line": 83,
 									"character": 7
 								}
 							],
@@ -8087,7 +8133,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 78,
+									"line": 87,
 									"character": 6
 								}
 							],
@@ -8109,7 +8155,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 134,
+									"line": 143,
 									"character": 8
 								}
 							],
@@ -8131,7 +8177,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 82,
+									"line": 91,
 									"character": 8
 								}
 							],
@@ -8153,7 +8199,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 118,
+									"line": 127,
 									"character": 8
 								}
 							],
@@ -8175,7 +8221,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 100,
+									"line": 109,
 									"character": 7
 								}
 							],
@@ -8197,7 +8243,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 119,
+									"line": 128,
 									"character": 7
 								}
 							],
@@ -8219,7 +8265,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 98,
+									"line": 107,
 									"character": 5
 								}
 							],
@@ -8241,7 +8287,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 89,
+									"line": 98,
 									"character": 4
 								}
 							],
@@ -8263,7 +8309,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 80,
+									"line": 89,
 									"character": 6
 								}
 							],
@@ -8285,7 +8331,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 102,
+									"line": 111,
 									"character": 7
 								}
 							],
@@ -8307,7 +8353,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 85,
+									"line": 94,
 									"character": 7
 								}
 							],
@@ -8329,7 +8375,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 121,
+									"line": 130,
 									"character": 3
 								}
 							],
@@ -8351,7 +8397,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 130,
+									"line": 139,
 									"character": 4
 								}
 							],
@@ -8373,7 +8419,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 131,
+									"line": 140,
 									"character": 4
 								}
 							],
@@ -8395,7 +8441,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 132,
+									"line": 141,
 									"character": 4
 								}
 							],
@@ -8417,7 +8463,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 122,
+									"line": 131,
 									"character": 3
 								}
 							],
@@ -8439,7 +8485,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 123,
+									"line": 132,
 									"character": 3
 								}
 							],
@@ -8461,7 +8507,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 124,
+									"line": 133,
 									"character": 3
 								}
 							],
@@ -8483,7 +8529,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 125,
+									"line": 134,
 									"character": 3
 								}
 							],
@@ -8505,7 +8551,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 126,
+									"line": 135,
 									"character": 3
 								}
 							],
@@ -8527,7 +8573,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 127,
+									"line": 136,
 									"character": 3
 								}
 							],
@@ -8549,7 +8595,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 128,
+									"line": 137,
 									"character": 3
 								}
 							],
@@ -8571,7 +8617,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 129,
+									"line": 138,
 									"character": 3
 								}
 							],
@@ -8593,7 +8639,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 75,
+									"line": 84,
 									"character": 5
 								}
 							],
@@ -8615,7 +8661,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 90,
+									"line": 99,
 									"character": 5
 								}
 							],
@@ -8637,7 +8683,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 99,
+									"line": 108,
 									"character": 7
 								}
 							],
@@ -8659,7 +8705,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 92,
+									"line": 101,
 									"character": 5
 								}
 							],
@@ -8681,7 +8727,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 135,
+									"line": 144,
 									"character": 5
 								}
 							],
@@ -8703,7 +8749,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 114,
+									"line": 123,
 									"character": 9
 								}
 							],
@@ -8725,7 +8771,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 73,
+									"line": 82,
 									"character": 5
 								}
 							],
@@ -8747,7 +8793,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 104,
+									"line": 113,
 									"character": 8
 								}
 							],
@@ -8769,7 +8815,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 105,
+									"line": 114,
 									"character": 8
 								}
 							],
@@ -8791,7 +8837,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 106,
+									"line": 115,
 									"character": 8
 								}
 							],
@@ -8813,7 +8859,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 107,
+									"line": 116,
 									"character": 8
 								}
 							],
@@ -8835,7 +8881,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 108,
+									"line": 117,
 									"character": 8
 								}
 							],
@@ -8857,7 +8903,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 109,
+									"line": 118,
 									"character": 8
 								}
 							],
@@ -8879,7 +8925,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 110,
+									"line": 119,
 									"character": 8
 								}
 							],
@@ -8901,7 +8947,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 111,
+									"line": 120,
 									"character": 8
 								}
 							],
@@ -8923,7 +8969,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 112,
+									"line": 121,
 									"character": 8
 								}
 							],
@@ -8945,7 +8991,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 113,
+									"line": 122,
 									"character": 8
 								}
 							],
@@ -8967,7 +9013,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 88,
+									"line": 97,
 									"character": 10
 								}
 							],
@@ -8989,7 +9035,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 87,
+									"line": 96,
 									"character": 8
 								}
 							],
@@ -9011,7 +9057,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 84,
+									"line": 93,
 									"character": 6
 								}
 							],
@@ -9033,7 +9079,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 79,
+									"line": 88,
 									"character": 7
 								}
 							],
@@ -9055,7 +9101,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 96,
+									"line": 105,
 									"character": 6
 								}
 							],
@@ -9077,7 +9123,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 101,
+									"line": 110,
 									"character": 10
 								}
 							],
@@ -9099,7 +9145,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 116,
+									"line": 125,
 									"character": 10
 								}
 							],
@@ -9121,7 +9167,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 81,
+									"line": 90,
 									"character": 6
 								}
 							],
@@ -9143,7 +9189,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 86,
+									"line": 95,
 									"character": 6
 								}
 							],
@@ -9165,7 +9211,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 117,
+									"line": 126,
 									"character": 9
 								}
 							],
@@ -9187,7 +9233,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 77,
+									"line": 86,
 									"character": 4
 								}
 							],
@@ -9209,7 +9255,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 94,
+									"line": 103,
 									"character": 3
 								}
 							],
@@ -9291,7 +9337,7 @@
 					"sources": [
 						{
 							"fileName": "src/page/Enums.ts",
-							"line": 72,
+							"line": 81,
 							"character": 16
 						}
 					],
@@ -9310,6 +9356,14 @@
 						"isExternal": true,
 						"isConst": true
 					},
+					"comment": {
+						"tags": [
+							{
+								"tag": "article_group",
+								"text": "Constants\n"
+							}
+						]
+					},
 					"children": [
 						{
 							"id": 294,
@@ -9323,7 +9377,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 152,
+									"line": 164,
 									"character": 10
 								}
 							],
@@ -9345,7 +9399,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 154,
+									"line": 166,
 									"character": 14
 								}
 							],
@@ -9367,7 +9421,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 156,
+									"line": 168,
 									"character": 6
 								}
 							],
@@ -9389,7 +9443,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 157,
+									"line": 169,
 									"character": 10
 								}
 							],
@@ -9411,7 +9465,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 149,
+									"line": 161,
 									"character": 4
 								}
 							],
@@ -9433,7 +9487,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 150,
+									"line": 162,
 									"character": 4
 								}
 							],
@@ -9455,7 +9509,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 151,
+									"line": 163,
 									"character": 4
 								}
 							],
@@ -9477,7 +9531,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 143,
+									"line": 155,
 									"character": 5
 								}
 							],
@@ -9499,7 +9553,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 139,
+									"line": 151,
 									"character": 7
 								}
 							],
@@ -9521,7 +9575,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 141,
+									"line": 153,
 									"character": 5
 								}
 							],
@@ -9543,7 +9597,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 158,
+									"line": 170,
 									"character": 9
 								}
 							],
@@ -9565,7 +9619,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 159,
+									"line": 171,
 									"character": 13
 								}
 							],
@@ -9587,7 +9641,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 160,
+									"line": 172,
 									"character": 6
 								}
 							],
@@ -9609,7 +9663,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 145,
+									"line": 157,
 									"character": 10
 								}
 							],
@@ -9631,7 +9685,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Enums.ts",
-									"line": 147,
+									"line": 159,
 									"character": 14
 								}
 							],
@@ -9668,7 +9722,7 @@
 					"sources": [
 						{
 							"fileName": "src/page/Enums.ts",
-							"line": 138,
+							"line": 150,
 							"character": 23
 						}
 					],
@@ -12169,7 +12223,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 24,
+									"line": 28,
 									"character": 54
 								}
 							],
@@ -12193,7 +12247,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 26,
+									"line": 30,
 									"character": 24
 								}
 							],
@@ -12247,7 +12301,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 24,
+									"line": 28,
 									"character": 16
 								}
 							],
@@ -12292,7 +12346,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 35,
+									"line": 39,
 									"character": 22
 								}
 							],
@@ -12647,7 +12701,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 45,
+									"line": 49,
 									"character": 13
 								}
 							],
@@ -12679,7 +12733,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 23,
+									"line": 27,
 									"character": 18
 								}
 							],
@@ -12707,7 +12761,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 42,
+									"line": 46,
 									"character": 15
 								}
 							],
@@ -12735,7 +12789,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 41,
+									"line": 45,
 									"character": 20
 								}
 							],
@@ -12765,7 +12819,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 24,
+									"line": 28,
 									"character": 16
 								}
 							],
@@ -12810,7 +12864,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 79,
+									"line": 83,
 									"character": 20
 								}
 							],
@@ -12849,7 +12903,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 35,
+									"line": 39,
 									"character": 22
 								}
 							],
@@ -12913,7 +12967,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 58,
+									"line": 62,
 									"character": 29
 								}
 							],
@@ -12977,7 +13031,7 @@
 								},
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 47,
+									"line": 51,
 									"character": 17
 								}
 							],
@@ -13104,7 +13158,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 83,
+									"line": 87,
 									"character": 21
 								}
 							],
@@ -13169,7 +13223,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 31,
+									"line": 35,
 									"character": 26
 								}
 							],
@@ -13369,7 +13423,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 45,
+									"line": 49,
 									"character": 13
 								}
 							],
@@ -13401,7 +13455,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 23,
+									"line": 27,
 									"character": 18
 								}
 							],
@@ -13429,7 +13483,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 42,
+									"line": 46,
 									"character": 15
 								}
 							],
@@ -13457,7 +13511,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 41,
+									"line": 45,
 									"character": 20
 								}
 							],
@@ -13487,7 +13541,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 24,
+									"line": 28,
 									"character": 16
 								}
 							],
@@ -13532,7 +13586,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 79,
+									"line": 83,
 									"character": 20
 								}
 							],
@@ -13571,7 +13625,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 35,
+									"line": 39,
 									"character": 22
 								}
 							],
@@ -13635,7 +13689,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 58,
+									"line": 62,
 									"character": 29
 								}
 							],
@@ -13699,7 +13753,7 @@
 								},
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 47,
+									"line": 51,
 									"character": 17
 								}
 							],
@@ -13826,7 +13880,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 83,
+									"line": 87,
 									"character": 21
 								}
 							],
@@ -13891,7 +13945,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 31,
+									"line": 35,
 									"character": 26
 								}
 							],
@@ -14091,7 +14145,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 45,
+									"line": 49,
 									"character": 13
 								}
 							],
@@ -14123,7 +14177,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 23,
+									"line": 27,
 									"character": 18
 								}
 							],
@@ -14151,7 +14205,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 42,
+									"line": 46,
 									"character": 15
 								}
 							],
@@ -14179,7 +14233,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 41,
+									"line": 45,
 									"character": 20
 								}
 							],
@@ -14209,7 +14263,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 24,
+									"line": 28,
 									"character": 16
 								}
 							],
@@ -14254,7 +14308,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 79,
+									"line": 83,
 									"character": 20
 								}
 							],
@@ -14293,7 +14347,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 35,
+									"line": 39,
 									"character": 22
 								}
 							],
@@ -14357,7 +14411,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 58,
+									"line": 62,
 									"character": 29
 								}
 							],
@@ -14433,7 +14487,7 @@
 								},
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 47,
+									"line": 51,
 									"character": 17
 								}
 							],
@@ -14560,7 +14614,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 83,
+									"line": 87,
 									"character": 21
 								}
 							],
@@ -14625,7 +14679,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 31,
+									"line": 35,
 									"character": 26
 								}
 							],
@@ -14825,7 +14879,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 45,
+									"line": 49,
 									"character": 13
 								}
 							],
@@ -14857,7 +14911,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 23,
+									"line": 27,
 									"character": 18
 								}
 							],
@@ -14885,7 +14939,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 42,
+									"line": 46,
 									"character": 15
 								}
 							],
@@ -14913,7 +14967,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 41,
+									"line": 45,
 									"character": 20
 								}
 							],
@@ -14943,7 +14997,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 24,
+									"line": 28,
 									"character": 16
 								}
 							],
@@ -14988,7 +15042,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 79,
+									"line": 83,
 									"character": 20
 								}
 							],
@@ -15027,7 +15081,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 35,
+									"line": 39,
 									"character": 22
 								}
 							],
@@ -15091,7 +15145,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 58,
+									"line": 62,
 									"character": 29
 								}
 							],
@@ -15156,7 +15210,7 @@
 								},
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 47,
+									"line": 51,
 									"character": 17
 								}
 							],
@@ -15283,7 +15337,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 83,
+									"line": 87,
 									"character": 21
 								}
 							],
@@ -15348,7 +15402,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 31,
+									"line": 35,
 									"character": 26
 								}
 							],
@@ -15519,7 +15573,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 45,
+									"line": 49,
 									"character": 13
 								}
 							],
@@ -15551,7 +15605,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 23,
+									"line": 27,
 									"character": 18
 								}
 							],
@@ -15579,7 +15633,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 42,
+									"line": 46,
 									"character": 15
 								}
 							],
@@ -15607,7 +15661,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 41,
+									"line": 45,
 									"character": 20
 								}
 							],
@@ -15637,7 +15691,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 24,
+									"line": 28,
 									"character": 16
 								}
 							],
@@ -15682,7 +15736,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 79,
+									"line": 83,
 									"character": 20
 								}
 							],
@@ -15721,7 +15775,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 35,
+									"line": 39,
 									"character": 22
 								}
 							],
@@ -15785,7 +15839,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 58,
+									"line": 62,
 									"character": 29
 								}
 							],
@@ -15860,7 +15914,7 @@
 								},
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 47,
+									"line": 51,
 									"character": 17
 								}
 							],
@@ -15987,7 +16041,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 83,
+									"line": 87,
 									"character": 21
 								}
 							],
@@ -16052,7 +16106,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 31,
+									"line": 35,
 									"character": 26
 								}
 							],
@@ -16250,7 +16304,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 23,
+									"line": 27,
 									"character": 18
 								}
 							],
@@ -16278,7 +16332,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 42,
+									"line": 46,
 									"character": 15
 								}
 							],
@@ -16306,7 +16360,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 41,
+									"line": 45,
 									"character": 20
 								}
 							],
@@ -16336,7 +16390,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 24,
+									"line": 28,
 									"character": 16
 								}
 							],
@@ -16465,7 +16519,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 35,
+									"line": 39,
 									"character": 22
 								}
 							],
@@ -16529,7 +16583,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 58,
+									"line": 62,
 									"character": 29
 								}
 							],
@@ -16597,7 +16651,7 @@
 								},
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 47,
+									"line": 51,
 									"character": 17
 								}
 							],
@@ -16724,7 +16778,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 83,
+									"line": 87,
 									"character": 21
 								}
 							],
@@ -16789,7 +16843,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 31,
+									"line": 35,
 									"character": 26
 								}
 							],
@@ -16975,7 +17029,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 26,
+									"line": 30,
 									"character": 24
 								}
 							],
@@ -17002,7 +17056,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 23,
+									"line": 27,
 									"character": 18
 								}
 							],
@@ -17076,7 +17130,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 24,
+									"line": 28,
 									"character": 16
 								}
 							],
@@ -17121,7 +17175,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 35,
+									"line": 39,
 									"character": 22
 								}
 							],
@@ -17338,7 +17392,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 31,
+									"line": 35,
 									"character": 26
 								}
 							],
@@ -17531,7 +17585,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 26,
+									"line": 30,
 									"character": 24
 								}
 							],
@@ -17581,7 +17635,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 23,
+									"line": 27,
 									"character": 18
 								}
 							],
@@ -17632,7 +17686,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 24,
+									"line": 28,
 									"character": 16
 								}
 							],
@@ -17677,7 +17731,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 35,
+									"line": 39,
 									"character": 22
 								}
 							],
@@ -17837,7 +17891,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 31,
+									"line": 35,
 									"character": 26
 								}
 							],
@@ -18029,7 +18083,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 26,
+									"line": 30,
 									"character": 24
 								}
 							],
@@ -18056,7 +18110,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 23,
+									"line": 27,
 									"character": 18
 								}
 							],
@@ -18107,7 +18161,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 24,
+									"line": 28,
 									"character": 16
 								}
 							],
@@ -18175,7 +18229,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 35,
+									"line": 39,
 									"character": 22
 								}
 							],
@@ -18335,7 +18389,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/Condition.ts",
-									"line": 31,
+									"line": 35,
 									"character": 26
 								}
 							],
@@ -21981,7 +22035,21 @@
 					},
 					"comment": {
 						"shortText": "Example Handle represents a remote element in the DOM of the browser. It implements useful methods for querying and interacting with this DOM element.",
-						"text": "All methods on this class are asynchronous and must be used with `await` to wait for the result to fulfill from the browser.\n"
+						"text": "All methods on this class are asynchronous and must be used with `await` to wait for the result to fulfill from the browser.\n",
+						"tags": [
+							{
+								"tag": "title",
+								"text": "ElementHandle"
+							},
+							{
+								"tag": "position",
+								"text": "3"
+							},
+							{
+								"tag": "article_group",
+								"text": "API\n"
+							}
+						]
 					},
 					"children": [
 						{
@@ -22004,7 +22072,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/types.ts",
-									"line": 35,
+									"line": 42,
 									"character": 8
 								}
 							],
@@ -22059,7 +22127,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/types.ts",
-									"line": 40,
+									"line": 47,
 									"character": 12
 								}
 							]
@@ -22098,7 +22166,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/types.ts",
-									"line": 78,
+									"line": 85,
 									"character": 5
 								}
 							]
@@ -22137,7 +22205,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/types.ts",
-									"line": 58,
+									"line": 65,
 									"character": 6
 								}
 							]
@@ -22191,7 +22259,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/types.ts",
-									"line": 51,
+									"line": 58,
 									"character": 6
 								}
 							]
@@ -22227,7 +22295,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/types.ts",
-									"line": 152,
+									"line": 159,
 									"character": 8
 								}
 							]
@@ -22299,7 +22367,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/types.ts",
-									"line": 90,
+									"line": 97,
 									"character": 12
 								}
 							]
@@ -22365,7 +22433,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/types.ts",
-									"line": 95,
+									"line": 102,
 									"character": 13
 								}
 							]
@@ -22404,7 +22472,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/types.ts",
-									"line": 73,
+									"line": 80,
 									"character": 6
 								}
 							]
@@ -22465,7 +22533,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/types.ts",
-									"line": 45,
+									"line": 52,
 									"character": 13
 								}
 							]
@@ -22513,7 +22581,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/types.ts",
-									"line": 105,
+									"line": 112,
 									"character": 6
 								}
 							]
@@ -22574,7 +22642,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/types.ts",
-									"line": 145,
+									"line": 152,
 									"character": 12
 								}
 							]
@@ -22610,7 +22678,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/types.ts",
-									"line": 80,
+									"line": 87,
 									"character": 10
 								}
 							]
@@ -22649,7 +22717,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/types.ts",
-									"line": 120,
+									"line": 127,
 									"character": 12
 								}
 							]
@@ -22688,7 +22756,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/types.ts",
-									"line": 125,
+									"line": 132,
 									"character": 10
 								}
 							]
@@ -22727,7 +22795,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/types.ts",
-									"line": 115,
+									"line": 122,
 									"character": 13
 								}
 							]
@@ -22766,7 +22834,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/types.ts",
-									"line": 110,
+									"line": 117,
 									"character": 11
 								}
 							]
@@ -22814,7 +22882,7 @@
 															"sources": [
 																{
 																	"fileName": "src/page/types.ts",
-																	"line": 140,
+																	"line": 147,
 																	"character": 24
 																}
 															],
@@ -22834,7 +22902,7 @@
 															"sources": [
 																{
 																	"fileName": "src/page/types.ts",
-																	"line": 140,
+																	"line": 147,
 																	"character": 35
 																}
 															],
@@ -22857,7 +22925,7 @@
 													"sources": [
 														{
 															"fileName": "src/page/types.ts",
-															"line": 140,
+															"line": 147,
 															"character": 21
 														}
 													]
@@ -22870,7 +22938,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/types.ts",
-									"line": 140,
+									"line": 147,
 									"character": 9
 								}
 							]
@@ -22927,7 +22995,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/types.ts",
-									"line": 63,
+									"line": 70,
 									"character": 9
 								}
 							]
@@ -22975,7 +23043,7 @@
 															"sources": [
 																{
 																	"fileName": "src/page/types.ts",
-																	"line": 135,
+																	"line": 142,
 																	"character": 40
 																}
 															],
@@ -22995,7 +23063,7 @@
 															"sources": [
 																{
 																	"fileName": "src/page/types.ts",
-																	"line": 135,
+																	"line": 142,
 																	"character": 24
 																}
 															],
@@ -23018,7 +23086,7 @@
 													"sources": [
 														{
 															"fileName": "src/page/types.ts",
-															"line": 135,
+															"line": 142,
 															"character": 17
 														}
 													]
@@ -23031,7 +23099,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/types.ts",
-									"line": 135,
+									"line": 142,
 									"character": 5
 								}
 							]
@@ -23079,7 +23147,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/types.ts",
-									"line": 100,
+									"line": 107,
 									"character": 8
 								}
 							]
@@ -23133,7 +23201,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/types.ts",
-									"line": 85,
+									"line": 92,
 									"character": 15
 								}
 							]
@@ -23172,7 +23240,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/types.ts",
-									"line": 130,
+									"line": 137,
 									"character": 5
 								}
 							]
@@ -23210,7 +23278,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/types.ts",
-									"line": 150,
+									"line": 157,
 									"character": 14
 								}
 							]
@@ -23262,7 +23330,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/types.ts",
-									"line": 68,
+									"line": 75,
 									"character": 5
 								}
 							]
@@ -23310,7 +23378,7 @@
 					"sources": [
 						{
 							"fileName": "src/page/types.ts",
-							"line": 31,
+							"line": 38,
 							"character": 30
 						}
 					],
@@ -23335,6 +23403,18 @@
 						"shortText": "A Locator represents an object used to locate elements on the page. It is usually constructed using the helper methods of <[By]>.\nAn <[ElementHandle]> can also be used as a Locator which finds itself.",
 						"tags": [
 							{
+								"tag": "title",
+								"text": "Locators"
+							},
+							{
+								"tag": "position",
+								"text": "2"
+							},
+							{
+								"tag": "article_group",
+								"text": "API"
+							},
+							{
 								"tag": "docopaque",
 								"text": "\n"
 							}
@@ -23353,7 +23433,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/types.ts",
-									"line": 13,
+									"line": 16,
 									"character": 9
 								}
 							],
@@ -23375,7 +23455,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/types.ts",
-									"line": 17,
+									"line": 20,
 									"character": 13
 								}
 							],
@@ -23399,7 +23479,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/types.ts",
-									"line": 15,
+									"line": 18,
 									"character": 13
 								}
 							],
@@ -23476,7 +23556,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/types.ts",
-									"line": 21,
+									"line": 24,
 									"character": 5
 								}
 							]
@@ -23542,7 +23622,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/types.ts",
-									"line": 23,
+									"line": 26,
 									"character": 9
 								}
 							]
@@ -23572,7 +23652,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/types.ts",
-									"line": 19,
+									"line": 22,
 									"character": 14
 								}
 							]
@@ -23601,7 +23681,7 @@
 					"sources": [
 						{
 							"fileName": "src/page/types.ts",
-							"line": 12,
+							"line": 15,
 							"character": 24
 						}
 					],
@@ -23656,6 +23736,18 @@
 						"shortText": "The target locator is accessed through `browser.switchTo()` and enables you to switch frames, tabs, or browser windows. As well as access the `activeElement` or an alert box.",
 						"tags": [
 							{
+								"tag": "title",
+								"text": "targetLocator"
+							},
+							{
+								"tag": "position",
+								"text": "4"
+							},
+							{
+								"tag": "article_group",
+								"text": "API"
+							},
+							{
 								"tag": "class",
 								"text": "TargetLocator\n"
 							}
@@ -23706,7 +23798,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/types.ts",
-									"line": 166,
+									"line": 176,
 									"character": 14
 								}
 							]
@@ -23745,7 +23837,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/types.ts",
-									"line": 171,
+									"line": 181,
 									"character": 15
 								}
 							]
@@ -23815,7 +23907,7 @@
 							"sources": [
 								{
 									"fileName": "src/page/types.ts",
-									"line": 184,
+									"line": 194,
 									"character": 6
 								}
 							]
@@ -23835,7 +23927,7 @@
 					"sources": [
 						{
 							"fileName": "src/page/types.ts",
-							"line": 160,
+							"line": 170,
 							"character": 30
 						}
 					],
@@ -23887,6 +23979,18 @@
 						"isExported": true,
 						"isExternal": true
 					},
+					"comment": {
+						"tags": [
+							{
+								"tag": "article_group",
+								"text": "API"
+							},
+							{
+								"tag": "position",
+								"text": "9\n"
+							}
+						]
+					},
 					"children": [
 						{
 							"id": 1184,
@@ -23900,7 +24004,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime-environment/types.ts",
-									"line": 2,
+									"line": 6,
 									"character": 11
 								}
 							],
@@ -23921,7 +24025,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime-environment/types.ts",
-									"line": 6,
+									"line": 10,
 									"character": 17
 								}
 							],
@@ -23942,7 +24046,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime-environment/types.ts",
-									"line": 7,
+									"line": 11,
 									"character": 28
 								}
 							],
@@ -23963,7 +24067,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime-environment/types.ts",
-									"line": 3,
+									"line": 7,
 									"character": 18
 								}
 							],
@@ -23984,7 +24088,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime-environment/types.ts",
-									"line": 5,
+									"line": 9,
 									"character": 23
 								}
 							],
@@ -24005,7 +24109,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime-environment/types.ts",
-									"line": 4,
+									"line": 8,
 									"character": 23
 								}
 							],
@@ -24030,7 +24134,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime-environment/types.ts",
-									"line": 24,
+									"line": 28,
 									"character": 16
 								}
 							],
@@ -24051,7 +24155,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime-environment/types.ts",
-									"line": 8,
+									"line": 12,
 									"character": 17
 								}
 							],
@@ -24072,7 +24176,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime-environment/types.ts",
-									"line": 10,
+									"line": 14,
 									"character": 17
 								}
 							],
@@ -24093,7 +24197,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime-environment/types.ts",
-									"line": 9,
+									"line": 13,
 									"character": 18
 								}
 							],
@@ -24117,7 +24221,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime-environment/types.ts",
-									"line": 15,
+									"line": 19,
 									"character": 9
 								}
 							],
@@ -24149,7 +24253,7 @@
 					"sources": [
 						{
 							"fileName": "src/runtime-environment/types.ts",
-							"line": 1,
+							"line": 5,
 							"character": 32
 						}
 					]
@@ -24176,7 +24280,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime-environment/types.ts",
-									"line": 43,
+									"line": 47,
 									"character": 9
 								}
 							],
@@ -24212,7 +24316,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime-environment/types.ts",
-									"line": 42,
+									"line": 46,
 									"character": 8
 								}
 							]
@@ -24237,7 +24341,7 @@
 					"sources": [
 						{
 							"fileName": "src/runtime-environment/types.ts",
-							"line": 41,
+							"line": 45,
 							"character": 35
 						}
 					]
@@ -24277,7 +24381,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime-environment/types.ts",
-									"line": 50,
+									"line": 54,
 									"character": 14
 								}
 							]
@@ -24337,7 +24441,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime-environment/types.ts",
-									"line": 52,
+									"line": 56,
 									"character": 5
 								}
 							]
@@ -24380,7 +24484,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime-environment/types.ts",
-									"line": 54,
+									"line": 58,
 									"character": 9
 								}
 							]
@@ -24400,7 +24504,7 @@
 					"sources": [
 						{
 							"fileName": "src/runtime-environment/types.ts",
-							"line": 49,
+							"line": 53,
 							"character": 25
 						}
 					]
@@ -24417,7 +24521,7 @@
 					"sources": [
 						{
 							"fileName": "src/runtime-environment/types.ts",
-							"line": 46,
+							"line": 50,
 							"character": 26
 						}
 					],
@@ -24438,7 +24542,7 @@
 					"sources": [
 						{
 							"fileName": "src/runtime-environment/types.ts",
-							"line": 47,
+							"line": 51,
 							"character": 19
 						}
 					],
@@ -24484,7 +24588,7 @@
 					"sources": [
 						{
 							"fileName": "src/runtime-environment/types.ts",
-							"line": 48,
+							"line": 52,
 							"character": 24
 						}
 					],
@@ -24527,7 +24631,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime-environment/types.ts",
-									"line": 28,
+									"line": 32,
 									"character": 11
 								}
 							],
@@ -24549,7 +24653,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime-environment/types.ts",
-									"line": 32,
+									"line": 36,
 									"character": 17
 								}
 							],
@@ -24571,7 +24675,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime-environment/types.ts",
-									"line": 33,
+									"line": 37,
 									"character": 28
 								}
 							],
@@ -24593,7 +24697,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime-environment/types.ts",
-									"line": 29,
+									"line": 33,
 									"character": 18
 								}
 							],
@@ -24615,7 +24719,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime-environment/types.ts",
-									"line": 31,
+									"line": 35,
 									"character": 23
 								}
 							],
@@ -24637,7 +24741,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime-environment/types.ts",
-									"line": 30,
+									"line": 34,
 									"character": 23
 								}
 							],
@@ -24659,7 +24763,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime-environment/types.ts",
-									"line": 38,
+									"line": 42,
 									"character": 16
 								}
 							],
@@ -24681,7 +24785,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime-environment/types.ts",
-									"line": 34,
+									"line": 38,
 									"character": 17
 								}
 							],
@@ -24703,7 +24807,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime-environment/types.ts",
-									"line": 36,
+									"line": 40,
 									"character": 17
 								}
 							],
@@ -24725,7 +24829,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime-environment/types.ts",
-									"line": 35,
+									"line": 39,
 									"character": 18
 								}
 							],
@@ -24747,7 +24851,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime-environment/types.ts",
-									"line": 37,
+									"line": 41,
 									"character": 9
 								}
 							],
@@ -24780,7 +24884,7 @@
 					"sources": [
 						{
 							"fileName": "src/runtime-environment/types.ts",
-							"line": 27,
+							"line": 31,
 							"character": 32
 						}
 					],
@@ -28833,7 +28937,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Settings.ts",
-									"line": 150,
+									"line": 157,
 									"character": 21
 								}
 							],
@@ -28872,7 +28976,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Settings.ts",
-									"line": 213,
+									"line": 220,
 									"character": 12
 								}
 							],
@@ -28899,7 +29003,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Settings.ts",
-									"line": 175,
+									"line": 182,
 									"character": 14
 								}
 							],
@@ -28926,7 +29030,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Settings.ts",
-									"line": 217,
+									"line": 224,
 									"character": 11
 								}
 							],
@@ -28952,7 +29056,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Settings.ts",
-									"line": 216,
+									"line": 223,
 									"character": 13
 								}
 							],
@@ -28978,7 +29082,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Settings.ts",
-									"line": 220,
+									"line": 227,
 									"character": 14
 								}
 							],
@@ -29012,7 +29116,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Settings.ts",
-									"line": 138,
+									"line": 145,
 									"character": 12
 								}
 							],
@@ -29047,7 +29151,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Settings.ts",
-									"line": 222,
+									"line": 229,
 									"character": 7
 								}
 							],
@@ -29077,7 +29181,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Settings.ts",
-									"line": 128,
+									"line": 135,
 									"character": 13
 								}
 							],
@@ -29116,7 +29220,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Settings.ts",
-									"line": 211,
+									"line": 218,
 									"character": 9
 								}
 							],
@@ -29142,7 +29246,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Settings.ts",
-									"line": 223,
+									"line": 230,
 									"character": 18
 								}
 							],
@@ -29168,7 +29272,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Settings.ts",
-									"line": 212,
+									"line": 219,
 									"character": 10
 								}
 							],
@@ -29198,7 +29302,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Settings.ts",
-									"line": 133,
+									"line": 140,
 									"character": 5
 								}
 							],
@@ -29233,7 +29337,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Settings.ts",
-									"line": 219,
+									"line": 226,
 									"character": 24
 								}
 							],
@@ -29260,7 +29364,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Settings.ts",
-									"line": 215,
+									"line": 222,
 									"character": 20
 								}
 							],
@@ -29286,7 +29390,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Settings.ts",
-									"line": 214,
+									"line": 221,
 									"character": 10
 								}
 							],
@@ -29312,7 +29416,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Settings.ts",
-									"line": 221,
+									"line": 228,
 									"character": 10
 								}
 							],
@@ -29338,7 +29442,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Settings.ts",
-									"line": 218,
+									"line": 225,
 									"character": 12
 								}
 							],
@@ -29382,7 +29486,7 @@
 					"sources": [
 						{
 							"fileName": "src/runtime/Settings.ts",
-							"line": 210,
+							"line": 217,
 							"character": 37
 						}
 					],
@@ -29405,7 +29509,21 @@
 					},
 					"comment": {
 						"shortText": "The TestSettings interface specifies the available settings you have to configure how your test runs. These properties should be exported using the property `settings`.",
-						"text": "**Example:**\n\n```typescript\nexport const settings: TestSettings = {\n  loopCount: Infinity,\n  clearCache: true\n}\n```\n\nSee [DEFAULT_SETTINGS] for a list of the default value for each setting.\n"
+						"text": "**Example:**\n\n```typescript\nexport const settings: TestSettings = {\n  loopCount: Infinity,\n  clearCache: true\n}\n```\n\nSee [DEFAULT_SETTINGS] for a list of the default value for each setting.\n",
+						"tags": [
+							{
+								"tag": "article_group",
+								"text": "API"
+							},
+							{
+								"tag": "position",
+								"text": "9"
+							},
+							{
+								"tag": "title",
+								"text": "\"Test Settings\"\n"
+							}
+						]
 					},
 					"children": [
 						{
@@ -29424,7 +29542,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Settings.ts",
-									"line": 150,
+									"line": 157,
 									"character": 21
 								}
 							],
@@ -29463,7 +29581,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Settings.ts",
-									"line": 89,
+									"line": 96,
 									"character": 12
 								}
 							],
@@ -29494,7 +29612,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Settings.ts",
-									"line": 175,
+									"line": 182,
 									"character": 14
 								}
 							],
@@ -29526,7 +29644,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Settings.ts",
-									"line": 123,
+									"line": 130,
 									"character": 11
 								}
 							],
@@ -29570,7 +29688,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Settings.ts",
-									"line": 116,
+									"line": 123,
 									"character": 13
 								}
 							],
@@ -29609,7 +29727,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Settings.ts",
-									"line": 168,
+									"line": 175,
 									"character": 14
 								}
 							],
@@ -29638,7 +29756,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Settings.ts",
-									"line": 138,
+									"line": 145,
 									"character": 12
 								}
 							],
@@ -29672,7 +29790,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Settings.ts",
-									"line": 104,
+									"line": 111,
 									"character": 7
 								}
 							],
@@ -29706,7 +29824,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Settings.ts",
-									"line": 128,
+									"line": 135,
 									"character": 13
 								}
 							],
@@ -29745,7 +29863,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Settings.ts",
-									"line": 75,
+									"line": 82,
 									"character": 9
 								}
 							],
@@ -29779,7 +29897,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Settings.ts",
-									"line": 173,
+									"line": 180,
 									"character": 18
 								}
 							],
@@ -29818,7 +29936,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Settings.ts",
-									"line": 82,
+									"line": 89,
 									"character": 10
 								}
 							],
@@ -29852,7 +29970,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Settings.ts",
-									"line": 133,
+									"line": 140,
 									"character": 5
 								}
 							],
@@ -29887,7 +30005,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Settings.ts",
-									"line": 161,
+									"line": 168,
 									"character": 24
 								}
 							],
@@ -29914,7 +30032,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Settings.ts",
-									"line": 145,
+									"line": 152,
 									"character": 20
 								}
 							],
@@ -29952,7 +30070,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Settings.ts",
-									"line": 94,
+									"line": 101,
 									"character": 10
 								}
 							],
@@ -29986,7 +30104,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Settings.ts",
-									"line": 99,
+									"line": 106,
 									"character": 10
 								}
 							],
@@ -30020,7 +30138,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Settings.ts",
-									"line": 109,
+									"line": 116,
 									"character": 12
 								}
 							],
@@ -30068,7 +30186,7 @@
 					"sources": [
 						{
 							"fileName": "src/runtime/Settings.ts",
-							"line": 67,
+							"line": 74,
 							"character": 29
 						}
 					],
@@ -30096,7 +30214,7 @@
 					"sources": [
 						{
 							"fileName": "src/runtime/Settings.ts",
-							"line": 50,
+							"line": 53,
 							"character": 25
 						}
 					],
@@ -30129,7 +30247,7 @@
 					"sources": [
 						{
 							"fileName": "src/runtime/Settings.ts",
-							"line": 40,
+							"line": 43,
 							"character": 25
 						}
 					],
@@ -30175,7 +30293,7 @@
 					"sources": [
 						{
 							"fileName": "src/runtime/Settings.ts",
-							"line": 35,
+							"line": 38,
 							"character": 26
 						}
 					],
@@ -30214,7 +30332,7 @@
 					"sources": [
 						{
 							"fileName": "src/runtime/Settings.ts",
-							"line": 23,
+							"line": 26,
 							"character": 40
 						}
 					],
@@ -30237,7 +30355,7 @@
 					"sources": [
 						{
 							"fileName": "src/runtime/Settings.ts",
-							"line": 22,
+							"line": 25,
 							"character": 38
 						}
 					],
@@ -30295,7 +30413,7 @@
 					"sources": [
 						{
 							"fileName": "src/runtime/Settings.ts",
-							"line": 229,
+							"line": 236,
 							"character": 33
 						}
 					]
@@ -30323,6 +30441,18 @@
 									{
 										"tag": "export",
 										"text": ""
+									},
+									{
+										"tag": "title",
+										"text": "Settings"
+									},
+									{
+										"tag": "position",
+										"text": "6"
+									},
+									{
+										"tag": "article_group",
+										"text": "API"
 									}
 								]
 							},
@@ -30352,7 +30482,7 @@
 					"sources": [
 						{
 							"fileName": "src/runtime/Settings.ts",
-							"line": 19,
+							"line": 22,
 							"character": 29
 						}
 					]
@@ -30383,7 +30513,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Settings.ts",
-									"line": 184,
+									"line": 191,
 									"character": 12
 								}
 							],
@@ -30405,7 +30535,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Settings.ts",
-									"line": 198,
+									"line": 205,
 									"character": 14
 								}
 							],
@@ -30427,7 +30557,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Settings.ts",
-									"line": 188,
+									"line": 195,
 									"character": 11
 								}
 							],
@@ -30449,7 +30579,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Settings.ts",
-									"line": 187,
+									"line": 194,
 									"character": 13
 								}
 							],
@@ -30474,7 +30604,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Settings.ts",
-									"line": 194,
+									"line": 201,
 									"character": 14
 								}
 							],
@@ -30499,7 +30629,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Settings.ts",
-									"line": 196,
+									"line": 203,
 									"character": 7
 								}
 							],
@@ -30521,7 +30651,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Settings.ts",
-									"line": 182,
+									"line": 189,
 									"character": 9
 								}
 							],
@@ -30543,7 +30673,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Settings.ts",
-									"line": 197,
+									"line": 204,
 									"character": 18
 								}
 							],
@@ -30565,7 +30695,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Settings.ts",
-									"line": 183,
+									"line": 190,
 									"character": 10
 								}
 							],
@@ -30587,7 +30717,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Settings.ts",
-									"line": 190,
+									"line": 197,
 									"character": 24
 								}
 							],
@@ -30609,7 +30739,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Settings.ts",
-									"line": 186,
+									"line": 193,
 									"character": 20
 								}
 							],
@@ -30631,7 +30761,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Settings.ts",
-									"line": 185,
+									"line": 192,
 									"character": 10
 								}
 							],
@@ -30653,7 +30783,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Settings.ts",
-									"line": 195,
+									"line": 202,
 									"character": 10
 								}
 							],
@@ -30675,7 +30805,7 @@
 							"sources": [
 								{
 									"fileName": "src/runtime/Settings.ts",
-									"line": 189,
+									"line": 196,
 									"character": 12
 								}
 							],
@@ -30711,7 +30841,7 @@
 					"sources": [
 						{
 							"fileName": "src/runtime/Settings.ts",
-							"line": 181,
+							"line": 188,
 							"character": 29
 						}
 					],
@@ -32929,7 +33059,7 @@
 								"text": "1"
 							},
 							{
-								"tag": "articlegroup",
+								"tag": "article_group",
 								"text": "API\n"
 							}
 						]
@@ -34966,7 +35096,7 @@
 								"text": "10"
 							},
 							{
-								"tag": "articlegroup",
+								"tag": "article_group",
 								"text": "API"
 							},
 							{
@@ -37952,7 +38082,7 @@
 							"sources": [
 								{
 									"fileName": "src/test-data/TestData.ts",
-									"line": 75,
+									"line": 79,
 									"character": 26
 								}
 							]
@@ -37978,7 +38108,7 @@
 							"sources": [
 								{
 									"fileName": "src/test-data/TestData.ts",
-									"line": 66,
+									"line": 70,
 									"character": 14
 								}
 							],
@@ -38015,7 +38145,7 @@
 							"sources": [
 								{
 									"fileName": "src/test-data/TestData.ts",
-									"line": 70,
+									"line": 74,
 									"character": 18
 								}
 							],
@@ -38045,7 +38175,7 @@
 							"sources": [
 								{
 									"fileName": "src/test-data/TestData.ts",
-									"line": 75,
+									"line": 79,
 									"character": 15
 								}
 							],
@@ -38101,7 +38231,7 @@
 							"sources": [
 								{
 									"fileName": "src/test-data/TestData.ts",
-									"line": 159,
+									"line": 163,
 									"character": 22
 								}
 							]
@@ -38146,7 +38276,7 @@
 							"sources": [
 								{
 									"fileName": "src/test-data/TestData.ts",
-									"line": 166,
+									"line": 170,
 									"character": 19
 								}
 							]
@@ -38191,7 +38321,7 @@
 							"sources": [
 								{
 									"fileName": "src/test-data/TestData.ts",
-									"line": 173,
+									"line": 177,
 									"character": 19
 								}
 							]
@@ -38236,7 +38366,7 @@
 							"sources": [
 								{
 									"fileName": "src/test-data/TestData.ts",
-									"line": 152,
+									"line": 156,
 									"character": 16
 								}
 							]
@@ -38294,7 +38424,7 @@
 							"sources": [
 								{
 									"fileName": "src/test-data/TestData.ts",
-									"line": 102,
+									"line": 106,
 									"character": 16
 								}
 							]
@@ -38340,7 +38470,7 @@
 							"sources": [
 								{
 									"fileName": "src/test-data/TestData.ts",
-									"line": 136,
+									"line": 140,
 									"character": 12
 								}
 							]
@@ -38405,7 +38535,7 @@
 							"sources": [
 								{
 									"fileName": "src/test-data/TestData.ts",
-									"line": 128,
+									"line": 132,
 									"character": 14
 								}
 							]
@@ -38450,7 +38580,7 @@
 							"sources": [
 								{
 									"fileName": "src/test-data/TestData.ts",
-									"line": 92,
+									"line": 96,
 									"character": 18
 								}
 							]
@@ -38496,7 +38626,7 @@
 							"sources": [
 								{
 									"fileName": "src/test-data/TestData.ts",
-									"line": 144,
+									"line": 148,
 									"character": 12
 								}
 							]
@@ -38548,7 +38678,7 @@
 							"sources": [
 								{
 									"fileName": "src/test-data/TestData.ts",
-									"line": 85,
+									"line": 89,
 									"character": 21
 								}
 							]
@@ -38603,7 +38733,7 @@
 							"sources": [
 								{
 									"fileName": "src/test-data/TestData.ts",
-									"line": 110,
+									"line": 114,
 									"character": 15
 								}
 							]
@@ -38642,7 +38772,7 @@
 							"sources": [
 								{
 									"fileName": "src/test-data/TestData.ts",
-									"line": 180,
+									"line": 184,
 									"character": 16
 								}
 							]
@@ -38693,7 +38823,7 @@
 					"sources": [
 						{
 							"fileName": "src/test-data/TestData.ts",
-							"line": 62,
+							"line": 66,
 							"character": 27
 						}
 					]
@@ -38709,7 +38839,21 @@
 					},
 					"comment": {
 						"shortText": "A `TestDataFactory` is available to be imported into your test script as `TestData`. Use this to load a <[TestDataSource]> which provides new test data to each iteration of your test.",
-						"text": "TODO\nFiles should be uploaded to ...\n"
+						"text": "TODO\nFiles should be uploaded to ...\n",
+						"tags": [
+							{
+								"tag": "title",
+								"text": "TestData"
+							},
+							{
+								"tag": "position",
+								"text": "5"
+							},
+							{
+								"tag": "article_group",
+								"text": "API\n"
+							}
+						]
 					},
 					"children": [
 						{
@@ -38786,7 +38930,7 @@
 							"sources": [
 								{
 									"fileName": "src/test-data/TestData.ts",
-									"line": 25,
+									"line": 29,
 									"character": 8
 								}
 							]
@@ -38854,7 +38998,7 @@
 							"sources": [
 								{
 									"fileName": "src/test-data/TestData.ts",
-									"line": 17,
+									"line": 21,
 									"character": 9
 								}
 							]
@@ -38919,7 +39063,7 @@
 							"sources": [
 								{
 									"fileName": "src/test-data/TestData.ts",
-									"line": 32,
+									"line": 36,
 									"character": 9
 								}
 							]
@@ -38939,7 +39083,7 @@
 					"sources": [
 						{
 							"fileName": "src/test-data/TestData.ts",
-							"line": 11,
+							"line": 15,
 							"character": 32
 						}
 					],

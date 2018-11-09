@@ -1,6 +1,11 @@
+---
+articleGroup: API
+
+---
+
 # `Condition`
 
-A Condition represents a predicate which can be used to wait for an &lt;[ElementHandle]>. They are generally created by using &lt;[Until]>'s helper methods.
+A Condition represents a predicate which can be used to wait for an [ElementHandle][]. They are generally created by using [Until][]'s helper methods.
 
 # `Until`
 
@@ -12,7 +17,7 @@ These predicates include waiting for elements to become active, visible, invisib
 
 You typically use these to control the flow of you test.
 
-**Methods**
+## Methods
 
 ### `Until.ableToSwitchToFrame(frame)`
 
@@ -81,7 +86,7 @@ step('Element state', async browser => {
 
 **Parameters**
 
--   selectorOrLocator [`NullableLocatable`][NullableLocatable] A [Locatable][] to use to find the element.
+-   selectorOrLocator [`NullableLocatable`][NullableLocatable]  A [Locatable][] to use to find the element.
 -   returns: [`Condition`][Condition]
 
 ### `Until.elementIsEnabled(selectorOrLocator)`
@@ -92,7 +97,7 @@ Creates a condition that will wait for the given element to be enabled
 
 **Parameters**
 
--   selectorOrLocator [`NullableLocatable`][NullableLocatable] A [Locatable][] to use to find the element.
+-   selectorOrLocator [`NullableLocatable`][NullableLocatable]  A [Locatable][] to use to find the element.
 -   returns: [`Condition`][Condition]
 
 ### `Until.elementIsNotSelected(selectorOrLocator)`
@@ -103,7 +108,7 @@ Creates a condition that will wait for the given element to be in the DOM, yet n
 
 **Parameters**
 
--   selectorOrLocator [`NullableLocatable`][NullableLocatable] A [Locatable][] to use to find the element.
+-   selectorOrLocator [`NullableLocatable`][NullableLocatable]  A [Locatable][] to use to find the element.
 -   returns: [`Condition`][Condition]
 
 ### `Until.elementIsNotVisible(selectorOrLocator)`
@@ -123,7 +128,7 @@ step("Step 1", async browser => {
 
 **Parameters**
 
--   selectorOrLocator [`NullableLocatable`][NullableLocatable] A [Locatable][] to use to find the element.
+-   selectorOrLocator [`NullableLocatable`][NullableLocatable]  A [Locatable][] to use to find the element.
 -   returns: [`Condition`][Condition]
 
 ### `Until.elementIsSelected(selectorOrLocator)`
@@ -134,7 +139,7 @@ Creates a condition that will wait for the given element to be deselected.
 
 **Parameters**
 
--   selectorOrLocator [`NullableLocatable`][NullableLocatable] A [Locatable][] to use to find the element.
+-   selectorOrLocator [`NullableLocatable`][NullableLocatable]  A [Locatable][] to use to find the element.
 -   returns: [`Condition`][Condition]
 
 ### `Until.elementIsVisible(selectorOrLocator)`
@@ -153,7 +158,7 @@ step("Step 1", async browser => {
 
 **Parameters**
 
--   selectorOrLocator [`NullableLocatable`][NullableLocatable] A [Locatable][] to use to find the element.
+-   selectorOrLocator [`NullableLocatable`][NullableLocatable]  A [Locatable][] to use to find the element.
 -   returns: [`Condition`][Condition]
 
 ### `Until.elementLocated(selectorOrLocator)`

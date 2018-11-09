@@ -2,7 +2,7 @@
 title: Browser
 class: Browser
 position: '1'
-articlegroup: API
+articleGroup: API
 
 ---
 
@@ -19,7 +19,7 @@ export default () => {
 }
 ```
 
-**Methods**
+## Methods
 
 ### `Browser.authenticate([, username, password])`
 
@@ -165,7 +165,7 @@ Makes the element located by the first argument the receiver of future input.
 
 **Parameters**
 
--   locator [`NullableLocatable`][NullableLocatable] The &lt;[Locator]> to use to find an element to send focus to.
+-   locator [`NullableLocatable`][NullableLocatable]  The &lt;[Locator]> to use to find an element to send focus to.
 -   returns: [Promise&lt;`void`\>][Promise]
 
 ### `Browser.highlightElement(element)`
@@ -340,8 +340,8 @@ step("Start", async browser => {
 
 **Parameters**
 
--   url `string` url to visit
--   options? [`NavigationOptions`][NavigationOptions] (Optional)puppeteer navigation options
+-   url `string`  url to visit
+-   options? [`NavigationOptions`][NavigationOptions] (Optional) puppeteer navigation options
 -   returns: [Promise&lt;`void`\>][Promise]
 
 ### `Browser.wait(timeoutOrCondition)`

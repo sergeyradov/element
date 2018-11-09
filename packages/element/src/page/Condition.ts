@@ -16,7 +16,11 @@ interface ConditionSettings {
 }
 
 /**
- * A Condition represents a predicate which can be used to wait for an <[ElementHandle]>. They are generally created by using <[Until]>'s helper methods.
+ * A Condition represents a predicate which can be used to wait for an [ElementHandle][]. They are generally created by using [Until][]'s helper methods.
+ *
+ * @title Condition
+ * @position 2
+ * @article_group API
  * @docOpaque
  */
 export abstract class Condition {

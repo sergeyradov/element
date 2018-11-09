@@ -1,4 +1,4 @@
-import { join, relative, resolve, isAbsolute } from 'path'
+import { join, relative, resolve, isAbsolute, basename } from 'path'
 import { major, minor } from 'semver'
 import * as camelcase from 'lodash.camelcase'
 // import * as upperFirst from 'lodash.upperfirst'
@@ -6,7 +6,7 @@ import * as camelcase from 'lodash.camelcase'
 import { mkdirpSync, copySync, createFileSync, writeFileSync, readFileSync } from 'fs-extra'
 // import * as frontMatter from 'front-matter'
 
-import { preParseIndex } from './preParseIndex'
+import { preParseIndex, ObjectMap } from './preParseIndex'
 import { parsePuppeteer } from './puppeteer'
 // import { generateAnchor } from './generateAnchor'
 // import { MarkdownDocument, FrontMatter, Comment } from './MarkdownDocument'
@@ -41,12 +41,13 @@ const getDocVersion = async (): Promise<string> => {
 	return [major(version).toString(), minor(version).toString()].join('.')
 }
 
-const { indexMap, indexExports } = preParseIndex(join(root, 'index.ts'))
+const { indexMap, indexExports, pageTags } = preParseIndex(join(root, 'index.ts'))
 
 const puppeteerJSON = parsePuppeteer()
 
 debug('indexMap', indexMap)
 debug('indexExports', indexExports)
+debug('pageTags', pageTags)
 
 function commentFromNode(node: any) {
 	let { comment: { shortText, text } = { shortText: null, text: null } } = node
@@ -104,7 +105,7 @@ class Context {
 
 		if (pageName === undefined) return this.docSource.catchallDoc
 
-		const path = `api/${pageName}.md`
+		const path = `api/${pageName}`
 
 		return this.docSource.getDoc(path)
 	}
@@ -149,7 +150,7 @@ class DocsParser {
 		}
 
 		for (const [key, target] of Object.entries(indexExports)) {
-			const path = `${target}.md`
+			const path = `${target}`
 			this.addReference(key, path)
 			console.log('adding', key, path, `[${key}](${path}#${generateAnchor(key)})`)
 			this.summaryParts.push(`[${key}](${path}#${generateAnchor(key)})`)
@@ -255,12 +256,27 @@ class DocsParser {
 			if (!contents.has(absPath)) contents.set(absPath, [])
 
 			const content = contents.get(absPath)
+
+			let tagPath = basename(path)
+
+			if (pageTags[tagPath]) {
+				let tags: ObjectMap<string> = pageTags[tagPath] || {}
+
+				let normalisedTags: ObjectMap<string> = {}
+				Object.keys(tags).forEach(key => {
+					normalisedTags[camelcase(key)] = tags[key]
+				})
+
+				doc.frontmatter(normalisedTags)
+			}
 			if (content) content.push(doc.toMarkdown())
 		})
 		contents.forEach((content, absPath) => {
-			createFileSync(absPath)
-			writeFileSync(absPath, content.join('\n'))
-			console.log(`-> ${absPath}`)
+			let filePath = `${absPath}.md`
+
+			createFileSync(filePath)
+			writeFileSync(filePath, content.join('\n'))
+			console.log(`-> ${filePath}`)
 		})
 	}
 
@@ -488,7 +504,7 @@ class DocsParser {
 		debug('processObjectLiteral', node)
 		const doc = ctx.docForKey(node.name)
 
-		doc.block(b => b.h1(c => c.inlineCode(node.name)))
+		doc.block(b => b.h3(c => c.inlineCode(node.name)))
 		writeComment(doc, node.comment)
 
 		this.processObject(doc, node.name, node.children)
@@ -501,7 +517,7 @@ class DocsParser {
 
 		const doc = ctx.docForKey(name)
 
-		doc.block(b => b.h1(c => c.inlineCode(node.name)))
+		doc.block(b => b.h3(c => c.inlineCode(node.name)))
 		writeComment(doc, node.comment)
 
 		// 1. Create file and reference
@@ -538,7 +554,7 @@ class DocsParser {
 
 		if (node.comment && node.comment.tags) {
 			node.comment.tags.forEach((tag: any) => {
-				meta[tag.tag] = tag.text.trim()
+				meta[camelcase(tag.tag)] = tag.text.trim()
 
 				if (tag.tag === 'class') {
 					// Automatically name file after class name
@@ -553,7 +569,7 @@ class DocsParser {
 
 		const methods = children.filter(node => node.kindString === 'Method')
 		if (methods.length) {
-			doc.block(b => b.p(c => c.strong('Methods')))
+			doc.block(b => b.h2('Methods'))
 			methods.forEach(node => this.processClass_Method(doc, name, node))
 		}
 
@@ -561,7 +577,8 @@ class DocsParser {
 		if (properties.length) {
 			// doc.writeHeading('properties', 4)
 			doc.block(b => b.p(c => c.strong('Properties')))
-			properties.forEach(node => this.processClass_Property(doc, name, node))
+			let params = properties.map(node => this.processClass_Property(node)).filter(Boolean)
+			doc.parameters(params)
 		}
 
 		let members = children.filter(node => node.kindString === 'Enumeration member')
@@ -584,26 +601,23 @@ class DocsParser {
 		})
 	}
 
-	private processClass_Property(doc: Document, parent: string, node: any) {
-		debug('processClass_Property', parent, node.name, node)
+	private processClass_Property(node: any) {
+		debug('processClass_Property', node.name, node)
 		if (isNodeInternal(node)) return
 
 		let { name, flags, type } = node
 		let comment = commentFromNode(node)
 
 		// comment rendered as part of an unordered list, so indent
-		comment = '  ' + comment.replace(/\n/g, '  \n  ') + '  '
+		// comment = '  ' + comment.replace(/\n/g, '  \n  ') + '  '
 
-		doc.parameters([
-			{
-				name,
-				type,
-				desc: comment,
-				isOptional: !!flags.isOptional,
-				defaultValue: node.defaultValue,
-			},
-		])
-		// doc.writeParameterLine(name, type, comment, !!flags.isOptional, node.defaultValue)
+		return {
+			name,
+			type,
+			desc: comment,
+			isOptional: !!flags.isOptional,
+			defaultValue: node.defaultValue,
+		}
 	}
 
 	private processObject(doc: Document, parent: string, children: any[], thing = 'Name') {

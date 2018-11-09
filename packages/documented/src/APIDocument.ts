@@ -52,7 +52,10 @@ export class APIDocument extends Document {
 								b.p(c => {
 									c.text(`${name} `)
 									this.formatType(type, c)
-									if (desc) c.raw(desc.trim())
+									if (desc) {
+										c.text(' ')
+										c.raw(desc.trim())
+									}
 								})
 							} else {
 								b.p(c => {
@@ -67,7 +70,10 @@ export class APIDocument extends Document {
 									} else if (isOptional) {
 										c.p('(Optional)')
 									}
-									if (desc) c.raw(desc.trim())
+									if (desc) {
+										c.text(' ')
+										c.raw(desc.trim())
+									}
 								})
 							}
 						})

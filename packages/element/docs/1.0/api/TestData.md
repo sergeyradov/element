@@ -1,6 +1,13 @@
-# `TestData`
+---
+title: TestData
+position: '5'
+articleGroup: API
 
-`TestData` is a pre-configured instance of &lt;[TestDataFactory]> that can be used to prepare test data for your script.
+---
+
+### `TestData`
+
+`TestData` is a pre-configured instance of [TestDataFactory][] that can be used to prepare test data for your script.
 
 **Example**
 
@@ -16,7 +23,7 @@ TestData.fromCSV<Row>('users.csv').shuffle()
 
 # `Feeder`
 
-**Methods**
+## Methods
 
 ### `Feeder.append(lines)`
 
@@ -95,20 +102,10 @@ Reads the data at the current cursor without advancing
 **Properties**
 
 -   filters [`FeedFilterFunction`][FeedFilterFunction]\[] 
-
-
 -   instanceID `string` 
-
-
 -   lines `void`\[] 
-
-
 -   pointer `number` 
-
-
 -   resetOnEnd `boolean` (Optional, default: `true`)
-
-
 -   shuffleAfterLoad `boolean` (Optional, default: `false`)
 
 # `TestDataSource`
@@ -139,7 +136,7 @@ export default () => {
 }
 ```
 
-**Methods**
+## Methods
 
 ### `TestDataSource.circular(circular)`
 
@@ -149,7 +146,7 @@ Instructs the data feeder to repeat the data set when it reaches the end. TestDa
 
 **Parameters**
 
--   circular `boolean` (Optional, default: `true`)Passing `false` will to disable circular data loading, causing test to complete after 1 loop of test data.
+-   circular `boolean` (Optional, default: `true`) Passing `false` will to disable circular data loading, causing test to complete after 1 loop of test data.
 -   returns: [`TestDataSource`][TestDataSource]
 
 ### `TestDataSource.filter(func)`
@@ -169,7 +166,7 @@ TestData.fromCSV("users.csv").filter((line, index, browserID) => line.browser ==
 
 **Parameters**
 
--   func [`FeedFilterFunction`][FeedFilterFunction] filter function to compare each line
+-   func [`FeedFilterFunction`][FeedFilterFunction]  filter function to compare each line
 -   returns: [`TestDataSource`][TestDataSource]
 
 ### `TestDataSource.shuffle(shuffle)`
@@ -185,6 +182,8 @@ Shuffles the data set using the Fisher-Yates method. Use this to randomise the o
 
 **Properties**
 
+
+
 # `TestDataFactory`
 
 A `TestDataFactory` is available to be imported into your test script as `TestData`. Use this to load a &lt;[TestDataSource]> which provides new test data to each iteration of your test.
@@ -192,7 +191,7 @@ A `TestDataFactory` is available to be imported into your test script as `TestDa
 TODO
 Files should be uploaded to ...
 
-**Methods**
+## Methods
 
 ### `TestDataFactory.fromCSV(filename, separator)`
 
@@ -202,8 +201,8 @@ Loads test data from a CSV file, returning a `TestData` instance.
 
 **Parameters**
 
--   filename `string` the CSV to load
--   separator `string` (default: `,`) CSV separator to use
+-   filename `string`  the CSV to load
+-   separator `string`  (default: `,`) CSV separator to use
 -   returns: [`TestDataSource`][TestDataSource]
 
 ### `TestDataFactory.fromData(objects)`
@@ -214,7 +213,7 @@ Loads a standard Javascript array of data objects
 
 **Parameters**
 
--   objects `void`\[] an array of data objects
+-   objects `void`\[]  an array of data objects
 -   returns: [`TestDataSource`][TestDataSource]
 
 ### `TestDataFactory.fromJSON(filename)`
@@ -225,5 +224,5 @@ Loads data from a JSON ffile
 
 **Parameters**
 
--   filename `string` the JSON to load.
+-   filename `string`  the JSON to load.
 -   returns: [`TestDataSource`][TestDataSource]
