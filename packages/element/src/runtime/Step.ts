@@ -48,7 +48,7 @@ export type StepDefinition<T> = (name: string, fn: StepFunction<T>) => Promise<a
  */
 export interface StepOptions {
 	/**
-	 * Timeout in seconds for all wait and navigation operations within this <[step]>.
+	 * Timeout in seconds for all wait and navigation operations within this [step][].
 	 * @default `30` seconds
 	 */
 	waitTimeout?: number
@@ -57,8 +57,8 @@ export interface StepOptions {
 /**
  * The `StepFunction` type represents a function to be called as a Test step.
  *
- * - `browser` <[Browser]> the browser
- * - `data` <`T`> (Optional) a row of test data of type <`T`>. Only available when the test is set up using <[suite]>.
+ * - `browser` [Browser][] the browser
+ * - `data` <`T`> (Optional) a row of test data of type <`T`>. Only available when the test is set up using [suite][].
  *
  * **Example:**
  *

@@ -15,14 +15,14 @@ export { NavigationOptions }
 export type EvaluateFn = string | ((...args: any[]) => any)
 
 /**
- * Locatable represents anything able to be located, either a string selector or a <[Locator]>. <[Locator]>s are generally created using <[By]> methods.
+ * Locatable represents anything able to be located, either a string selector or a [Locator][Locator]. [Locators][Locator] are generally created using [By][] methods.
  */
 export type Locatable = Locator | ElementHandle | string
 
 /**
- * NullableLocatable represents a <[Locatable]> which could also be null.
+ * NullableLocatable represents a [Locatable][Locatable] which could also be null.
  *
- * Note that most Element location API methods accept a NullableLocatable but will throw an <[Error]> if its actually <[null]>.
+ * Note that most Element location API methods accept a NullableLocatable but will throw an [Error][] if its actually [null][].
  */
 export type NullableLocatable = Locatable | null
 
@@ -59,7 +59,7 @@ export interface SuiteDefinition {
 }
 
 /**
- * Browser is the main entry point in each <[step]>, it's your direct connection to the browser running the test.
+ * Browser is the main entry point in each [step][], it's your direct connection to the browser running the test.
  *
  * ```typescript
  * import { step } from '@flood/element'
@@ -132,7 +132,7 @@ export interface Browser {
 	/**
 	 * Creates a waiter which will pause the test until a condition is met or a timeout is reached. This can be used for validation or control flow.
 	 *
-	 * Check out <[Until]> for a rich set of wait <[Condition]>s.
+	 * Check out [Until][] for a rich set of wait [Conditions][Condition].
 	 *
 	 * **Example:**
 	 *
@@ -143,7 +143,7 @@ export interface Browser {
 	 * ```
 	 *
 	 * You can use either a numeric value in seconds to wait for a specific time,
-	 * or a <[Condition]>, for more flexible conditions.
+	 * or a [Condition][], for more flexible conditions.
 	 */
 	wait(timeoutOrCondition: Condition | number): Promise<boolean>
 
@@ -163,7 +163,7 @@ export interface Browser {
 	 * })
 	 * ```
 	 *
-	 * In this example we're constructing a <[Locatable]> using the `By.partialLinkText()` Locator, which will match the first `<a>` tag which contains the text "Start".
+	 * In this example we're constructing a [Locatable][] using the `By.partialLinkText()` Locator, which will match the first `<a>` tag which contains the text "Start".
 	 *
 	 */
 	click(locatable: NullableLocatable, options?: ClickOptions): Promise<void>
@@ -219,14 +219,14 @@ export interface Browser {
 	/**
 	 * Makes the element located by the first argument the receiver of future input.
 	 *
-	 * @param locator The <[Locator]> to use to find an element to send focus to.
+	 * @param locator The [Locator][] to use to find an element to send focus to.
 	 * @returns {Promise<void>}
 	 * @memberof Driver
 	 */
 	focus(locator: NullableLocatable): Promise<void>
 
 	/**
-	 * Presses a key on the keyboard specified by key code. For example, <[Key.ALT]>
+	 * Presses a key on the keyboard specified by key code. For example, [Key.ALT][Key.ALT]
 	 */
 	press(
 		/**
@@ -248,7 +248,7 @@ export interface Browser {
 	/**
 	 * `sendKeys` simulates typing a list of strings on the keyboard.
 	 *
-	 * If a string is a member of <[Key]> it is pressed individually. Otherwise the string is typed.
+	 * If a string is a member of [Key][] it is pressed individually. Otherwise the string is typed.
 	 * This allows sendKeys to simulate a user typing control keys such as `Key.ENTER`.
 	 *
 	 * **Example:**

@@ -34,7 +34,7 @@ export function typeToString(input: ParamType): string | never {
 				let formattedArgs = (input.typeArguments || []).map(typeToString)
 				return `[Promise]<${formattedArgs.join(' | ')}>`
 			} else {
-				return `<[${input.name}]>`
+				return `[${input.name}][]`
 			}
 		default:
 			console.assert(true, `Found unknown type: "${type}"`)

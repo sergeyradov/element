@@ -3,7 +3,7 @@ import { Feeder, FeedFilterFunction } from './Feeder'
 import { Loader } from './Loader'
 
 /**
- * A `TestDataFactory` is available to be imported into your test script as `TestData`. Use this to load a <[TestDataSource]> which provides new test data to each iteration of your test.
+ * A `TestDataFactory` is available to be imported into your test script as `TestData`. Use this to load a [TestDataSource][] which provides new test data to each iteration of your test.
  *
  * TODO
  * Files should be uploaded to ...
@@ -37,7 +37,7 @@ export interface TestDataFactory {
 }
 
 /**
- * TestDataSource is the instance returned by <[TestDataFactory]>'s methods.
+ * TestDataSource is the instance returned by [TestDataFactory's][TestDataFactory] methods.
  *
  * Call TestDataSource's methods to configure your data source:
  *

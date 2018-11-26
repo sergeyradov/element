@@ -14,7 +14,7 @@ export class TestDataLoaders implements TestDataFactory {
 	}
 
 	/**
-	 * Loads test data from a CSV file, returning a `<[TestDataSource]>` instance.
+	 * Loads test data from a CSV file, returning a [`TestDataSource`][TestDataSource] instance.
 	 */
 	public fromCSV<TRow>(filename: string, separator: string = ','): TestDataSource<TRow> {
 		let loader = new CSVLoader<TRow>(this.workRoot.testData(filename), separator, filename)

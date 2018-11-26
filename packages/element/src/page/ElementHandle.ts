@@ -289,7 +289,7 @@ export class ElementHandle implements IElementHandle, Locator {
 	}
 
 	/**
-	 * Locates all elements using the supplied <[Locator]>, returning an array of <[ElementHandle]>'s
+	 * Locates all elements using the supplied [Locator][], returning an array of [ElementHandles][ElementHandle]
 	 */
 	public async findElements(locator: string | Locator): Promise<IElementHandle[]> {
 		if (typeof locator === 'string') {

@@ -4,8 +4,8 @@ import { ClickOptions, ScreenshotOptions } from 'puppeteer'
 import { EvaluateFn, ExecutionContext, ElementHandle as PElementHandle } from 'puppeteer'
 
 /**
- * A Locator represents an object used to locate elements on the page. It is usually constructed using the helper methods of <[By]>.
- * An <[ElementHandle]> can also be used as a Locator which finds itself.
+ * A Locator represents an object used to locate elements on the page. It is usually constructed using the helper methods of [By][].
+ * An [ElementHandle][] can also be used as a Locator which finds itself.
  *
  * @title Locators
  * @position 2
@@ -92,12 +92,12 @@ export interface ElementHandle {
 	takeScreenshot(options?: ScreenshotOptions): Promise<void>
 
 	/**
-	 * Locates an element using the supplied <[Locator]>, returning an <[ElementHandle]>.
+	 * Locates an element using the supplied [Locator][], returning an [ElementHandle][].
 	 */
 	findElement(locator: string | Locator): Promise<ElementHandle | null>
 
 	/**
-	 * Locates all elements using the supplied <[Locator]>, returning an array of <[ElementHandle]>s.
+	 * Locates all elements using the supplied [Locator][], returning an array of [ElementHandles][ElementHandle].
 	 */
 	findElements(locator: Locator | string): Promise<ElementHandle[]>
 
