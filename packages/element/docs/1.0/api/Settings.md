@@ -1,7 +1,7 @@
 ---
 articleGroup: API
 position: '9'
-title: '"Test Settings"'
+title: Test Settings
 
 ---
 

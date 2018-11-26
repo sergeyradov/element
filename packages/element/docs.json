@@ -4853,7 +4853,7 @@
 									"kindString": "Call signature",
 									"flags": {},
 									"comment": {
-										"shortText": "Locates all elements using the supplied <[Locator]>, returning an array of <[ElementHandle]>'s"
+										"shortText": "Locates all elements using the supplied [Locator][], returning an array of [ElementHandles][ElementHandle]"
 									},
 									"parameters": [
 										{
@@ -22317,7 +22317,7 @@
 									"kindString": "Call signature",
 									"flags": {},
 									"comment": {
-										"shortText": "Locates an element using the supplied <[Locator]>, returning an <[ElementHandle]>."
+										"shortText": "Locates an element using the supplied [Locator][], returning an [ElementHandle][]."
 									},
 									"parameters": [
 										{
@@ -22389,7 +22389,7 @@
 									"kindString": "Call signature",
 									"flags": {},
 									"comment": {
-										"shortText": "Locates all elements using the supplied <[Locator]>, returning an array of <[ElementHandle]>s."
+										"shortText": "Locates all elements using the supplied [Locator][], returning an array of [ElementHandles][ElementHandle]."
 									},
 									"parameters": [
 										{
@@ -23400,7 +23400,7 @@
 						"isExternal": true
 					},
 					"comment": {
-						"shortText": "A Locator represents an object used to locate elements on the page. It is usually constructed using the helper methods of <[By]>.\nAn <[ElementHandle]> can also be used as a Locator which finds itself.",
+						"shortText": "A Locator represents an object used to locate elements on the page. It is usually constructed using the helper methods of [By][].\nAn [ElementHandle][] can also be used as a Locator which finds itself.",
 						"tags": [
 							{
 								"tag": "title",
@@ -29521,7 +29521,7 @@
 							},
 							{
 								"tag": "title",
-								"text": "\"Test Settings\"\n"
+								"text": "Test Settings\n"
 							}
 						]
 					},
@@ -31046,7 +31046,7 @@
 								"isOptional": true
 							},
 							"comment": {
-								"shortText": "Timeout in seconds for all wait and navigation operations within this <[step]>.",
+								"shortText": "Timeout in seconds for all wait and navigation operations within this [step][].",
 								"tags": [
 									{
 										"tag": "default",
@@ -31197,7 +31197,7 @@
 					},
 					"comment": {
 						"shortText": "The `StepFunction` type represents a function to be called as a Test step.",
-						"text": "- `browser` <[Browser]> the browser\n- `data` <`T`> (Optional) a row of test data of type <`T`>. Only available when the test is set up using <[suite]>.\n\n**Example:**\n\n```typescript\nconst step1: StepFunction = async (browser: Browser) => {\n\tawait browser.click(...)\n}\n```\n"
+						"text": "- `browser` [Browser][] the browser\n- `data` <`T`> (Optional) a row of test data of type <`T`>. Only available when the test is set up using [suite][].\n\n**Example:**\n\n```typescript\nconst step1: StepFunction = async (browser: Browser) => {\n\tawait browser.click(...)\n}\n```\n"
 					},
 					"typeParameter": [
 						{
@@ -33043,7 +33043,7 @@
 						"isExternal": true
 					},
 					"comment": {
-						"shortText": "Browser is the main entry point in each <[step]>, it's your direct connection to the browser running the test.",
+						"shortText": "Browser is the main entry point in each [step][], it's your direct connection to the browser running the test.",
 						"text": "```typescript\nimport { step } from '@flood/element'\nexport default () => {\n  step(\"Start\", async browser => {\n    await browser.visit(\"https://challenge.flood.io\")\n  })\n}\n```\n",
 						"tags": [
 							{
@@ -33360,7 +33360,7 @@
 									"flags": {},
 									"comment": {
 										"shortText": "Sends a click event to the element located at `selector`. If the element is\ncurrently outside the viewport it will first scroll to that element.",
-										"text": "**Example:**\n\n```typescript\nstep(\"Start\", async browser => {\n  await browser.click(By.partialLinkText('Start'))\n})\n```\n\nIn this example we're constructing a <[Locatable]> using the `By.partialLinkText()` Locator, which will match the first `<a>` tag which contains the text \"Start\".\n\n"
+										"text": "**Example:**\n\n```typescript\nstep(\"Start\", async browser => {\n  await browser.click(By.partialLinkText('Start'))\n})\n```\n\nIn this example we're constructing a [Locatable][] using the `By.partialLinkText()` Locator, which will match the first `<a>` tag which contains the text \"Start\".\n\n"
 									},
 									"parameters": [
 										{
@@ -33738,7 +33738,7 @@
 											"kindString": "Parameter",
 											"flags": {},
 											"comment": {
-												"text": "The <[Locator]> to use to find an element to send focus to."
+												"text": "The [Locator][] to use to find an element to send focus to."
 											},
 											"type": {
 												"type": "reference",
@@ -33900,7 +33900,7 @@
 									"kindString": "Call signature",
 									"flags": {},
 									"comment": {
-										"shortText": "Presses a key on the keyboard specified by key code. For example, <[Key.ALT]>"
+										"shortText": "Presses a key on the keyboard specified by key code. For example, [Key.ALT][Key.ALT]"
 									},
 									"parameters": [
 										{
@@ -34265,7 +34265,7 @@
 									"flags": {},
 									"comment": {
 										"shortText": "`sendKeys` simulates typing a list of strings on the keyboard.",
-										"text": "If a string is a member of <[Key]> it is pressed individually. Otherwise the string is typed.\nThis allows sendKeys to simulate a user typing control keys such as `Key.ENTER`.\n\n**Example:**\n```typescript\nawait browser.click(\"#input_address\")\nawait browser.sendKeys(\"Hello, World!\", Key.ENTER)\n```\n"
+										"text": "If a string is a member of [Key][] it is pressed individually. Otherwise the string is typed.\nThis allows sendKeys to simulate a user typing control keys such as `Key.ENTER`.\n\n**Example:**\n```typescript\nawait browser.click(\"#input_address\")\nawait browser.sendKeys(\"Hello, World!\", Key.ENTER)\n```\n"
 									},
 									"parameters": [
 										{
@@ -34704,7 +34704,7 @@
 									"flags": {},
 									"comment": {
 										"shortText": "Creates a waiter which will pause the test until a condition is met or a timeout is reached. This can be used for validation or control flow.",
-										"text": "Check out <[Until]> for a rich set of wait <[Condition]>s.\n\n**Example:**\n\n```typescript\nstep('Start', async browser => {\n  await browser.wait(Until.elementIsVisible(By.css('h1.title')))\n})\n```\n\nYou can use either a numeric value in seconds to wait for a specific time,\nor a <[Condition]>, for more flexible conditions.\n"
+										"text": "Check out [Until][] for a rich set of wait [Conditions][Condition].\n\n**Example:**\n\n```typescript\nstep('Start', async browser => {\n  await browser.wait(Until.elementIsVisible(By.css('h1.title')))\n})\n```\n\nYou can use either a numeric value in seconds to wait for a specific time,\nor a [Condition][], for more flexible conditions.\n"
 									},
 									"parameters": [
 										{
@@ -35205,7 +35205,7 @@
 						"isExternal": true
 					},
 					"comment": {
-						"shortText": "Locatable represents anything able to be located, either a string selector or a <[Locator]>. <[Locator]>s are generally created using <[By]> methods."
+						"shortText": "Locatable represents anything able to be located, either a string selector or a [Locator][Locator]. [Locators][Locator] are generally created using [By][] methods."
 					},
 					"sources": [
 						{
@@ -35244,8 +35244,8 @@
 						"isExternal": true
 					},
 					"comment": {
-						"shortText": "NullableLocatable represents a <[Locatable]> which could also be null.",
-						"text": "Note that most Element location API methods accept a NullableLocatable but will throw an <[Error]> if its actually <[null]>.\n"
+						"shortText": "NullableLocatable represents a [Locatable][Locatable] which could also be null.",
+						"text": "Note that most Element location API methods accept a NullableLocatable but will throw an [Error][] if its actually [null][].\n"
 					},
 					"sources": [
 						{
@@ -38023,7 +38023,7 @@
 						"isExternal": true
 					},
 					"comment": {
-						"shortText": "TestDataSource is the instance returned by <[TestDataFactory]>'s methods.",
+						"shortText": "TestDataSource is the instance returned by [TestDataFactory's][TestDataFactory] methods.",
 						"text": "Call TestDataSource's methods to configure your data source:\n\n```typescript\nimport { step, Browser, TestData, TestSettings } from '@flood/element'\nexport const settings: TestSettings = {\n  loopCount: -1\n}\n\ninterface Row {\n  username: string\n  userID: number\n}\nTestData.fromCSV<Row>('users.csv')\n  .circular(false) // Switch off circular data iteration.\n                   // By default, when the end of the data is reached, it wraps to the beginning.\n  .shuffle()       // Shuffle the data\n\nexport default () => {\n   step('Step 1', (browser: Browser, row: Row) => {\n     // for each loop, a different line from user.csv will be available as `row`\n   })\n}\n```\n"
 					},
 					"typeParameter": [
@@ -38838,7 +38838,7 @@
 						"isExternal": true
 					},
 					"comment": {
-						"shortText": "A `TestDataFactory` is available to be imported into your test script as `TestData`. Use this to load a <[TestDataSource]> which provides new test data to each iteration of your test.",
+						"shortText": "A `TestDataFactory` is available to be imported into your test script as `TestData`. Use this to load a [TestDataSource][] which provides new test data to each iteration of your test.",
 						"text": "TODO\nFiles should be uploaded to ...\n",
 						"tags": [
 							{
@@ -39881,7 +39881,7 @@
 									"kindString": "Call signature",
 									"flags": {},
 									"comment": {
-										"shortText": "Loads test data from a CSV file, returning a `<[TestDataSource]>` instance."
+										"shortText": "Loads test data from a CSV file, returning a [`TestDataSource`][TestDataSource] instance."
 									},
 									"typeParameter": [
 										{

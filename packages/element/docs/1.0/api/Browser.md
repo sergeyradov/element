@@ -8,7 +8,7 @@ articleGroup: API
 
 # `Browser`
 
-Browser is the main entry point in each &lt;[step]>, it's your direct connection to the browser running the test.
+Browser is the main entry point in each [step][], it's your direct connection to the browser running the test.
 
 ```typescript
 import { step } from '@flood/element'
@@ -92,7 +92,7 @@ step("Start", async browser => {
 })
 ```
 
-In this example we're constructing a &lt;[Locatable]> using the `By.partialLinkText()` Locator, which will match the first `<a>` tag which contains the text "Start".
+In this example we're constructing a [Locatable][] using the `By.partialLinkText()` Locator, which will match the first `<a>` tag which contains the text "Start".
 
 **Parameters**
 
@@ -165,7 +165,7 @@ Makes the element located by the first argument the receiver of future input.
 
 **Parameters**
 
--   locator [`NullableLocatable`][NullableLocatable]  The &lt;[Locator]> to use to find an element to send focus to.
+-   locator [`NullableLocatable`][NullableLocatable]  The [Locator][] to use to find an element to send focus to.
 -   returns: [Promise&lt;`void`\>][Promise]
 
 ### `Browser.highlightElement(element)`
@@ -194,7 +194,7 @@ Uses the provided locator to find the first element it matches, returning an Ele
 
 
 
-Presses a key on the keyboard specified by key code. For example, &lt;[Key.ALT]>
+Presses a key on the keyboard specified by key code. For example, [Key.ALT][Key.ALT]
 
 **Parameters**
 
@@ -244,7 +244,7 @@ Selects an option within a `<select>` tag using the value of the `<option>` elem
 
 `sendKeys` simulates typing a list of strings on the keyboard.
 
-If a string is a member of &lt;[Key]> it is pressed individually. Otherwise the string is typed.
+If a string is a member of [Key][] it is pressed individually. Otherwise the string is typed.
 This allows sendKeys to simulate a user typing control keys such as `Key.ENTER`.
 
 **Example:**
@@ -350,7 +350,7 @@ step("Start", async browser => {
 
 Creates a waiter which will pause the test until a condition is met or a timeout is reached. This can be used for validation or control flow.
 
-Check out &lt;[Until]> for a rich set of wait &lt;[Condition]>s.
+Check out [Until][] for a rich set of wait [Conditions][Condition].
 
 **Example:**
 
@@ -361,7 +361,7 @@ step('Start', async browser => {
 ```
 
 You can use either a numeric value in seconds to wait for a specific time,
-or a &lt;[Condition]>, for more flexible conditions.
+or a [Condition][], for more flexible conditions.
 
 **Parameters**
 
@@ -386,14 +386,14 @@ Driver is an alias to Browser. Please use Browser when possible.
 
 ## `Locatable`
 
-Locatable represents anything able to be located, either a string selector or a &lt;[Locator]>. &lt;[Locator]>s are generally created using &lt;[By]> methods.
+Locatable represents anything able to be located, either a string selector or a [Locator][Locator]. [Locators][Locator] are generally created using [By][] methods.
 
-    <[Locator]> | <[ElementHandle]> | string
+    [Locator][] | [ElementHandle][] | string
 
 ## `NullableLocatable`
 
-NullableLocatable represents a &lt;[Locatable]> which could also be null.
+NullableLocatable represents a [Locatable][Locatable] which could also be null.
 
-Note that most Element location API methods accept a NullableLocatable but will throw an &lt;[Error]> if its actually &lt;[null]>.
+Note that most Element location API methods accept a NullableLocatable but will throw an [Error][] if its actually [null][].
 
-    <[Locatable]> | null
+    [Locatable][] | null

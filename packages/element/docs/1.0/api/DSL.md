@@ -40,14 +40,14 @@ step("Step 1", { waitTimeout: 300 }, async (browser: Browser) => {
 
 **Properties**
 
--   waitTimeout? `number` (Optional) Timeout in seconds for all wait and navigation operations within this &lt;[step]>.
+-   waitTimeout? `number` (Optional) Timeout in seconds for all wait and navigation operations within this [step][].
 
 ## `StepFunction`
 
 The `StepFunction` type represents a function to be called as a Test step.
 
--   `browser` &lt;[Browser]> the browser
--   `data` &lt;`T`> (Optional) a row of test data of type &lt;`T`>. Only available when the test is set up using &lt;[suite]>.
+-   `browser` [Browser][] the browser
+-   `data` &lt;`T`> (Optional) a row of test data of type &lt;`T`>. Only available when the test is set up using [suite][].
 
 **Example:**
 

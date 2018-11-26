@@ -110,7 +110,7 @@ Reads the data at the current cursor without advancing
 
 # `TestDataSource`
 
-TestDataSource is the instance returned by &lt;[TestDataFactory]>'s methods.
+TestDataSource is the instance returned by [TestDataFactory's][TestDataFactory] methods.
 
 Call TestDataSource's methods to configure your data source:
 
@@ -186,7 +186,7 @@ Shuffles the data set using the Fisher-Yates method. Use this to randomise the o
 
 # `TestDataFactory`
 
-A `TestDataFactory` is available to be imported into your test script as `TestData`. Use this to load a &lt;[TestDataSource]> which provides new test data to each iteration of your test.
+A `TestDataFactory` is available to be imported into your test script as `TestData`. Use this to load a [TestDataSource][] which provides new test data to each iteration of your test.
 
 TODO
 Files should be uploaded to ...

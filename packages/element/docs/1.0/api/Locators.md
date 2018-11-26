@@ -157,5 +157,5 @@ Locates elements matching a [XPath][] selector.
 
 # `Locator`
 
-A Locator represents an object used to locate elements on the page. It is usually constructed using the helper methods of &lt;[By]>.
-An &lt;[ElementHandle]> can also be used as a Locator which finds itself.
+A Locator represents an object used to locate elements on the page. It is usually constructed using the helper methods of [By][].
+An [ElementHandle][] can also be used as a Locator which finds itself.

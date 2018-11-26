@@ -59,7 +59,7 @@ currently outside the viewport it will first scroll to that element.
 
 
 
-Locates an element using the supplied &lt;[Locator]>, returning an &lt;[ElementHandle]>.
+Locates an element using the supplied [Locator][], returning an [ElementHandle][].
 
 **Parameters**
 
@@ -70,7 +70,7 @@ Locates an element using the supplied &lt;[Locator]>, returning an &lt;[ElementH
 
 
 
-Locates all elements using the supplied &lt;[Locator]>, returning an array of &lt;[ElementHandle]>s.
+Locates all elements using the supplied [Locator][], returning an array of [ElementHandles][ElementHandle].
 
 **Parameters**
 
