@@ -173,6 +173,13 @@ export interface TestSettings {
 	ignoreHTTPSErrors?: boolean
 
 	chromeVersion?: ChromeVersion
+
+	/**
+	 * Enable auto waiting before an action. On by default.
+	 *
+	 * You can specify a number in seconds to change the default wait time.
+	 */
+	autoWait?: boolean | number
 }
 
 /**
@@ -196,6 +203,7 @@ export const DEFAULT_SETTINGS: ConcreteTestSettings = {
 	device: 'Chrome Desktop Large',
 	ignoreHTTPSErrors: false,
 	chromeVersion: 'puppeteer',
+	autoWait: true,
 }
 
 /**
